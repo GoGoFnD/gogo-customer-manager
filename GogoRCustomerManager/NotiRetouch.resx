@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TextBox.Text" xml:space="preserve">
+    <value>
+	프로그램 업데이트 안내
+	
+	2024-03-05	대리점 PC
+			
+			1. 대리점 상세에서 라이더 설정에서 자사콜 경과 설정 부분에 타사콜 포함 옵션 추가
+			(타사콜 포함 옵션 체크 시 본사, 본부에서만 설정 변경 가능)
+			2. 본사 설정에서 대리점명 수정 불가, 대리점 라이더, 가맹점 소속 변경 불가 옵션 분리
+			3. 본사설정에 적립금 이동 횟수, 허용금액에 대리점 추가
+
+			
+			대리점 App
+			
+			1. 대리점 목록 - 라이더 설정에서 자사콜 경과 설정 부분에 타사콜 포함 옵션 추가
+			(타사콜 포함 옵션 채크 시 본사, 본부에서만 설정 변경 가능)
+
+	2024-02-22	대리점 PC
+			
+			1. 라이더 우클릭 시 라이더 배차제한 일괄등록 기능 추가
+			2. VAN 일괄등록 본사만 할 수 있도록 처리
+			3. 공유설정에 라이더앱 결제방식에 따른 표시 옵션 추가
+			4. 대리점 옵션 설정 시 라이더 앱에 도착지명, 상세주소 표시 안함 기능 변경
+
+			대리점 App
+
+			1. 공유설정에 라이더앱 결제 방식에 따른 표시 옵션 추가
+			2. 묶음 배송인 경우 접수 목록에 묶음콜 텍스트 표시
+
+			가맹점 PC 
+
+			1. 보류콜에 대한 가맹점 묶음 배송 가능
+			묶음 배송은 오더상태가 "보류" 일때만 가능
+			묶음 배송 진행시 관리자pc 출발지명에 묶음 표기됨
+			묶음 배송  강제 배차시 배차 한 라이더에게 전부 배차되도록 변경.   (묶음 배송오더건은 나눠서 진행 불가)
+			묶음 배송 3개 오더중 1개라도 라이서 "진행취소" 시 . 전체 오더 "진행 취소"되어 신규창 노출.(묶음 배송오더건은 나눠서 진행 불가)
+
+
+			.
+	프로그램 업데이트 안내
+	
+	2024-03-05	대리점 PC
+			
+			1. 대리점 상세에서 라이더 설정에서 자사콜 경과 설정 부분에 타사콜 포함 옵션 추가
+			(타사콜 포함 옵션 체크 시 본사, 본부에서만 설정 변경 가능)
+			2. 본사 설정에서 대리점명 수정 불가, 대리점 라이더, 가맹점 소속 변경 불가 옵션 분리
+			3. 본사설정에 적립금 이동 횟수, 허용금액에 대리점 추가
+
+			
+			대리점 App
+			
+			1. 대리점 목록 - 라이더 설정에서 자사콜 경과 설정 부분에 타사콜 포함 옵션 추가
+			(타사콜 포함 옵션 채크 시 본사, 본부에서만 설정 변경 가능)
+
+	2024-02-22	대리점 PC
+			
+			1. 라이더 우클릭 시 라이더 배차제한 일괄등록 기능 추가
+			2. VAN 일괄등록 본사만 할 수 있도록 처리
+			3. 공유설정에 라이더앱 결제방식에 따른 표시 옵션 추가
+			4. 대리점 옵션 설정 시 라이더 앱에 도착지명, 상세주소 표시 안함 기능 변경
+
+			대리점 App
+
+			1. 공유설정에 라이더앱 결제 방식에 따른 표시 옵션 추가
+			2. 묶음 배송인 경우 접수 목록에 묶음콜 텍스트 표시
+
+			가맹점 PC 
+
+			1. 보류콜에 대한 가맹점 묶음 배송 가능
+			묶음 배송은 오더상태가 "보류" 일때만 가능
+			묶음 배송 진행시 관리자pc 출발지명에 묶음 표기됨
+			묶음 배송  강제 배차시 배차 한 라이더에게 전부 배차되도록 변경.   (묶음 배송오더건은 나눠서 진행 불가)
+			묶음 배송 3개 오더중 1개라도 라이서 "진행취소" 시 . 전체 오더 "진행 취소"되어 신규창 노출.(묶음 배송오더건은 나눠서 진행 불가)
+
+
+			.
+
+	프로그램 업데이트 안내
+	
+	2024-03-05	대리점 PC
+			
+			1. 대리점 상세에서 라이더 설정에서 자사콜 경과 설정 부분에 타사콜 포함 옵션 추가
+			(타사콜 포함 옵션 체크 시 본사, 본부에서만 설정 변경 가능)
+			2. 본사 설정에서 대리점명 수정 불가, 대리점 라이더, 가맹점 소속 변경 불가 옵션 분리
+			3. 본사설정에 적립금 이동 횟수, 허용금액에 대리점 추가
+
+			
+			대리점 App
+			
+			1. 대리점 목록 - 라이더 설정에서 자사콜 경과 설정 부분에 타사콜 포함 옵션 추가
+			(타사콜 포함 옵션 채크 시 본사, 본부에서만 설정 변경 가능)
+
+	2024-02-22	대리점 PC
+			
+			1. 라이더 우클릭 시 라이더 배차제한 일괄등록 기능 추가
+			2. VAN 일괄등록 본사만 할 수 있도록 처리
+			3. 공유설정에 라이더앱 결제방식에 따른 표시 옵션 추가
+			4. 대리점 옵션 설정 시 라이더 앱에 도착지명, 상세주소 표시 안함 기능 변경
+
+			대리점 App
+
+			1. 공유설정에 라이더앱 결제 방식에 따른 표시 옵션 추가
+			2. 묶음 배송인 경우 접수 목록에 묶음콜 텍스트 표시
+
+			가맹점 PC 
+
+			1. 보류콜에 대한 가맹점 묶음 배송 가능
+			묶음 배송은 오더상태가 "보류" 일때만 가능
+			묶음 배송 진행시 관리자pc 출발지명에 묶음 표기됨
+			묶음 배송  강제 배차시 배차 한 라이더에게 전부 배차되도록 변경.   (묶음 배송오더건은 나눠서 진행 불가)
+			묶음 배송 3개 오더중 1개라도 라이서 "진행취소" 시 . 전체 오더 "진행 취소"되어 신규창 노출.(묶음 배송오더건은 나눠서 진행 불가)
+
+
+			.
+	프로그램 업데이트 안내
+	
+	2024-03-05	대리점 PC
+			
+			1. 대리점 상세에서 라이더 설정에서 자사콜 경과 설정 부분에 타사콜 포함 옵션 추가
+			(타사콜 포함 옵션 체크 시 본사, 본부에서만 설정 변경 가능)
+			2. 본사 설정에서 대리점명 수정 불가, 대리점 라이더, 가맹점 소속 변경 불가 옵션 분리
+			3. 본사설정에 적립금 이동 횟수, 허용금액에 대리점 추가
+
+			
+			대리점 App
+			
+			1. 대리점 목록 - 라이더 설정에서 자사콜 경과 설정 부분에 타사콜 포함 옵션 추가
+			(타사콜 포함 옵션 채크 시 본사, 본부에서만 설정 변경 가능)
+
+	2024-02-22	대리점 PC
+			
+			1. 라이더 우클릭 시 라이더 배차제한 일괄등록 기능 추가
+			2. VAN 일괄등록 본사만 할 수 있도록 처리
+			3. 공유설정에 라이더앱 결제방식에 따른 표시 옵션 추가
+			4. 대리점 옵션 설정 시 라이더 앱에 도착지명, 상세주소 표시 안함 기능 변경
+
+			대리점 App
+
+			1. 공유설정에 라이더앱 결제 방식에 따른 표시 옵션 추가
+			2. 묶음 배송인 경우 접수 목록에 묶음콜 텍스트 표시
+
+			가맹점 PC 
+
+			1. 보류콜에 대한 가맹점 묶음 배송 가능
+			묶음 배송은 오더상태가 "보류" 일때만 가능
+			묶음 배송 진행시 관리자pc 출발지명에 묶음 표기됨
+			묶음 배송  강제 배차시 배차 한 라이더에게 전부 배차되도록 변경.   (묶음 배송오더건은 나눠서 진행 불가)
+			묶음 배송 3개 오더중 1개라도 라이서 "진행취소" 시 . 전체 오더 "진행 취소"되어 신규창 노출.(묶음 배송오더건은 나눠서 진행 불가)
+
+
+			.
+	프로그램 업데이트 안내
+	
+	2024-03-05	대리점 PC
+			
+			1. 대리점 상세에서 라이더 설정에서 자사콜 경과 설정 부분에 타사콜 포함 옵션 추가
+			(타사콜 포함 옵션 체크 시 본사, 본부에서만 설정 변경 가능)
+			2. 본사 설정에서 대리점명 수정 불가, 대리점 라이더, 가맹점 소속 변경 불가 옵션 분리
+			3. 본사설정에 적립금 이동 횟수, 허용금액에 대리점 추가
+
+			
+			대리점 App
+			
+			1. 대리점 목록 - 라이더 설정에서 자사콜 경과 설정 부분에 타사콜 포함 옵션 추가
+			(타사콜 포함 옵션 채크 시 본사, 본부에서만 설정 변경 가능)
+
+	2024-02-22	대리점 PC
+			
+			1. 라이더 우클릭 시 라이더 배차제한 일괄등록 기능 추가
+			2. VAN 일괄등록 본사만 할 수 있도록 처리
+			3. 공유설정에 라이더앱 결제방식에 따른 표시 옵션 추가
+			4. 대리점 옵션 설정 시 라이더 앱에 도착지명, 상세주소 표시 안함 기능 변경
+
+			대리점 App
+
+			1. 공유설정에 라이더앱 결제 방식에 따른 표시 옵션 추가
+			2. 묶음 배송인 경우 접수 목록에 묶음콜 텍스트 표시
+
+			가맹점 PC 
+
+			1. 보류콜에 대한 가맹점 묶음 배송 가능
+			묶음 배송은 오더상태가 "보류" 일때만 가능
+			묶음 배송 진행시 관리자pc 출발지명에 묶음 표기됨
+			묶음 배송  강제 배차시 배차 한 라이더에게 전부 배차되도록 변경.   (묶음 배송오더건은 나눠서 진행 불가)
+			묶음 배송 3개 오더중 1개라도 라이서 "진행취소" 시 . 전체 오더 "진행 취소"되어 신규창 노출.(묶음 배송오더건은 나눠서 진행 불가)
+
+
+			.
+
+
+</value>
+  </data>
+</root>

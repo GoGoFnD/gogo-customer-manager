@@ -1,22 +1,10 @@
-﻿
-using K4os.Compression.LZ4.Internal;
-using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Asn1.Pkcs;
-using Org.BouncyCastle.Utilities.Collections;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
 using System.Data;
-using System.Diagnostics.Metrics;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Management;
 using System.Net;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 
 namespace GogoRCustomerManager
@@ -24,7 +12,7 @@ namespace GogoRCustomerManager
     public partial class Main : Form
     {
         private TabPage tabPage = null;
-
+        RControl rControl;
         private DataGridView DBData = new DataGridView();
         private DataGridViewTextBoxColumn co_Member_Num = new DataGridViewTextBoxColumn();
         private DataGridViewTextBoxColumn isWorkConvert = new DataGridViewTextBoxColumn();
@@ -60,15 +48,18 @@ namespace GogoRCustomerManager
         //private FontAwesome.Sharp.IconButton MemAddBtn = new FontAwesome.Sharp.IconButton();
         private FontAwesome.Sharp.IconButton MemChangeBtn = new FontAwesome.Sharp.IconButton();
         private FontAwesome.Sharp.IconButton DeleteMemBtn = new FontAwesome.Sharp.IconButton();
-        private RichTextBox programNotiText = new RichTextBox();
-        private RichTextBox programUpdateText = new RichTextBox();
+
 
         private Login login = new Login();
         private ArrayList data;
 
+        private RichTextBox programNotiText = new RichTextBox();
+        private RichTextBox programUpdateText = new RichTextBox();
+
         bool isProgramPopupOpen = false;
         bool memberPageOpen = false;
         bool notiPageOpen = false;
+        bool RControl1 = false;
         public bool islogin = false;
 
 
@@ -116,8 +107,21 @@ namespace GogoRCustomerManager
             tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             tabControl1.DrawItem += TabControl1_DrawItem;
 
+
             OffPopup();
+            //InitializeWebView();
         }
+        /*private async void InitializeWebView()
+        {
+            webView2 = new Microsoft.Web.WebView2.WinForms.WebView2
+            {
+                Dock = DockStyle.Fill
+            };
+            this.Controls.Add(webView2);
+
+            await webView2.EnsureCoreWebView2Async(null);
+            webView2.Source = new Uri("https://google.com");
+        }*/
         private void Main_Load(object sender, EventArgs e)
         {
             SetManagerUi();
@@ -133,8 +137,8 @@ namespace GogoRCustomerManager
             MemSearchBtn.Click += new EventHandler(this.MemSearchBtn_Click);
             ResetMem.Click += new EventHandler(this.ResetMem_Click);
             MemChangeBtn.Click += new EventHandler(ChangeAccount_Click);
-            programUpdateText.Click += new EventHandler(NotiPage_Click);
-            programNotiText.Click += new EventHandler(NotiPage_Click);
+            //programUpdateText.Click += new EventHandler(NotiPage_Click);
+            //programNotiText.Click += new EventHandler(NotiPage_Click);
             DeleteMemBtn.Click += new EventHandler(Delete_Column_Click);
             SearchText.KeyDown += new KeyEventHandler(this.PressEnter);
             initComboBox();
@@ -188,9 +192,11 @@ namespace GogoRCustomerManager
 
         private void CreateTabPage(string page_Name)
         {
-
             if (!notiPageOpen && page_Name == "Noti")
             {
+               /* NotiTab notiTab = new NotiTab(page_Name, tabPage, this, notiPageOpen, notiPage_Num);
+                notiTab.createTab();
+                notiPageOpen = true;*/
                 tabPage = new TabPage(page_Name);
                 tabPage.Name = "NotiTab";
                 tabPage.Padding = new Padding(3);
@@ -693,6 +699,8 @@ namespace GogoRCustomerManager
                 SetDB();
 
             }
+
+           
         }
         private void DBData_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -995,11 +1003,16 @@ namespace GogoRCustomerManager
         private void RControlBtn1_Click(object sender, EventArgs e)
         {
             OffPopup();
+            rControl = new RControl();
+            rControl.Show();
+
         }
 
         private void RControlBtn2_Click(object sender, EventArgs e)
         {
             OffPopup();
+            rControl = new RControl();
+            rControl.Show();
         }
 
         private void RControlBtn3_Click(object sender, EventArgs e)
@@ -1704,6 +1717,11 @@ namespace GogoRCustomerManager
                 MemSearchBtn_Click(null, null);
                 
             }
+        }
+
+        private void webView2_Click(object sender, EventArgs e)
+        {
+
         }
     }
     public static class ExtensionMethods

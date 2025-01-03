@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Markup;
+using Microsoft.Web.WebView2.WinForms;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Crypto;
 
@@ -132,5 +133,6 @@ namespace GogoRCustomerManager
                 e.Handled = true;
             }
         }
+
     }
 }

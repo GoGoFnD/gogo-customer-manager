@@ -48,6 +48,7 @@
             this.TextBox.Size = new System.Drawing.Size(1046, 501);
             this.TextBox.TabIndex = 0;
             this.TextBox.Text = resources.GetString("TextBox.Text");
+            this.TextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // ProgramNotiBtn
             // 

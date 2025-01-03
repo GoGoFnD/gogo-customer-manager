@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -257,7 +256,7 @@
             this.ProgramPanel.Controls.Add(this.ChangeAccountBtn);
             this.ProgramPanel.Controls.Add(this.OptionBtn);
             this.ProgramPanel.Controls.Add(this.ProgramNotiBtn);
-            this.ProgramPanel.Location = new System.Drawing.Point(920, 68);
+            this.ProgramPanel.Location = new System.Drawing.Point(936, 69);
             this.ProgramPanel.Name = "ProgramPanel";
             this.ProgramPanel.Size = new System.Drawing.Size(165, 239);
             this.ProgramPanel.TabIndex = 1000;

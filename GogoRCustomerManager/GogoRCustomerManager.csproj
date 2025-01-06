@@ -162,6 +162,18 @@
     <Compile Include="CreateAccount.Designer.cs">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="cSenIDTab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cSenIDTab.Designer.cs">
+      <DependentUpon>cSenIDTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GosafeDataMapview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GosafeDataMapview.Designer.cs">
+      <DependentUpon>GosafeDataMapview.cs</DependentUpon>
+    </Compile>
     <Compile Include="RControl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +209,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cSenIDTab.resx">
+      <DependentUpon>cSenIDTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GosafeDataMapview.resx">
+      <DependentUpon>GosafeDataMapview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NotiRetouch.resx">
       <DependentUpon>NotiRetouch.cs</DependentUpon>

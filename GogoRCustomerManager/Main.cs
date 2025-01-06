@@ -13,6 +13,7 @@ namespace GogoRCustomerManager
     {
         private TabPage tabPage = null;
         RControl rControl;
+        GosafeDataMapview gosafeDataMapview;
         private DataGridView DBData = new DataGridView();
         private DataGridViewTextBoxColumn co_Member_Num = new DataGridViewTextBoxColumn();
         private DataGridViewTextBoxColumn isWorkConvert = new DataGridViewTextBoxColumn();
@@ -981,19 +982,13 @@ namespace GogoRCustomerManager
         private void NotiBtn_Click(object sender, EventArgs e)
         {
             OffPopup();
-            if (notiPageOpen)
-            {
-                tabControl1.SelectedIndex = notiPage_Num;
-            }
-            else
-            {
-                CreateTabPage("Noti");
-            }
         }
 
         private void ManageBtn_Click(object sender, EventArgs e)
         {
             OffPopup();
+            gosafeDataMapview = new GosafeDataMapview();
+            gosafeDataMapview.Show();
         }
         private void NotiPage_Click(object sender, EventArgs e)
         {
@@ -1176,6 +1171,14 @@ namespace GogoRCustomerManager
         private void ProgramNotiBtn_Click(object sender, EventArgs e)
         {
             OffPopup();
+            if (notiPageOpen)
+            {
+                tabControl1.SelectedIndex = notiPage_Num;
+            }
+            else
+            {
+                CreateTabPage("Noti");
+            }
         }
 
         private void tabPage1_Click(object sender, EventArgs e)

@@ -32,9 +32,9 @@
             this.NotiBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ProgramPanel = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ProgramPanelLine3 = new System.Windows.Forms.Label();
+            this.ProgramPanelLine2 = new System.Windows.Forms.Label();
+            this.ProgramPanelLine1 = new System.Windows.Forms.Label();
             this.ProgramEndBtn = new System.Windows.Forms.Button();
             this.LogoutBtn = new System.Windows.Forms.Button();
             this.StateSaveBtn = new System.Windows.Forms.Button();
@@ -246,9 +246,9 @@
             // ProgramPanel
             // 
             this.ProgramPanel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ProgramPanel.Controls.Add(this.label3);
-            this.ProgramPanel.Controls.Add(this.label2);
-            this.ProgramPanel.Controls.Add(this.label1);
+            this.ProgramPanel.Controls.Add(this.ProgramPanelLine3);
+            this.ProgramPanel.Controls.Add(this.ProgramPanelLine2);
+            this.ProgramPanel.Controls.Add(this.ProgramPanelLine1);
             this.ProgramPanel.Controls.Add(this.ProgramEndBtn);
             this.ProgramPanel.Controls.Add(this.LogoutBtn);
             this.ProgramPanel.Controls.Add(this.StateSaveBtn);
@@ -261,29 +261,29 @@
             this.ProgramPanel.Size = new System.Drawing.Size(165, 239);
             this.ProgramPanel.TabIndex = 1000;
             // 
-            // label3
+            // ProgramPanelLine3
             // 
-            this.label3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label3.Location = new System.Drawing.Point(35, 170);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 1);
-            this.label3.TabIndex = 22;
+            this.ProgramPanelLine3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ProgramPanelLine3.Location = new System.Drawing.Point(35, 170);
+            this.ProgramPanelLine3.Name = "ProgramPanelLine3";
+            this.ProgramPanelLine3.Size = new System.Drawing.Size(130, 1);
+            this.ProgramPanelLine3.TabIndex = 22;
             // 
-            // label2
+            // ProgramPanelLine2
             // 
-            this.label2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label2.Location = new System.Drawing.Point(35, 136);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 1);
-            this.label2.TabIndex = 21;
+            this.ProgramPanelLine2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ProgramPanelLine2.Location = new System.Drawing.Point(35, 136);
+            this.ProgramPanelLine2.Name = "ProgramPanelLine2";
+            this.ProgramPanelLine2.Size = new System.Drawing.Size(130, 1);
+            this.ProgramPanelLine2.TabIndex = 21;
             // 
-            // label1
+            // ProgramPanelLine1
             // 
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Location = new System.Drawing.Point(35, 68);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 1);
-            this.label1.TabIndex = 20;
+            this.ProgramPanelLine1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ProgramPanelLine1.Location = new System.Drawing.Point(35, 68);
+            this.ProgramPanelLine1.Name = "ProgramPanelLine1";
+            this.ProgramPanelLine1.Size = new System.Drawing.Size(130, 1);
+            this.ProgramPanelLine1.TabIndex = 20;
             // 
             // ProgramEndBtn
             // 
@@ -1102,9 +1102,9 @@
         private FontAwesome.Sharp.IconButton NApplyBtn;
         private FontAwesome.Sharp.IconButton FMessegeBtn;
         private System.Windows.Forms.Panel ProgramPanel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ProgramPanelLine3;
+        private System.Windows.Forms.Label ProgramPanelLine2;
+        private System.Windows.Forms.Label ProgramPanelLine1;
         private System.Windows.Forms.Button ProgramEndBtn;
         private System.Windows.Forms.Button LogoutBtn;
         private System.Windows.Forms.Button StateSaveBtn;

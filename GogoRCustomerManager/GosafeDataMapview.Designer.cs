@@ -34,12 +34,13 @@
             this.DatePickerTitle = new System.Windows.Forms.Label();
             this.endTime = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.SelectButton = new System.Windows.Forms.Button();
+            this.cSenIDFindButton = new System.Windows.Forms.Button();
             this.SensorDataGridTitle = new System.Windows.Forms.Label();
             this.ServerSelectTitle = new System.Windows.Forms.Label();
             this.cSenIDTitle = new System.Windows.Forms.Label();
             this.ServerSelect = new System.Windows.Forms.ComboBox();
             this.cSenIDTextBox = new System.Windows.Forms.TextBox();
+            this.SelectButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -82,10 +83,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SensorDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SensorDataGrid.Location = new System.Drawing.Point(0, 3);
+            this.SensorDataGrid.Location = new System.Drawing.Point(0, 0);
             this.SensorDataGrid.Name = "SensorDataGrid";
             this.SensorDataGrid.RowTemplate.Height = 23;
-            this.SensorDataGrid.Size = new System.Drawing.Size(385, 328);
+            this.SensorDataGrid.Size = new System.Drawing.Size(385, 331);
             this.SensorDataGrid.TabIndex = 1;
             // 
             // DatePickerTitle
@@ -105,7 +106,7 @@
             this.endTime.Name = "endTime";
             this.endTime.Size = new System.Drawing.Size(170, 21);
             this.endTime.TabIndex = 4;
-            this.endTime.Value = new System.DateTime(2025, 1, 6, 23, 59, 59, 0);
+            this.endTime.Value = new System.DateTime(2025, 1, 6, 0, 0, 0, 0);
             // 
             // label2
             // 
@@ -118,15 +119,15 @@
             this.label2.Text = "~";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // SelectButton
+            // cSenIDFindButton
             // 
-            this.SelectButton.Location = new System.Drawing.Point(456, 41);
-            this.SelectButton.Name = "SelectButton";
-            this.SelectButton.Size = new System.Drawing.Size(60, 55);
-            this.SelectButton.TabIndex = 6;
-            this.SelectButton.Text = "조회";
-            this.SelectButton.UseVisualStyleBackColor = true;
-            this.SelectButton.Click += new System.EventHandler(this.SelectButton_Click);
+            this.cSenIDFindButton.Location = new System.Drawing.Point(446, 41);
+            this.cSenIDFindButton.Name = "cSenIDFindButton";
+            this.cSenIDFindButton.Size = new System.Drawing.Size(93, 50);
+            this.cSenIDFindButton.TabIndex = 6;
+            this.cSenIDFindButton.Text = "센서번호 찾기";
+            this.cSenIDFindButton.UseVisualStyleBackColor = true;
+            this.cSenIDFindButton.Click += new System.EventHandler(this.CSenIDFindButton_Click);
             // 
             // SensorDataGridTitle
             // 
@@ -177,17 +178,28 @@
             this.cSenIDTextBox.Size = new System.Drawing.Size(367, 21);
             this.cSenIDTextBox.TabIndex = 11;
             // 
+            // SelectButton
+            // 
+            this.SelectButton.Location = new System.Drawing.Point(545, 41);
+            this.SelectButton.Name = "SelectButton";
+            this.SelectButton.Size = new System.Drawing.Size(59, 50);
+            this.SelectButton.TabIndex = 12;
+            this.SelectButton.Text = "조회";
+            this.SelectButton.UseVisualStyleBackColor = true;
+            this.SelectButton.Click += new System.EventHandler(this.SelectButton_Click);
+            // 
             // GosafeDataMapview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SelectButton);
             this.Controls.Add(this.cSenIDTextBox);
             this.Controls.Add(this.ServerSelect);
             this.Controls.Add(this.cSenIDTitle);
             this.Controls.Add(this.ServerSelectTitle);
             this.Controls.Add(this.SensorDataGridTitle);
-            this.Controls.Add(this.SelectButton);
+            this.Controls.Add(this.cSenIDFindButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.endTime);
             this.Controls.Add(this.DatePickerTitle);
@@ -195,6 +207,7 @@
             this.Controls.Add(this.startTime);
             this.Name = "GosafeDataMapview";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GosafeDataMapview";
             this.Load += new System.EventHandler(this.GosafeDataMapview_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -214,10 +227,11 @@
         private System.Windows.Forms.DateTimePicker endTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label SensorDataGridTitle;
-        private System.Windows.Forms.Button SelectButton;
+        private System.Windows.Forms.Button cSenIDFindButton;
         private System.Windows.Forms.Label ServerSelectTitle;
         private System.Windows.Forms.Label cSenIDTitle;
         private System.Windows.Forms.ComboBox ServerSelect;
         private System.Windows.Forms.TextBox cSenIDTextBox;
+        private System.Windows.Forms.Button SelectButton;
     }
 }

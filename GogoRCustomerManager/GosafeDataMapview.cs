@@ -27,10 +27,20 @@ namespace GogoRCustomerManager
         public GosafeDataMapview()
         {
             InitializeComponent();
+            DatePickerSet();
+        }
+
+        private void DatePickerSet()
+        {
             startTime.Format = DateTimePickerFormat.Custom;
             startTime.CustomFormat = "yyyy-MM-dd";
             endTime.Format = DateTimePickerFormat.Custom;
             endTime.CustomFormat = "yyyy-MM-dd";
+
+            startTime.MinDate = new DateTime(2024, 1, 22);
+            startTime.MaxDate = DateTime.Today;
+            endTime.MinDate = new DateTime(2024, 1, 22);
+            endTime.MaxDate = DateTime.Today;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -65,22 +75,9 @@ namespace GogoRCustomerManager
         private void CSenIDFindButton_Click(object sender, EventArgs e)
         {
             cSenIDTab = new cSenIDTab(cSenIDTextBox);
-            //ArrayList data = new ArrayList();
-            //connection.Open();
-
-            //string selectQuery = "select distinct cSenID from tb_sensordata_20250104 "
-            //                    + "UNION "
-            //                     + "select distinct cSenID from tb_sensordata_20250105;";
-
-            //MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
-            //MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter();
-            //mySqlDataAdapter.SelectCommand = Selectcommand;
-            //DataTable dbDataset = new DataTable();
-            //mySqlDataAdapter.Fill(dbDataset);
             BindingSource bindingSource = new BindingSource();
 
             bindingSource.DataSource = FetchDataFromSchemas(startTime.Value, endTime.Value);
-            //SensorDataGrid.DataSource = bindingSource;
             cSenIDTab.dataTable = bindingSource;
 
             connection.Close();
@@ -88,48 +85,7 @@ namespace GogoRCustomerManager
         }
         private DataTable FetchDataFromSchemas(DateTime startDate, DateTime endDate)
         {
-            //Console.WriteLine(startTime);
-            //Console.WriteLine(endTime);
-            //// 동적 SQL을 생성
-            //StringBuilder sqlBuilder = new StringBuilder();
-
-            //sqlBuilder.AppendLine("WITH DateRange AS (");
-            //sqlBuilder.AppendLine("  SELECT CAST(@StartDate AS DATE) AS DateValue");
-            //sqlBuilder.AppendLine("  UNION ALL");
-            //sqlBuilder.AppendLine("  SELECT DATE_ADD(DateValue, INTERVAL 1 DAY)");
-            //sqlBuilder.AppendLine("  FROM DateRange");
-            //sqlBuilder.AppendLine("  WHERE DateValue < @EndDate");
-            //sqlBuilder.AppendLine(")");
-
-            //// 테이블을 동적으로 생성하는 부분
-            //sqlBuilder.AppendLine("SELECT GROUP_CONCAT(CONCAT('SELECT cSenID FROM tb_sensordata_', DATE_FORMAT(DateValue, '%Y%m%d')) SEPARATOR ' UNION ALL ') INTO @sql");
-            //sqlBuilder.AppendLine("FROM DateRange;");
-
-            //sqlBuilder.AppendLine("PREPARE stmt FROM @sql;");
-            //sqlBuilder.AppendLine("EXECUTE stmt;");
-            //sqlBuilder.AppendLine("DEALLOCATE PREPARE stmt;");
-            //DataTable dataTable = new DataTable();
-            //Console.WriteLine(sqlBuilder.ToString());
-            //try
-            //{
-            //    connection.Open(); // 커넥션 열기
-
-            //    using (MySqlCommand command = new MySqlCommand(sqlBuilder.ToString(), connection))
-            //    {
-            //        // 파라미터 추가 (문자열 포맷을 'yyyy-MM-dd'로 맞춰서 전달)
-            //        command.Parameters.AddWithValue("@StartDate", startDate.ToString("yyyy-MM-dd"));
-            //        command.Parameters.AddWithValue("@EndDate", endDate.ToString("yyyy-MM-dd"));
-
-            //        // 결과를 데이터 테이블에 채우기
-            //        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-            //        adapter.Fill(dataTable);
-            //    }
-            //    return dataTable;
-            //}
-            //catch (Exception ex) {
-            //    Console.WriteLine(ex);
-            //    return null;
-            //}
+            
             // 날짜 범위를 출력
             Console.WriteLine($"Start Date: {startDate:yyyy-MM-dd}");
             Console.WriteLine($"End Date: {endDate:yyyy-MM-dd}");
@@ -195,6 +151,16 @@ namespace GogoRCustomerManager
             {
                 MessageBox.Show("센서 ID를 입력해주세요.");
             }
+        }
+
+        private void startTime_ValueChanged(object sender, EventArgs e)
+        {
+            endTime.MinDate = startTime.Value;
+        }
+
+        private void endTime_ValueChanged(object sender, EventArgs e)
+        {
+            startTime.MaxDate = endTime.Value;
         }
     }
 }

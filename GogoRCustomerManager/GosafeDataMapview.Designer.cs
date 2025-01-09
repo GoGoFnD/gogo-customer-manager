@@ -51,10 +51,12 @@
             // 
             this.startTime.CustomFormat = "";
             this.startTime.Location = new System.Drawing.Point(73, 43);
+            this.startTime.MinDate = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             this.startTime.Name = "startTime";
             this.startTime.Size = new System.Drawing.Size(170, 21);
             this.startTime.TabIndex = 1;
             this.startTime.Value = new System.DateTime(2025, 1, 6, 0, 0, 0, 0);
+            this.startTime.ValueChanged += new System.EventHandler(this.startTime_ValueChanged);
             // 
             // splitContainer1
             // 
@@ -107,6 +109,7 @@
             this.endTime.Size = new System.Drawing.Size(170, 21);
             this.endTime.TabIndex = 4;
             this.endTime.Value = new System.DateTime(2025, 1, 6, 0, 0, 0, 0);
+            this.endTime.ValueChanged += new System.EventHandler(this.endTime_ValueChanged);
             // 
             // label2
             // 

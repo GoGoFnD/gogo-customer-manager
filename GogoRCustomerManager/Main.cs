@@ -1633,7 +1633,7 @@ namespace GogoRCustomerManager
                 MySqlDataReader userAccount = Selectcommand.ExecuteReader();
                 ArrayList load = new ArrayList();
 
-
+                Console.WriteLine(userAccount["maintab_Noti"]);
                 while (userAccount.Read())
                 {
                     load.Add(userAccount["maintab_Noti"]);

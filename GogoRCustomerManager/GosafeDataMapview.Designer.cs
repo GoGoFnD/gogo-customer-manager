@@ -31,6 +31,7 @@
             this.startTime = new System.Windows.Forms.DateTimePicker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.SensorDataGrid = new System.Windows.Forms.DataGridView();
+            this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
             this.DatePickerTitle = new System.Windows.Forms.Label();
             this.endTime = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,7 +42,8 @@
             this.ServerSelect = new System.Windows.Forms.ComboBox();
             this.cSenIDTextBox = new System.Windows.Forms.TextBox();
             this.SelectButton = new System.Windows.Forms.Button();
-            this.gMapControl = new GMap.NET.WindowsForms.GMapControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.timeunitCombo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -93,6 +95,35 @@
             this.SensorDataGrid.RowTemplate.Height = 23;
             this.SensorDataGrid.Size = new System.Drawing.Size(385, 331);
             this.SensorDataGrid.TabIndex = 1;
+            // 
+            // gMapControl
+            // 
+            this.gMapControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gMapControl.Bearing = 0F;
+            this.gMapControl.CanDragMap = true;
+            this.gMapControl.EmptyTileColor = System.Drawing.Color.Navy;
+            this.gMapControl.GrayScaleMode = false;
+            this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.gMapControl.LevelsKeepInMemory = 5;
+            this.gMapControl.Location = new System.Drawing.Point(3, 0);
+            this.gMapControl.MarkersEnabled = true;
+            this.gMapControl.MaxZoom = 2;
+            this.gMapControl.MinZoom = 2;
+            this.gMapControl.MouseWheelZoomEnabled = true;
+            this.gMapControl.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.gMapControl.Name = "gMapControl";
+            this.gMapControl.NegativeMode = false;
+            this.gMapControl.PolygonsEnabled = true;
+            this.gMapControl.RetryLoadTile = 0;
+            this.gMapControl.RoutesEnabled = true;
+            this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.gMapControl.ShowTileGridLines = false;
+            this.gMapControl.Size = new System.Drawing.Size(400, 331);
+            this.gMapControl.TabIndex = 0;
+            this.gMapControl.Zoom = 0D;
             // 
             // DatePickerTitle
             // 
@@ -181,7 +212,7 @@
             // 
             this.cSenIDTextBox.Location = new System.Drawing.Point(73, 70);
             this.cSenIDTextBox.Name = "cSenIDTextBox";
-            this.cSenIDTextBox.Size = new System.Drawing.Size(367, 21);
+            this.cSenIDTextBox.Size = new System.Drawing.Size(170, 21);
             this.cSenIDTextBox.TabIndex = 11;
             // 
             // SelectButton
@@ -194,40 +225,34 @@
             this.SelectButton.UseVisualStyleBackColor = true;
             this.SelectButton.Click += new System.EventHandler(this.SelectButton_Click);
             // 
-            // gMapControl
+            // label1
             // 
-            this.gMapControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gMapControl.Bearing = 0F;
-            this.gMapControl.CanDragMap = true;
-            this.gMapControl.EmptyTileColor = System.Drawing.Color.Navy;
-            this.gMapControl.GrayScaleMode = false;
-            this.gMapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.gMapControl.LevelsKeepInMemory = 5;
-            this.gMapControl.Location = new System.Drawing.Point(3, 0);
-            this.gMapControl.MarkersEnabled = true;
-            this.gMapControl.MaxZoom = 2;
-            this.gMapControl.MinZoom = 2;
-            this.gMapControl.MouseWheelZoomEnabled = true;
-            this.gMapControl.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            this.gMapControl.Name = "gMapControl";
-            this.gMapControl.NegativeMode = false;
-            this.gMapControl.PolygonsEnabled = true;
-            this.gMapControl.RetryLoadTile = 0;
-            this.gMapControl.RoutesEnabled = true;
-            this.gMapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
-            this.gMapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.gMapControl.ShowTileGridLines = false;
-            this.gMapControl.Size = new System.Drawing.Size(400, 331);
-            this.gMapControl.TabIndex = 0;
-            this.gMapControl.Zoom = 0D;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(267, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 15);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "단위";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // timeunitCombo
+            // 
+            this.timeunitCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.timeunitCombo.FormattingEnabled = true;
+            this.timeunitCombo.Location = new System.Drawing.Point(304, 70);
+            this.timeunitCombo.Name = "timeunitCombo";
+            this.timeunitCombo.Size = new System.Drawing.Size(136, 20);
+            this.timeunitCombo.TabIndex = 14;
+            this.timeunitCombo.SelectedIndexChanged += new System.EventHandler(this.timeunitCombo_SelectedIndexChanged);
             // 
             // GosafeDataMapview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.timeunitCombo);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.SelectButton);
             this.Controls.Add(this.cSenIDTextBox);
             this.Controls.Add(this.ServerSelect);
@@ -270,5 +295,7 @@
         private System.Windows.Forms.TextBox cSenIDTextBox;
         private System.Windows.Forms.Button SelectButton;
         private GMap.NET.WindowsForms.GMapControl gMapControl;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox timeunitCombo;
     }
 }

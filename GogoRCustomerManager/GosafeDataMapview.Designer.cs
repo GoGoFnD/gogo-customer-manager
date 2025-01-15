@@ -86,15 +86,22 @@
             // 
             // SensorDataGrid
             // 
+            this.SensorDataGrid.AllowUserToAddRows = false;
+            this.SensorDataGrid.AllowUserToDeleteRows = false;
             this.SensorDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SensorDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SensorDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.SensorDataGrid.MultiSelect = false;
             this.SensorDataGrid.Name = "SensorDataGrid";
+            this.SensorDataGrid.ReadOnly = true;
             this.SensorDataGrid.RowTemplate.Height = 23;
+            this.SensorDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SensorDataGrid.Size = new System.Drawing.Size(385, 331);
             this.SensorDataGrid.TabIndex = 1;
+            this.SensorDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SensorDataGrid_CellContentClick);
+            this.SensorDataGrid.SelectionChanged += new System.EventHandler(this.SensorDataGrid_SelectionChanged);
             // 
             // gMapControl
             // 

@@ -50,25 +50,22 @@ namespace GogoRCustomerManager
         {
             gosafeMap = new GosafeMap(gMapControl);
             gMapControl.Visible = false;
+
+            gMapControl.CenterPen.Color = Color.DeepSkyBlue;
         }
         private void DatePickerSet()
         {
             startTime.Format = DateTimePickerFormat.Custom;
-            startTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            startTime.CustomFormat = "yyyy-MM-dd";
             startTime.Value = DateTime.Today.AddDays(-1);
             endTime.Format = DateTimePickerFormat.Custom;
-            endTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            endTime.CustomFormat = "yyyy-MM-dd";
             endTime.Value = DateTime.Today.AddTicks(-1);
 
             startTime.MinDate = new DateTime(2024, 1, 22);
             startTime.MaxDate = DateTime.Today;
             endTime.MinDate = new DateTime(2024, 1, 22);
             endTime.MaxDate = DateTime.Today;
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -123,22 +120,7 @@ namespace GogoRCustomerManager
             sqlBuilder.AppendLine("  FROM DateRange");
             sqlBuilder.AppendLine("  WHERE DateValue < @EndDate");
             sqlBuilder.AppendLine(")");
-            sqlBuilder.AppendLine("SELECT GROUP_CONCAT(");
-            sqlBuilder.AppendLine("  CASE");
-            sqlBuilder.AppendLine("    WHEN DateValue = @StartDate THEN CONCAT(");
-            sqlBuilder.AppendLine("      'SELECT DISTINCT cSenID FROM tb_sensordata_', DATE_FORMAT(DateValue, '%Y%m%d'),");
-            sqlBuilder.AppendLine("      ' WHERE cSenTime >= \"', @StartTime, '\"'");
-            sqlBuilder.AppendLine("    )");
-            sqlBuilder.AppendLine("    WHEN DateValue = @EndDate THEN CONCAT(");
-            sqlBuilder.AppendLine("      'SELECT DISTINCT cSenID FROM tb_sensordata_', DATE_FORMAT(DateValue, '%Y%m%d'),");
-            sqlBuilder.AppendLine("      ' WHERE cSenTime <= \"', @EndTime, '\"'");
-            sqlBuilder.AppendLine("    )");
-            sqlBuilder.AppendLine("    ELSE CONCAT(");
-            sqlBuilder.AppendLine("      'SELECT DISTINCT cSenID FROM tb_sensordata_', DATE_FORMAT(DateValue, '%Y%m%d')");
-            sqlBuilder.AppendLine("    )");
-            sqlBuilder.AppendLine("  END");
-            sqlBuilder.AppendLine("  SEPARATOR ' UNION ALL '");
-            sqlBuilder.AppendLine(") INTO @sql");
+            sqlBuilder.AppendLine("SELECT GROUP_CONCAT(CONCAT('SELECT DISTINCT cSenID FROM tb_sensordata_', DATE_FORMAT(DateValue, '%Y%m%d')) SEPARATOR ' UNION ALL ') INTO @sql");
             sqlBuilder.AppendLine("FROM DateRange;");
             sqlBuilder.AppendLine("PREPARE stmt FROM @sql;");
             sqlBuilder.AppendLine("EXECUTE stmt;");
@@ -212,8 +194,6 @@ namespace GogoRCustomerManager
                     // 파라미터 설정
                     command.Parameters.AddWithValue("@StartDate", startDate.ToString("yyyy-MM-dd"));
                     command.Parameters.AddWithValue("@EndDate", endDate.ToString("yyyy-MM-dd"));
-                    command.Parameters.AddWithValue("@StartTime", startDate.ToString("HH:mm:ss"));
-                    command.Parameters.AddWithValue("@EndTime", endDate.ToString("HH:mm:ss"));
                     command.Parameters.AddWithValue("@ID", cSenIDTextBox.Text.ToString());
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
@@ -255,38 +235,43 @@ namespace GogoRCustomerManager
 
                 TimeSpan ts = endTimeD - startTimeD;
                 Console.WriteLine($"Elapsed Time: {ts.TotalMilliseconds} ms");
-                Console.WriteLine(result);
                 startTimeD = DateTime.Now;
 
                 // foreach, for 사용하여 위도/경도 복호화 후 setting
                 bool isFirst = true;
                 int i = 0;
-                foreach (DataRow row in result.Rows)
+                if(result != null)
                 {
-                    if (row["gpsLatitude"] != DBNull.Value && row["gpsLongitude"] != DBNull.Value)
+                    foreach (DataRow row in result.Rows)
                     {
-                        var gpsLatitude = aESUtill.AESDecrypt128(row["gpsLatitude"].ToString());
-                        row["gpsLatitude"] = gpsLatitude;
-                        var gpsLongitude = aESUtill.AESDecrypt128(row["gpsLongitude"].ToString());
-                        row["gpsLongitude"] = gpsLongitude;
-                        //Console.WriteLine(i++);
-                        gosafeMap.AddMarker(Double.Parse(gpsLatitude), Double.Parse(gpsLongitude));
-                        if (isFirst && Double.Parse(gpsLatitude) > 1)
+                        if (row["gpsLatitude"] != DBNull.Value && row["gpsLongitude"] != DBNull.Value)
                         {
-                            gMapControl.Position = new PointLatLng(Double.Parse(gpsLatitude), Double.Parse(gpsLongitude));
-                            gMapControl.Zoom = 19;
-                            isFirst = false;
+                            var gpsLatitude = aESUtill.AESDecrypt128(row["gpsLatitude"].ToString());
+                            row["gpsLatitude"] = gpsLatitude;
+                            var gpsLongitude = aESUtill.AESDecrypt128(row["gpsLongitude"].ToString());
+                            row["gpsLongitude"] = gpsLongitude;
+                            //Console.WriteLine(i++);
+                            gosafeMap.AddMarker(Double.Parse(gpsLatitude), Double.Parse(gpsLongitude));
+                            if (isFirst && Double.Parse(gpsLatitude) > 1)
+                            {
+                                gMapControl.Position = new PointLatLng(Double.Parse(gpsLatitude), Double.Parse(gpsLongitude));
+                                gMapControl.Zoom = 19;
+                                isFirst = false;
+                            }
                         }
                     }
+                    SensorDataGrid.DataSource = result;
+                    Console.WriteLine(gosafeMap.Position);
+                    endTimeD = DateTime.Now;
 
+                    gMapControl.Visible = true;
+                    ts = endTimeD - startTimeD;
+                    Console.WriteLine($"Elapsed Time: {ts.TotalMilliseconds} ms");
                 }
-                SensorDataGrid.DataSource = result;
-                Console.WriteLine(gosafeMap.Position);
-                endTimeD = DateTime.Now;
-
-                gMapControl.Visible = true;
-                ts = endTimeD - startTimeD;
-                Console.WriteLine($"Elapsed Time: {ts.TotalMilliseconds} ms");
+                else
+                {
+                    MessageBox.Show("오류: 너무 큰 범위를 검색하셨습니다.", "오류");
+                }
             }
             else
             {
@@ -345,6 +330,27 @@ namespace GogoRCustomerManager
             {
                 //선택한 단위 저장
                 timeUnit = timeUnitConvert(timeunitCombo.Text);
+            }
+        }
+
+        private void SensorDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SensorDataSelected();
+        }
+        private void SensorDataSelected()
+        {
+            string lat = SensorDataGrid.SelectedRows[0].Cells[3].Value.ToString();
+            string lng = SensorDataGrid.SelectedRows[0].Cells[4].Value.ToString();
+            gMapControl.Position = new PointLatLng(Double.Parse(lat), Double.Parse(lng));
+        }
+
+        private void SensorDataGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(SensorDataGrid.CurrentCell);
+            Console.WriteLine(SensorDataGrid.CurrentCell.RowIndex != 0);
+            if (SensorDataGrid.CurrentCell != null && SensorDataGrid.CurrentCell.RowIndex != 0)
+            {
+                SensorDataSelected();
             }
         }
     }

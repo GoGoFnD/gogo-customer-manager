@@ -50,5 +50,11 @@ namespace GogoRCustomerManager
         {
             selectedID = cSenIDData.CurrentCell.Value.ToString();
         }
+
+        private void cSenIDData_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            cSenIDTextBox.Text = selectedID;
+            Close();
+        }
     }
 }

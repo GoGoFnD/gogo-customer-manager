@@ -50,6 +50,7 @@
             this.cSenIDData.Size = new System.Drawing.Size(168, 242);
             this.cSenIDData.TabIndex = 0;
             this.cSenIDData.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cSenIDData_CellClick);
+            this.cSenIDData.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cSenIDData_CellContentDoubleClick);
             // 
             // button1
             // 

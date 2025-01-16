@@ -15,24 +15,8 @@ namespace GogoRCustomerManager
         RControl rControl;
         GosafeDataMapview gosafeDataMapview;
         private DataGridView DBData = new DataGridView();
-        private DataGridViewTextBoxColumn co_Member_Num = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn isWorkConvert = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn AffiliatedAgency = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn name = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn id = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn pw = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn powerLevelConvert = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn SSN = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn CellPhone_Num = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn Bank_name = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn Bank_Account_Num = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn Bank_Account_Holder = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn co_Join = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn co_leave = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn memo = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn Phone_Num_Visible = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn isCallExposure = new DataGridViewTextBoxColumn();
-        private DataGridViewTextBoxColumn isDeleted = new DataGridViewTextBoxColumn();
+        private DataGridViewTextBoxColumn rPhoneNumber = new DataGridViewTextBoxColumn();
+        private DataGridViewTextBoxColumn rBikeNumber = new DataGridViewTextBoxColumn();
 
         private Label label4 = new Label();
         private ComboBox ConAgency = new ComboBox();
@@ -92,18 +76,22 @@ namespace GogoRCustomerManager
            (
                "Server= localhost ;Port= 3307; Database= appsigncode; Uid= root; Pwd= gogovlfflq;"
            );
+        MySqlConnection connection2 = new MySqlConnection//데이터 베이스 연결
+           (
+               "Server=cf.navers.co.kr ;Port= 3306; Database=goSafe; Uid=gosafe; Pwd=gogofnd0@; allow user variables=true;"
+           );
 
 
         public Main(string memNum, string id, string team, string name, string powerLevel)
         {
             InitializeComponent();
-            account_id = id;
-            this.powerLevel = powerLevel;
-            mainTitle = "관리자용PC (" + version + ") [ " + team + ": " + name + " ]";
-            this.Text = mainTitle;
-            this.MemberNum = memNum;
-            AccountName = name;
-            Agency = team;
+            //account_id = id;
+            //this.powerLevel = powerLevel;
+            //mainTitle = "관리자용PC (" + version + ") [ " + team + ": " + name + " ]";
+            //this.Text = mainTitle;
+            //this.MemberNum = memNum;
+            //AccountName = name;
+            //Agency = team;
 
             tabControl1.DrawMode = TabDrawMode.OwnerDrawFixed;
             tabControl1.DrawItem += TabControl1_DrawItem;
@@ -182,7 +170,7 @@ namespace GogoRCustomerManager
         {
             string[] agency = { "전체", "고고라이더스 본사", "고고라이더스 분점", "고고라이더스 체인점" };
             string[] iswork = { "전체", "근무중", "근무 전", "퇴사", "휴가" };
-            string[] con = { "사원번호", "이름", "권한 등급", "아이디", "비밀번호", "주거래 은행", "예금주" };
+            string[] con = { "차량번호", "센서번호" };
 
             ConAgency.Items.AddRange(agency);
             ConisWork.Items.AddRange(iswork);
@@ -290,22 +278,8 @@ namespace GogoRCustomerManager
                 DBData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
                 DBData.Columns.AddRange(new DataGridViewColumn[] {
-                co_Member_Num,
-                AffiliatedAgency,
-                powerLevelConvert,
-                isWorkConvert,
-                name,
-                id,
-                pw,
-                SSN,
-                CellPhone_Num,
-                Bank_name,
-                Bank_Account_Num,
-                Bank_Account_Holder,
-                co_Join,
-                co_leave,
-                memo,
-                Phone_Num_Visible});
+                rBikeNumber,
+                rPhoneNumber,});
                 DBData.Location = new Point(0, 54);
                 DBData.Name = "DBData";
                 DBData.RowHeadersVisible = false;
@@ -314,183 +288,25 @@ namespace GogoRCustomerManager
                 DBData.TabIndex = 50;
                 DBData.ScrollBars = ScrollBars.Both;
 
-                co_Member_Num.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                co_Member_Num.DataPropertyName = "co_Member_Num";
-                co_Member_Num.HeaderText = "    사원번호    ";
-                co_Member_Num.Name = "co_Member_Num";
-                co_Member_Num.ReadOnly = true;
                 //
-                //AffiliatedAgency 
+                //rBikeNumber 
                 //
-                AffiliatedAgency.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                AffiliatedAgency.DataPropertyName = "AffiliatedAgency";
-                AffiliatedAgency.HeaderText = "  소속 대리점";
-                AffiliatedAgency.Name = "AffiliatedAgency";
-                AffiliatedAgency.ReadOnly = true;
-                AffiliatedAgency.Width = 200;
+                rBikeNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                rBikeNumber.DataPropertyName = "rBikeNumber";
+                rBikeNumber.HeaderText = "    차량번호";
+                rBikeNumber.Name = "rBikeNumber";
+                rBikeNumber.ReadOnly = true;
+                rBikeNumber.Width = 200;
                 // 
-                // powelLevel
+                // rPhoneNumer
                 // 
-                powerLevelConvert.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                powerLevelConvert.DataPropertyName = "powerLevelConvert";
-                powerLevelConvert.HeaderText = "    권한레벨";
-                powerLevelConvert.Name = "powerLevelConvert";
-                powerLevelConvert.ReadOnly = true;
-                powerLevelConvert.MinimumWidth = 100;
-                powerLevelConvert.Width = 100;
-                // 
-                // isWork
-                // 
-                isWorkConvert.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                isWorkConvert.DataPropertyName = "isWorkConvert";
-                isWorkConvert.HeaderText = "    근무상태";
-                isWorkConvert.Name = "isWorkConvert";
-                isWorkConvert.ReadOnly = true;
-                isWorkConvert.MinimumWidth = 100;
-                isWorkConvert.Width = 100;
-                // 
-                // name
-                // 
-                name.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                name.DataPropertyName = "name";
-                name.HeaderText = "    이름";
-                name.Name = "name";
-                name.ReadOnly = true;
-                name.MinimumWidth = 100;
-                name.Width = 100;
-                // 
-                // id
-                // 
-                id.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                id.DataPropertyName = "id";
-                id.HeaderText = "    아이디";
-                id.Name = "id";
-                id.ReadOnly = true;
-                id.MinimumWidth = 100;
-                id.Width = 100;
-                // 
-                // pw
-                //  
-                pw.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                pw.DataPropertyName = "pw";
-                pw.HeaderText = "    비밀번호";
-                pw.Name = "pw";
-                pw.ReadOnly = true;
-                pw.MinimumWidth = 100;
-                pw.Width = 100;
-                // 
-                // SSN
-                // 
-                SSN.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                SSN.DataPropertyName = "SSN";
-                SSN.HeaderText = "       주민등록번호";
-                SSN.Name = "SSN";
-                SSN.ReadOnly = true;
-                SSN.MinimumWidth = 200;
-                // 
-                // CellPhone_Num
-                // 
-                CellPhone_Num.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                CellPhone_Num.DataPropertyName = "CellPhone_Num";
-                CellPhone_Num.HeaderText = "    전화번호";
-                CellPhone_Num.Name = "CellPhone_Num";
-                CellPhone_Num.ReadOnly = true;
-                CellPhone_Num.MinimumWidth = 100;
-                CellPhone_Num.Width = 150;
-                // 
-                // Bank_name
-                // 
-                Bank_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                Bank_name.DataPropertyName = "Bank_name";
-                Bank_name.HeaderText = "    주거래 은행";
-                Bank_name.Name = "Bank_name";
-                Bank_name.ReadOnly = true;
-                Bank_name.MinimumWidth = 100;
-                Bank_name.Width = 120;
-                // 
-                // Bank_Account_Num
-                // 
-                Bank_Account_Num.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                Bank_Account_Num.DataPropertyName = "Bank_Account_Num";
-                Bank_Account_Num.HeaderText = "    계좌번호";
-                Bank_Account_Num.Name = "Bank_Account_Num";
-                Bank_Account_Num.ReadOnly = true;
-                Bank_Account_Num.MinimumWidth = 100;
-                Bank_Account_Num.Width = 160;
-                // 
-                // Bank_Account_Holder
-                // 
-                Bank_Account_Holder.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                Bank_Account_Holder.DataPropertyName = "Bank_Account_Holder";
-                Bank_Account_Holder.HeaderText = "    예금주";
-                Bank_Account_Holder.Name = "Bank_Account_Holder";
-                Bank_Account_Holder.ReadOnly = true;
-                Bank_Account_Holder.MinimumWidth = 100;
-                Bank_Account_Holder.Width = 100;
-                // 
-                // co_Join
-                // 
-                co_Join.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                co_Join.DataPropertyName = "co_Join";
-                co_Join.HeaderText = "   입사일";
-                co_Join.Name = "co_Join";
-                co_Join.ReadOnly = true;
-                co_Join.MinimumWidth = 100;
-                co_Join.Width = 100;
-                // 
-                // co_leave
-                // 
-                co_leave.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                co_leave.DataPropertyName = "co_leave";
-                co_leave.HeaderText = "   퇴사일";
-                co_leave.Name = "co_leave";
-                co_leave.ReadOnly = true;
-                co_leave.MinimumWidth = 100;
-                co_leave.Width = 100;
-                // 
-                // memo
-                // 
-                memo.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                memo.DataPropertyName = "Memo";
-                memo.HeaderText = "메모";
-                memo.MaxInputLength = 30000;
-                memo.Name = "memo";
-                memo.ReadOnly = true;
-                memo.MinimumWidth = 100;
-                memo.Width = 54;
-                // 
-                // Phone_Num_Visible
-                // 
-                Phone_Num_Visible.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                Phone_Num_Visible.DataPropertyName = "Phone_Num_Visible";
-                Phone_Num_Visible.HeaderText = "라이더앱 연락처 노출";
-                Phone_Num_Visible.MaxInputLength = 30000;
-                Phone_Num_Visible.Name = "Phone_Num_Visible";
-                Phone_Num_Visible.ReadOnly = true;
-                Phone_Num_Visible.MinimumWidth = 100;
-                Phone_Num_Visible.Width = 54;
-                // 
-                // isCallExposure
-                // 
-                isCallExposure.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                isCallExposure.DataPropertyName = "isCallExposure";
-                isCallExposure.HeaderText = "보류콜 노출";
-                isCallExposure.MaxInputLength = 30000;
-                isCallExposure.Name = "isCallExposure";
-                isCallExposure.ReadOnly = true;
-                isCallExposure.MinimumWidth = 100;
-                isCallExposure.Width = 54;
-                // 
-                // isDeleted
-                // 
-                isDeleted.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                isDeleted.DataPropertyName = "isDeleted";
-                isDeleted.HeaderText = "삭제됨";
-                isDeleted.MaxInputLength = 30000;
-                isDeleted.Name = "isDeleted";
-                isDeleted.ReadOnly = true;
-                isDeleted.MinimumWidth = 100;
-                isDeleted.Width = 54;
+                rPhoneNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                rPhoneNumber.DataPropertyName = "rPhoneNumer";
+                rPhoneNumber.HeaderText = "    센서번호";
+                rPhoneNumber.Name = "rPhoneNumer";
+                rPhoneNumber.ReadOnly = true;
+                rPhoneNumber.MinimumWidth = 100;
+                rPhoneNumber.Width = 200;
                 // 
                 // MemSearchBtn
                 // 
@@ -555,6 +371,7 @@ namespace GogoRCustomerManager
                 MemChangeBtn.TabIndex = 39;
                 MemChangeBtn.Text = "     직원정보 \r\n    수정";
                 MemChangeBtn.UseVisualStyleBackColor = true;
+                MemChangeBtn.Enabled = false;
                 // 
                 // DeleteMemBtn
                 // 
@@ -571,6 +388,7 @@ namespace GogoRCustomerManager
                 DeleteMemBtn.TabIndex = 40;
                 DeleteMemBtn.Text = "     직원삭제";
                 DeleteMemBtn.UseVisualStyleBackColor = true;
+                DeleteMemBtn.Enabled = false;
                 //
                 //label4
                 //
@@ -589,6 +407,7 @@ namespace GogoRCustomerManager
                 ConAgency.Name = "ConAgency";
                 ConAgency.Size = new Size(135, 22);
                 ConAgency.TabIndex = 31;
+                ConAgency.Enabled = false;
                 // 
                 // label5
                 // 
@@ -607,6 +426,7 @@ namespace GogoRCustomerManager
                 ConisWork.Name = "ConisWork";
                 ConisWork.Size = new Size(121, 22);
                 ConisWork.TabIndex = 33;
+                ConisWork.Enabled = false;
                 // 
                 // checkBox1
                 // 
@@ -617,6 +437,7 @@ namespace GogoRCustomerManager
                 checkBox1.TabIndex = 32;
                 checkBox1.Text = "하위 대리점 포함";
                 checkBox1.UseVisualStyleBackColor = true;
+                checkBox1.Enabled = false;
                 // 
                 // label6
                 // 
@@ -647,6 +468,7 @@ namespace GogoRCustomerManager
                 Condition.Name = "Condition";
                 Condition.Size = new Size(103, 22);
                 Condition.TabIndex = 34;
+                Condition.Enabled = false;
                 // 
                 // SearchText
                 // 
@@ -655,6 +477,7 @@ namespace GogoRCustomerManager
                 SearchText.Name = "SearchText";
                 SearchText.Size = new Size(232, 22);
                 SearchText.TabIndex = 36;
+                SearchText.ReadOnly = true;
                 // 
                 // ConSearch
                 // 
@@ -663,6 +486,7 @@ namespace GogoRCustomerManager
                 ConSearch.Name = "ConSearch";
                 ConSearch.Size = new Size(126, 22);
                 ConSearch.TabIndex = 35;
+                ConSearch.ReadOnly = true;
 
 
                 tabPage.Controls.Add(DeleteMemBtn);
@@ -830,40 +654,13 @@ namespace GogoRCustomerManager
             }
         }
         private void SetDB()
-        {
-            DBData.Columns["isWork"].Visible = false;
-            DBData.Columns["powerLevel"].Visible = false;
-            DBData.Columns["Memo"].Visible = false;
-            DBData.Columns["Phone_Num_Visible"].Visible = false;
-            DBData.Columns["isCallExposure"].Visible = false;
-            DBData.Columns["isDeleted"].Visible = false;
-            DBData.Columns["co_Member_Num"].DisplayIndex = 0;
-            DBData.Columns["AffiliatedAgency"].DisplayIndex = 1;
-            DBData.Columns["powerLevelConvert"].DisplayIndex = 2;
-            DBData.Columns["isWorkConvert"].DisplayIndex = 3;
-            DBData.Columns["name"].DisplayIndex = 4;
-            DBData.Columns["id"].DisplayIndex = 5;
-            DBData.Columns["SSN"].DisplayIndex = 6;
-            DBData.Columns["CellPhone_Num"].DisplayIndex = 7;
-            DBData.Columns["Bank_name"].DisplayIndex = 8;
-            DBData.Columns["Bank_Account_Num"].DisplayIndex = 9;
-            DBData.Columns["Bank_Account_Holder"].DisplayIndex = 10;
-            DBData.Columns["co_Join"].DisplayIndex = 11;
-            DBData.Columns["co_leave"].DisplayIndex = 12;
-            DBData.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        { // 첫 번째 열로 설정
+            DBData.Columns["rBikeNumber"].DisplayIndex = 1; // 두 번째 열로 설정
+            DBData.Columns["rPhoneNumer"].DisplayIndex = 2;
+            //DBData.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            DBData.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DBData.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DBData.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[17].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[18].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[19].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private void PressEnter(object sender, KeyEventArgs e)//textBox 입력 중 enter로 로그인 함수 활성화
         {
@@ -1195,232 +992,327 @@ namespace GogoRCustomerManager
         }
         private void MemSearchBtn_Click(object sender, EventArgs e)
         {
-            string consearch = "'" + ConSearch.Text + "'";
-            string conAgency = " AffiliatedAgency = '" + ConAgency.Text + "' ";
-            string con = null;
-            string conisWork = " isWork = " + Convert_isWork();
-            string searchText;
-            string WAnd = " AND";
-            string SAnd = " AND";
-            string CAnd = " AND";
-            string DAnd = " AND";
-            string Cwhwre = "WHERE";
+            // Prepare variables for the query construction
+            string conSearch = string.IsNullOrEmpty(ConSearch.Text) ? null : "'" + ConSearch.Text + "'";
+            //string conAgency = string.IsNullOrEmpty(ConAgency.Text) || ConAgency.Text == "전체" ? null : "rBikeNumber = '" + ConAgency.Text + "'";
+            //string conIsWork = string.IsNullOrEmpty(ConisWork.Text) || ConisWork.Text == "전체" ? null : "isWork = " + Convert_isWork();
+            string searchCondition = null;
+            //string conjunction = " AND";
 
-            if ((ConSearch.Text == null || ConSearch.Text.Length == 0) && Condition.Text.Length != 0)
+            // Validate user input
+            if (string.IsNullOrEmpty(ConSearch.Text) && !string.IsNullOrEmpty(Condition.Text))
             {
                 MessageBox.Show("검색 조건을 기입해주세요!");
                 ConSearch.Focus();
                 return;
             }
 
-            QueryAgency = ConAgency.Text;
-            QueryisWork = ConisWork.Text;
-            QueryCon = Condition.Text;
-            QueryConSearch = ConSearch.Text;
-            QuerySearch = SearchText.Text;
+            // Construct search condition based on input
+            if (!string.IsNullOrEmpty(Condition.Text))
+            {
+                switch (Condition.Text)
+                {
+                    case "차량번호":
+                        searchCondition = "rBikeNumer = %" + conSearch+"%";
+                        break;
+                    case "센서번호":
+                        searchCondition = "rPhoneNumber = %" + conSearch+"%";
+                        break;
+                }
+            }
 
-            if (ConSearch.Text.Length == 0)
+            string searchText = null;
+            if (!string.IsNullOrEmpty(SearchText.Text))
             {
-                consearch = null;
+                    searchText = "(rBikeNumber LIKE '%" + SearchText.Text +"%"+
+                                "' OR rPhoneNumer LIKE '%" + SearchText.Text + "%')";
             }
-            if (ConSearch.Text.Length == 0 && (ConisWork.Text.Length == 0 || ConisWork.Text == "전체"))
-            {
-                WAnd = null;
-                if (ConAgency.Text.Length == 0 || ConAgency.Text == "전체")
-                {
-                    SAnd = null;
-                    if (SearchText.Text.Length == 0)
-                    {
-                        //Cwhwre = null;
-                        DAnd = null;
-                    }
-                }
-            }
-            if (ConisWork.Text.Length == 0 || ConisWork.Text == "전체")
-            {
-                conisWork = null;
 
-                WAnd = null;
-            }
-            if (ConAgency.Text.Length == 0 || ConAgency.Text == "전체")
+            // Construct final query
+            string whereClause = "";
+            if (conSearch != null)
             {
-                conAgency = null;
-                WAnd = null;
-                if (ConisWork.Text.Length == 0 || ConisWork.Text == "전체")
-                {
-                    CAnd = null;
-                }
+                whereClause = "WHERE ";
             }
-            if (Condition.Text == "사원번호")
+            if (searchText != null)
             {
-                con = CAnd + " co_Member_Num =" + consearch + "";
+                whereClause = "WHERE ";
             }
-            if (Condition.Text == "권한 등급")
+            //if (conAgency != null) whereClause += conjunction + " " + conAgency;
+            //if (conIsWork != null) whereClause += conjunction + " " + conIsWork;
+            //if (searchCondition != null) whereClause += conjunction + " " + searchCondition;
+            if (searchText != null) whereClause +=  " " + searchText+"";
+
+            string selectQuery = "SELECT *, CASE WHEN isWork='Y' THEN '근무' WHEN isWork='B' THEN '근무 전' WHEN isWork='T' THEN '휴가' WHEN isWork='L' THEN '퇴사' END as isWorkConvert, CASE WHEN powerLevel='1' THEN '관리자' WHEN powerLevel='2' THEN '팀장' WHEN powerLevel='3' THEN '사원' WHEN powerLevel='N' THEN '오류' END as rPhoneNumber FROM userinformation " + whereClause + ";";
+            string selectQuery2 = "SELECT rPhoneNumer, rBikeNumber FROM tb_lte_rider_info_250110 "+ whereClause;
+            Console.WriteLine(selectQuery2);
+
+            // Execute query and handle results
+            try
             {
-                consearch = Convert_PowerLevel();
-                con = CAnd + " powerLevel =" + consearch + "";
-            }
-            if (Condition.Text == "이름")
-            {
-                con = CAnd + " name =" + consearch + "";
-            }
-            if (Condition.Text == "아이디")
-            {
-                con = CAnd + " id =" + consearch + "";
-            }
-            if (Condition.Text == "비밀번호")
-            {
-                con = CAnd + " pw=" + consearch + "";
-            }
-            else if (Condition.Text == "주거래 은행")
-            {
-                con = CAnd + " Bank_name =" + consearch + "";
-            }
-            else if (Condition.Text == "예금주")
-            {
-                con = CAnd + " Bank_Account_Holder =" + consearch + "";
-            }
-            if (SearchText.Text.Length == 0)
-            {
-                SAnd = null;
-                searchText = null;
-            }
-            else
-            {
-                if (SearchText.Text == "관리자" || SearchText.Text == "팀장" || SearchText.Text == "사원")
-                {
-                    if (SearchText.Text == "관리자")
-                    {
-                        searchText = " " + SAnd + " (powerLevel = 1 ";
-                    }
-                    else if (ConSearch.Text == "팀장")
-                    {
-                        searchText = " " + SAnd + " (powerLevel = 2 ";
-                    }
-                    else if (ConSearch.Text == "사원")
-                    {
-                        searchText = " " + SAnd + " (powerLevel = 3 ";
-                    }
-                }
-                searchText = " " + SAnd +
-                    " (name = '" + SearchText.Text +
-                    "' or id = '" + SearchText.Text +
-                    "' or id = '" + SearchText.Text +
-                    "' or co_Member_Num = '" + SearchText.Text +
-                    "' or pw = '" + SearchText.Text +
-                    "' or SSN = '" + SearchText.Text +
-                    "' or Bank_name = '" + SearchText.Text +
-                    "' or Bank_Account_Num = '" + SearchText.Text +
-                    "' or Bank_Account_Holder = '" + SearchText.Text +
-                    "' or co_Join = '" + SearchText.Text +
-                    "' or co_Leave = '" + SearchText.Text + "')";
-            }
-            if (ConAgency.Text == "" && ConisWork.Text == "" && Condition.Text == "" && ConSearch.Text == "" && SearchText.Text == "")
-            {
-                string selectQuery = "SELECT *, CASE " +
-                    "WHEN isWork='Y' THEN '근무' " +
-                    "WHEN isWork='B' THEN '근무 전' " +
-                    "WHEN isWork='T' THEN '휴가' " +
-                    "WHEN isWork='L' THEN '퇴사' " +
-                    "END as isWorkConvert , " +
-                    "CASE  " +
-                    "WHEN powerLevel='1' THEN '관리자' " +
-                    "WHEN powerLevel='2' THEN '팀장' " +
-                    "WHEN powerLevel='3' THEN '사원' " +
-                    "WHEN powerLevel='N' THEN '오류' " +
-                    "END as powerLevelConvert " +
-                    "FROM userinformation" +
-                    " WHERE isDeleted = 0;";
-                Console.WriteLine(selectQuery);
                 connection.Open();
-                MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
+                MySqlCommand command = new MySqlCommand(selectQuery2, connection2);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
 
-                try
-                {
-                    MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter();
-                    mySqlDataAdapter.SelectCommand = Selectcommand;
-                    DataTable dbDataset = new DataTable();
-                    mySqlDataAdapter.Fill(dbDataset);
-                    BindingSource bindingSource = new BindingSource();
+                dataTable.Columns.Add("순번", typeof(int));
 
-                    bindingSource.DataSource = dbDataset;
-                    DBData.DataSource = bindingSource;
-                    mySqlDataAdapter.Update(dbDataset);
-                    SetDB();
-                }
-                catch (Exception ex)
+                //Assign row numbers
+                for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    connection.Close();
-                    Console.WriteLine(ex);
-                }
-                finally
-                {
-                    connection.Close();
-
-                    DBData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    dataTable.Rows[i]["순번"] = i + 1;
                 }
 
+
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.DataSource = dataTable;
+
+
+                DBData.DataSource = bindingSource;
+                DBData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                SetDB();
             }
-            else
+            catch (Exception ex)
             {
-                string selectQuery = "SELECT *, CASE " +
-                                        "WHEN isWork='Y' THEN '근무' " +
-                                        "WHEN isWork='B' THEN '근무 전' " +
-                                        "WHEN isWork='T' THEN '휴가' " +
-                                        "WHEN isWork='L' THEN '퇴사' " +
-                                        "END as isWorkConvert , " +
-                                        "CASE  " +
-                                        "WHEN powerLevel='1' THEN '관리자' " +
-                                        "WHEN powerLevel='2' THEN '팀장' " +
-                                        "WHEN powerLevel='3' THEN '사원' " +
-                                        "WHEN powerLevel='N' THEN '오류' " +
-                                        "END as powerLevelConvert " +
-                                        "FROM userinformation " +
-                                        Cwhwre + conAgency +
-                                        WAnd + conisWork +
-                                        "" + con + "" +
-                                        "" + searchText + "" +
-                                        DAnd + " isDeleted = 0;";
-                Console.WriteLine(selectQuery);
-
-
-
-                connection.Open();
-                MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
-
-                try
-                {
-                    MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter();
-                    mySqlDataAdapter.SelectCommand = Selectcommand;
-                    DataTable dbDataset = new DataTable();
-                    mySqlDataAdapter.Fill(dbDataset);
-                    BindingSource bindingSource = new BindingSource();
-
-                    bindingSource.DataSource = dbDataset;
-                    DBData.DataSource = bindingSource;
-                    mySqlDataAdapter.Update(dbDataset);
-
-                    DBData.CellFormatting += new DataGridViewCellFormattingEventHandler(this.DBData_CellFormatting);
-                    SetDB();
-                }
-                catch
-                {
-                    connection.Close();
-                    MessageBox.Show("결과가 없습니다!");
-
-                }
-                finally
-                {
-                    connection.Close();
-
-                    DBData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-                    SetDB();
-
-                }
+                MessageBox.Show("결과가 없습니다!\n" + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
                 OffPopup();
             }
         }
+
+        //private void MemSearchBtn_Click(object sender, EventArgs e)
+        //{
+        //    string consearch = "'" + ConSearch.Text + "'";
+        //    string conAgency = " rBikeNumber = '" + ConAgency.Text + "' ";
+        //    string con = null;
+        //    string conisWork = " isWork = " + Convert_isWork();
+        //    string searchText;
+        //    string WAnd = " AND";
+        //    string SAnd = " AND";
+        //    string CAnd = " AND";
+        //    string DAnd = " AND";
+        //    string Cwhwre = "WHERE";
+
+        //    if ((ConSearch.Text == null || ConSearch.Text.Length == 0) && Condition.Text.Length != 0)
+        //    {
+        //        MessageBox.Show("검색 조건을 기입해주세요!");
+        //        ConSearch.Focus();
+        //        return;
+        //    }
+
+        //    QueryAgency = ConAgency.Text;
+        //    QueryisWork = ConisWork.Text;
+        //    QueryCon = Condition.Text;
+        //    QueryConSearch = ConSearch.Text;
+        //    QuerySearch = SearchText.Text;
+
+        //    if (ConSearch.Text.Length == 0)
+        //    {
+        //        consearch = null;
+        //    }
+        //    if (ConSearch.Text.Length == 0 && (ConisWork.Text.Length == 0 || ConisWork.Text == "전체"))
+        //    {
+        //        WAnd = null;
+        //        if (ConAgency.Text.Length == 0 || ConAgency.Text == "전체")
+        //        {
+        //            SAnd = null;
+        //            if (SearchText.Text.Length == 0)
+        //            {
+        //                //Cwhwre = null;
+        //                DAnd = null;
+        //            }
+        //        }
+        //    }
+        //    if (ConisWork.Text.Length == 0 || ConisWork.Text == "전체")
+        //    {
+        //        conisWork = null;
+
+        //        WAnd = null;
+        //    }
+        //    if (ConAgency.Text.Length == 0 || ConAgency.Text == "전체")
+        //    {
+        //        conAgency = null;
+        //        WAnd = null;
+        //        if (ConisWork.Text.Length == 0 || ConisWork.Text == "전체")
+        //        {
+        //            CAnd = null;
+        //        }
+        //    }
+        //    if (Condition.Text == "사원번호")
+        //    {
+        //        con = CAnd + " co_Member_Num =" + consearch + "";
+        //    }
+        //    if (Condition.Text == "권한 등급")
+        //    {
+        //        consearch = Convert_PowerLevel();
+        //        con = CAnd + " powerLevel =" + consearch + "";
+        //    }
+        //    if (Condition.Text == "이름")
+        //    {
+        //        con = CAnd + " name =" + consearch + "";
+        //    }
+        //    if (Condition.Text == "아이디")
+        //    {
+        //        con = CAnd + " id =" + consearch + "";
+        //    }
+        //    if (Condition.Text == "비밀번호")
+        //    {
+        //        con = CAnd + " pw=" + consearch + "";
+        //    }
+        //    else if (Condition.Text == "주거래 은행")
+        //    {
+        //        con = CAnd + " Bank_name =" + consearch + "";
+        //    }
+        //    else if (Condition.Text == "예금주")
+        //    {
+        //        con = CAnd + " Bank_Account_Holder =" + consearch + "";
+        //    }
+        //    if (SearchText.Text.Length == 0)
+        //    {
+        //        SAnd = null;
+        //        searchText = null;
+        //    }
+        //    else
+        //    {
+        //        if (SearchText.Text == "관리자" || SearchText.Text == "팀장" || SearchText.Text == "사원")
+        //        {
+        //            if (SearchText.Text == "관리자")
+        //            {
+        //                searchText = " " + SAnd + " (powerLevel = 1 ";
+        //            }
+        //            else if (ConSearch.Text == "팀장")
+        //            {
+        //                searchText = " " + SAnd + " (powerLevel = 2 ";
+        //            }
+        //            else if (ConSearch.Text == "사원")
+        //            {
+        //                searchText = " " + SAnd + " (powerLevel = 3 ";
+        //            }
+        //        }
+        //        searchText = " " + SAnd +
+        //            " (name = '" + SearchText.Text +
+        //            "' or id = '" + SearchText.Text +
+        //            "' or id = '" + SearchText.Text +
+        //            "' or co_Member_Num = '" + SearchText.Text +
+        //            "' or pw = '" + SearchText.Text +
+        //            "' or SSN = '" + SearchText.Text +
+        //            "' or Bank_name = '" + SearchText.Text +
+        //            "' or Bank_Account_Num = '" + SearchText.Text +
+        //            "' or Bank_Account_Holder = '" + SearchText.Text +
+        //            "' or co_Join = '" + SearchText.Text +
+        //            "' or co_Leave = '" + SearchText.Text + "')";
+        //    }
+        //    if (ConAgency.Text == "" && ConisWork.Text == "" && Condition.Text == "" && ConSearch.Text == "" && SearchText.Text == "")
+        //    {
+        //        string selectQuery = "SELECT *, CASE " +
+        //            "WHEN isWork='Y' THEN '근무' " +
+        //            "WHEN isWork='B' THEN '근무 전' " +
+        //            "WHEN isWork='T' THEN '휴가' " +
+        //            "WHEN isWork='L' THEN '퇴사' " +
+        //            "END as isWorkConvert , " +
+        //            "CASE  " +
+        //            "WHEN powerLevel='1' THEN '관리자' " +
+        //            "WHEN powerLevel='2' THEN '팀장' " +
+        //            "WHEN powerLevel='3' THEN '사원' " +
+        //            "WHEN powerLevel='N' THEN '오류' " +
+        //            "END as rPhoneNumber " +
+        //            "FROM userinformation" +
+        //            " WHERE isDeleted = 0;";
+        //        Console.WriteLine(selectQuery);
+        //        connection.Open();
+        //        MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
+
+        //        try
+        //        {
+        //            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter();
+        //            mySqlDataAdapter.SelectCommand = Selectcommand;
+        //            DataTable dbDataset = new DataTable();
+        //            mySqlDataAdapter.Fill(dbDataset);
+        //            BindingSource bindingSource = new BindingSource();
+
+        //            bindingSource.DataSource = dbDataset;
+        //            DBData.DataSource = bindingSource;
+        //            mySqlDataAdapter.Update(dbDataset);
+        //            SetDB();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            connection.Close();
+        //            Console.WriteLine(ex);
+        //        }
+        //        finally
+        //        {
+        //            connection.Close();
+
+        //            DBData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        string selectQuery = "SELECT *, CASE " +
+        //                                "WHEN isWork='Y' THEN '근무' " +
+        //                                "WHEN isWork='B' THEN '근무 전' " +
+        //                                "WHEN isWork='T' THEN '휴가' " +
+        //                                "WHEN isWork='L' THEN '퇴사' " +
+        //                                "END as isWorkConvert , " +
+        //                                "CASE  " +
+        //                                "WHEN powerLevel='1' THEN '관리자' " +
+        //                                "WHEN powerLevel='2' THEN '팀장' " +
+        //                                "WHEN powerLevel='3' THEN '사원' " +
+        //                                "WHEN powerLevel='N' THEN '오류' " +
+        //                                "END as rPhoneNumber " +
+        //                                "FROM userinformation " +
+        //                                Cwhwre + conAgency +
+        //                                WAnd + conisWork +
+        //                                "" + con + "" +
+        //                                "" + searchText + "" +
+        //                                DAnd + " isDeleted = 0;";
+        //        Console.WriteLine(selectQuery);
+
+
+
+        //        connection.Open();
+        //        MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
+
+        //        try
+        //        {
+        //            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter();
+        //            mySqlDataAdapter.SelectCommand = Selectcommand;
+        //            DataTable dbDataset = new DataTable();
+        //            mySqlDataAdapter.Fill(dbDataset);
+        //            BindingSource bindingSource = new BindingSource();
+
+        //            bindingSource.DataSource = dbDataset;
+        //            DBData.DataSource = bindingSource;
+        //            mySqlDataAdapter.Update(dbDataset);
+
+        //            DBData.CellFormatting += new DataGridViewCellFormattingEventHandler(this.DBData_CellFormatting);
+        //            SetDB();
+        //        }
+        //        catch
+        //        {
+        //            connection.Close();
+        //            MessageBox.Show("결과가 없습니다!");
+
+        //        }
+        //        finally
+        //        {
+        //            connection.Close();
+
+        //            DBData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+        //            SetDB();
+
+        //        }
+        //        OffPopup();
+        //    }
+        //}
 
         public void ResetMem_Click(object sender, EventArgs e)
         {
@@ -1610,116 +1502,117 @@ namespace GogoRCustomerManager
         }
         private void PageLoad()
         {
-            string maintab_member = "null";
-            string maintab_Noti = "null";
-            string maintab_member_query_Agency = "null";
-            string maintab_member_query_isWork = "null";
-            string maintab_member_query_Condition = "null";
-            string maintab_member_query_ConSearch = "null";
-            string maintab_member_query_SearchText = "null";
+            CreateTabPage("Noti");
+            //string maintab_member = "null";
+            //string maintab_Noti = "null";
+            //string maintab_member_query_Agency = "null";
+            //string maintab_member_query_isWork = "null";
+            //string maintab_member_query_Condition = "null";
+            //string maintab_member_query_ConSearch = "null";
+            //string maintab_member_query_SearchText = "null";
 
-            string selectQuery = null;
+            //string selectQuery = null;
 
-            ipSearch();
+            //ipSearch();
 
-            try
-            {
-                connection.Open();
-                selectQuery = "select * from usertabstate where co_Member_Num = " + MemberNum +
-                                                        " and ip = '" + localIP +
-                                                        "' ORDER BY insertedtime DESC LIMIT 1;";
-                Console.WriteLine(selectQuery);
-                MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
-                MySqlDataReader userAccount = Selectcommand.ExecuteReader();
-                ArrayList load = new ArrayList();
+            //try
+            //{
+            //    connection.Open();
+            //    selectQuery = "select * from usertabstate where co_Member_Num = " + MemberNum +
+            //                                            " and ip = '" + localIP +
+            //                                            "' ORDER BY insertedtime DESC LIMIT 1;";
+            //    Console.WriteLine(selectQuery);
+            //    MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
+            //    MySqlDataReader userAccount = Selectcommand.ExecuteReader();
+            //    ArrayList load = new ArrayList();
 
-                Console.WriteLine(userAccount["maintab_Noti"]);
-                while (userAccount.Read())
-                {
-                    load.Add(userAccount["maintab_Noti"]);
-                    load.Add(userAccount["maintab_member"]);
-                    load.Add(userAccount["maintab_member_query_Agency"]);
-                    load.Add(userAccount["maintab_member_query_isWork"]);
-                    load.Add(userAccount["maintab_member_query_Condition"]);
-                    load.Add(userAccount["maintab_member_query_ConSearch"]);
-                    load.Add(userAccount["maintab_member_query_SearchText"]);
-                }
+            //    Console.WriteLine(userAccount["maintab_Noti"]);
+            //    while (userAccount.Read())
+            //    {
+            //        load.Add(userAccount["maintab_Noti"]);
+            //        load.Add(userAccount["maintab_member"]);
+            //        load.Add(userAccount["maintab_member_query_Agency"]);
+            //        load.Add(userAccount["maintab_member_query_isWork"]);
+            //        load.Add(userAccount["maintab_member_query_Condition"]);
+            //        load.Add(userAccount["maintab_member_query_ConSearch"]);
+            //        load.Add(userAccount["maintab_member_query_SearchText"]);
+            //    }
 
-                maintab_Noti = load[0].ToString();
-                maintab_member = load[1].ToString();
-                maintab_member_query_Agency = load[2].ToString();
-                maintab_member_query_isWork = load[3].ToString();
-                maintab_member_query_Condition = load[4].ToString();
-                maintab_member_query_ConSearch = load[5].ToString();
-                maintab_member_query_SearchText = load[6].ToString();
-            }
-            catch (Exception a)
-            {
-                connection.Close();
-                CreateTabPage("Noti");
-                Console.WriteLine(a);
-                return;
-            }
-            finally
-            {
-                connection.Close();
-            }
-            if (maintab_Noti == "True")
-            {
-                CreateTabPage("Noti");
-            }
+            //    maintab_Noti = load[0].ToString();
+            //    maintab_member = load[1].ToString();
+            //    maintab_member_query_Agency = load[2].ToString();
+            //    maintab_member_query_isWork = load[3].ToString();
+            //    maintab_member_query_Condition = load[4].ToString();
+            //    maintab_member_query_ConSearch = load[5].ToString();
+            //    maintab_member_query_SearchText = load[6].ToString();
+            //}
+            //catch (Exception a)
+            //{
+            //    connection.Close();
+            //    CreateTabPage("Noti");
+            //    Console.WriteLine(a);
+            //    return;
+            //}
+            //finally
+            //{
+            //    connection.Close();
+            //}
+            //if (maintab_Noti == "True")
+            //{
+            //    CreateTabPage("Noti");
+            //}
 
-            if (maintab_member == "True")
-            {
-                CreateTabPage("MemberPage");
+            //if (maintab_member == "True")
+            //{
+            //    CreateTabPage("MemberPage");
 
-                if (maintab_member_query_Agency.Length == 0)
-                {
-                    ConAgency.Text = "전체";
-                }
-                else if (maintab_member_query_Agency == "null")
-                    ConAgency.Text = "전체";
-                else
-                    ConAgency.Text = maintab_member_query_Agency;
+            //    if (maintab_member_query_Agency.Length == 0)
+            //    {
+            //        ConAgency.Text = "전체";
+            //    }
+            //    else if (maintab_member_query_Agency == "null")
+            //        ConAgency.Text = "전체";
+            //    else
+            //        ConAgency.Text = maintab_member_query_Agency;
 
-                if (maintab_member_query_isWork.Length == 0)
-                {
-                    ConisWork.Text = "전체";
-                }
-                else if (maintab_member_query_isWork == "null")
-                    ConisWork.Text = "전체";
-                else
-                    ConisWork.Text = maintab_member_query_isWork;
+            //    if (maintab_member_query_isWork.Length == 0)
+            //    {
+            //        ConisWork.Text = "전체";
+            //    }
+            //    else if (maintab_member_query_isWork == "null")
+            //        ConisWork.Text = "전체";
+            //    else
+            //        ConisWork.Text = maintab_member_query_isWork;
 
-                if (maintab_member_query_Condition.Length == 0)
-                {
-                    Condition.Text = "";
-                }
-                else if (maintab_member_query_Condition == "null")
-                    Condition.Text = "";
-                else
-                    Condition.Text = maintab_member_query_Condition;
+            //    if (maintab_member_query_Condition.Length == 0)
+            //    {
+            //        Condition.Text = "";
+            //    }
+            //    else if (maintab_member_query_Condition == "null")
+            //        Condition.Text = "";
+            //    else
+            //        Condition.Text = maintab_member_query_Condition;
 
-                if (maintab_member_query_ConSearch.Length == 0)
-                {
-                    ConSearch.Text = "";
-                }
-                else if (maintab_member_query_ConSearch == "null")
-                    ConSearch.Text = "";
-                else
-                    ConSearch.Text = maintab_member_query_ConSearch;
+            //    if (maintab_member_query_ConSearch.Length == 0)
+            //    {
+            //        ConSearch.Text = "";
+            //    }
+            //    else if (maintab_member_query_ConSearch == "null")
+            //        ConSearch.Text = "";
+            //    else
+            //        ConSearch.Text = maintab_member_query_ConSearch;
 
-                if (maintab_member_query_SearchText.Length == 0)
-                {
-                    SearchText.Text = "";
-                }
-                else if (maintab_member_query_SearchText == "null")
-                    SearchText.Text = "";
-                else
-                    SearchText.Text = maintab_member_query_SearchText;
-                MemSearchBtn_Click(null, null);
+            //    if (maintab_member_query_SearchText.Length == 0)
+            //    {
+            //        SearchText.Text = "";
+            //    }
+            //    else if (maintab_member_query_SearchText == "null")
+            //        SearchText.Text = "";
+            //    else
+            //        SearchText.Text = maintab_member_query_SearchText;
+            //    MemSearchBtn_Click(null, null);
                 
-            }
+            //}
         }
 
         private void webView2_Click(object sender, EventArgs e)

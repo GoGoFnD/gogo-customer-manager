@@ -21,7 +21,7 @@ namespace GogoRCustomerManager
     {
         MySqlConnection connection = new MySqlConnection//데이터 베이스 연결
             (
-                "Server= localhost ;Port= 3307; Database= appsigncode; Uid= root; Pwd= gogovlfflq;"
+                "Server=cf.navers.co.kr ;Port= 3306; Database=goSafe; Uid=gosafe; Pwd=gogofnd0@; allow user variables=true;"
             );
 
         int login_Status;
@@ -63,7 +63,7 @@ namespace GogoRCustomerManager
             ArrayList data = new ArrayList();
 
                 
-            string selectQuery = "select * from userinformation where id = '" + inputId + "'  and isDeleted = 0";
+            string selectQuery = "select * from gogo_manager_account where id = '" + inputId + "'  and isDeleted = 0";
 
             MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
             MySqlDataReader userAccount = Selectcommand.ExecuteReader();
@@ -73,11 +73,17 @@ namespace GogoRCustomerManager
                 if (inputId == (string)userAccount["id"] && inputPw == (string)userAccount["pw"])
                 {
                     login_Status = 1;
-                    data.Add(userAccount["co_Member_Num"].ToString());
-                    data.Add(userAccount["id"].ToString());
-                    data.Add(userAccount["AffiliatedAgency"].ToString());
-                    data.Add(userAccount["name"].ToString());
-                    data.Add(userAccount["powerLevel"].ToString());
+                    //data.Add(userAccount["co_Member_Num"].ToString());
+                    //data.Add(userAccount["id"].ToString());
+                    //data.Add(userAccount["AffiliatedAgency"].ToString());
+                    //data.Add(userAccount["name"].ToString());
+                    //data.Add(userAccount["powerLevel"].ToString());
+
+                    data.Add("");
+                    data.Add("");
+                    data.Add("");
+                    data.Add("");
+                    data.Add("");
                 }
             }
 

@@ -26,7 +26,7 @@ namespace GogoRCustomerManager
         AESUtill aESUtill;
         string phoneNumPatten = @"^\+82-?(12|2|[3-9]\d)-?\d{3,4}-?\d{4}$";
         int timeUnit;
-
+        bool SensorDataNotEmpty = false;
         MySqlConnection connection = new MySqlConnection//데이터 베이스 연결
            (
                "Server=cf.navers.co.kr ;Port= 3306; Database=goSafe; Uid=gosafe; Pwd=gogofnd0@; allow user variables=true;"
@@ -220,6 +220,7 @@ namespace GogoRCustomerManager
         }
         private void SelectButton_Click(object sender, EventArgs e)
         {
+            SensorDataNotEmpty = false;
             SensorDataGrid.DataSource = null;
             gosafeMap.RemoveMarkers();
             aESUtill = new AESUtill();
@@ -261,6 +262,7 @@ namespace GogoRCustomerManager
                         }
                     }
                     SensorDataGrid.DataSource = result;
+                    SensorDataNotEmpty = true;
                     Console.WriteLine(gosafeMap.Position);
                     endTimeD = DateTime.Now;
 
@@ -342,13 +344,13 @@ namespace GogoRCustomerManager
             string lat = SensorDataGrid.SelectedRows[0].Cells[3].Value.ToString();
             string lng = SensorDataGrid.SelectedRows[0].Cells[4].Value.ToString();
             gMapControl.Position = new PointLatLng(Double.Parse(lat), Double.Parse(lng));
+            gosafeMap.AddSelectedMarker(Double.Parse(lat), Double.Parse(lng));
         }
 
         private void SensorDataGrid_SelectionChanged(object sender, EventArgs e)
         {
             Console.WriteLine(SensorDataGrid.CurrentCell);
-            Console.WriteLine(SensorDataGrid.CurrentCell.RowIndex != 0);
-            if (SensorDataGrid.CurrentCell != null && SensorDataGrid.CurrentCell.RowIndex != 0)
+            if (SensorDataGrid.CurrentCell != null && SensorDataGrid.CurrentCell.RowIndex != 0 && SensorDataNotEmpty)
             {
                 SensorDataSelected();
             }

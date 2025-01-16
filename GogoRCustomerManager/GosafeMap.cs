@@ -14,6 +14,7 @@ namespace GogoRCustomerManager
     {
         public GMapControl App;
         public GMapOverlay markerOverlay = new GMapOverlay("markers");
+        public GMapOverlay selectedMarkOverlay = new GMapOverlay("SelectedMark");
         public List<PointLatLng> AllMarkers = new List<PointLatLng>(); // 모든 마커의 위치 저장
         public GosafeMap(GMapControl app)
         {
@@ -48,6 +49,15 @@ namespace GogoRCustomerManager
             //markerOverlay.Markers.Add(marker);
             //App.Overlays.Add(markerOverlay);
             UpdateVisibleMarkers();
+        }
+        public void AddSelectedMarker(double lat, double lng)
+        {
+            selectedMarkOverlay.Markers.Clear();
+            var point = new PointLatLng(lat, lng);
+            AllMarkers.Add(point); // 마커 위치를 리스트에 추가
+            var marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.blue_dot);
+            selectedMarkOverlay.Markers.Add(marker);
+            App.Overlays.Add(selectedMarkOverlay);
         }
         public void RemoveMarkers()
         {

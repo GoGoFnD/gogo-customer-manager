@@ -39,7 +39,7 @@
             this.LogoutBtn = new System.Windows.Forms.Button();
             this.StateSaveBtn = new System.Windows.Forms.Button();
             this.RemoteConnectBtn = new System.Windows.Forms.Button();
-            this.ChangeAccountBtn = new System.Windows.Forms.Button();
+            this.ChangePwBtn = new System.Windows.Forms.Button();
             this.OptionBtn = new System.Windows.Forms.Button();
             this.ProgramNotiBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -54,7 +54,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.FMessegeBtn = new FontAwesome.Sharp.IconButton();
             this.NApplyBtn = new FontAwesome.Sharp.IconButton();
             this.ImpossibleAreaBtn = new FontAwesome.Sharp.IconButton();
@@ -66,7 +65,14 @@
             this.RControlBtn1 = new FontAwesome.Sharp.IconButton();
             this.DeleteMemBtn = new FontAwesome.Sharp.IconButton();
             this.MemSearchBtn = new FontAwesome.Sharp.IconButton();
-            this.ManagerUi = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.ManagerUi_Connection = new System.Windows.Forms.Label();
+            this.ManagerUi_Agency = new System.Windows.Forms.Label();
+            this.ManagerUi_Savedmoney = new System.Windows.Forms.Label();
+            this.ManagerUi_Account = new System.Windows.Forms.Label();
+            this.ManagerUi_P1 = new System.Windows.Forms.Panel();
+            this.ManagerUi_P2 = new System.Windows.Forms.Panel();
+            this.ManagerUi_P3 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.ManagerUi_P4 = new System.Windows.Forms.Panel();
             this.ManagerUi_P5 = new System.Windows.Forms.Panel();
@@ -90,19 +96,13 @@
             this.ManagerUi_Cancel = new System.Windows.Forms.Label();
             this.ManagerUi_Accident = new System.Windows.Forms.Label();
             this.ManagerUi_Inquire = new System.Windows.Forms.Label();
-            this.ManagerUi_P3 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P2 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P1 = new System.Windows.Forms.Panel();
-            this.ManagerUi_Account = new System.Windows.Forms.Label();
-            this.ManagerUi_Savedmoney = new System.Windows.Forms.Label();
-            this.ManagerUi_Agency = new System.Windows.Forms.Label();
-            this.ManagerUi_Connection = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.ManagerUi = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.ProgramPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.ManagerUi.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.ManagerUi.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProgramBtn
@@ -191,7 +191,7 @@
             this.MemberBtn.Name = "MemberBtn";
             this.MemberBtn.Size = new System.Drawing.Size(98, 53);
             this.MemberBtn.TabIndex = 5;
-            this.MemberBtn.Text = "직원";
+            this.MemberBtn.Text = "차량";
             this.MemberBtn.UseVisualStyleBackColor = false;
             this.MemberBtn.Click += new System.EventHandler(this.MemberBtn_Click);
             // 
@@ -253,7 +253,7 @@
             this.ProgramPanel.Controls.Add(this.LogoutBtn);
             this.ProgramPanel.Controls.Add(this.StateSaveBtn);
             this.ProgramPanel.Controls.Add(this.RemoteConnectBtn);
-            this.ProgramPanel.Controls.Add(this.ChangeAccountBtn);
+            this.ProgramPanel.Controls.Add(this.ChangePwBtn);
             this.ProgramPanel.Controls.Add(this.OptionBtn);
             this.ProgramPanel.Controls.Add(this.ProgramNotiBtn);
             this.ProgramPanel.Location = new System.Drawing.Point(936, 69);
@@ -340,19 +340,19 @@
             this.RemoteConnectBtn.Text = "원격지원 연결";
             this.RemoteConnectBtn.UseVisualStyleBackColor = false;
             // 
-            // ChangeAccountBtn
+            // ChangePwBtn
             // 
-            this.ChangeAccountBtn.BackColor = System.Drawing.Color.White;
-            this.ChangeAccountBtn.FlatAppearance.BorderSize = 0;
-            this.ChangeAccountBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChangeAccountBtn.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ChangeAccountBtn.Location = new System.Drawing.Point(0, 68);
-            this.ChangeAccountBtn.Name = "ChangeAccountBtn";
-            this.ChangeAccountBtn.Size = new System.Drawing.Size(165, 34);
-            this.ChangeAccountBtn.TabIndex = 33;
-            this.ChangeAccountBtn.Text = "계정정보 변경";
-            this.ChangeAccountBtn.UseVisualStyleBackColor = false;
-            this.ChangeAccountBtn.Click += new System.EventHandler(this.ChangeAccountBtn_Click);
+            this.ChangePwBtn.BackColor = System.Drawing.Color.White;
+            this.ChangePwBtn.FlatAppearance.BorderSize = 0;
+            this.ChangePwBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangePwBtn.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ChangePwBtn.Location = new System.Drawing.Point(0, 68);
+            this.ChangePwBtn.Name = "ChangePwBtn";
+            this.ChangePwBtn.Size = new System.Drawing.Size(165, 34);
+            this.ChangePwBtn.TabIndex = 33;
+            this.ChangePwBtn.Text = "비밀번호 변경";
+            this.ChangePwBtn.UseVisualStyleBackColor = false;
+            this.ChangePwBtn.Click += new System.EventHandler(this.ChangeAccountBtn_Click);
             // 
             // OptionBtn
             // 
@@ -478,16 +478,6 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1178, 541);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.Indigo;
-            this.panel2.Location = new System.Drawing.Point(4, 119);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1193, 3);
-            this.panel2.TabIndex = 0;
             // 
             // FMessegeBtn
             // 
@@ -671,23 +661,87 @@
             this.MemSearchBtn.Size = new System.Drawing.Size(75, 23);
             this.MemSearchBtn.TabIndex = 0;
             // 
-            // ManagerUi
+            // panel4
             // 
-            this.ManagerUi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ManagerUi.Controls.Add(this.panel3);
-            this.ManagerUi.Controls.Add(this.ManagerUi_P3);
-            this.ManagerUi.Controls.Add(this.ManagerUi_P2);
-            this.ManagerUi.Controls.Add(this.ManagerUi_P1);
-            this.ManagerUi.Controls.Add(this.ManagerUi_Account);
-            this.ManagerUi.Controls.Add(this.ManagerUi_Savedmoney);
-            this.ManagerUi.Controls.Add(this.ManagerUi_Agency);
-            this.ManagerUi.Controls.Add(this.ManagerUi_Connection);
-            this.ManagerUi.Location = new System.Drawing.Point(0, 645);
-            this.ManagerUi.Name = "ManagerUi";
-            this.ManagerUi.Size = new System.Drawing.Size(1202, 23);
-            this.ManagerUi.TabIndex = 0;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel4.Location = new System.Drawing.Point(0, 665);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1201, 3);
+            this.panel4.TabIndex = 1001;
+            // 
+            // ManagerUi_Connection
+            // 
+            this.ManagerUi_Connection.AutoSize = true;
+            this.ManagerUi_Connection.BackColor = System.Drawing.Color.Transparent;
+            this.ManagerUi_Connection.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ManagerUi_Connection.ForeColor = System.Drawing.Color.White;
+            this.ManagerUi_Connection.Location = new System.Drawing.Point(3, 3);
+            this.ManagerUi_Connection.Name = "ManagerUi_Connection";
+            this.ManagerUi_Connection.Size = new System.Drawing.Size(55, 14);
+            this.ManagerUi_Connection.TabIndex = 1002;
+            this.ManagerUi_Connection.Text = "통신:연결";
+            // 
+            // ManagerUi_Agency
+            // 
+            this.ManagerUi_Agency.AutoSize = true;
+            this.ManagerUi_Agency.BackColor = System.Drawing.Color.Transparent;
+            this.ManagerUi_Agency.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ManagerUi_Agency.ForeColor = System.Drawing.Color.White;
+            this.ManagerUi_Agency.Location = new System.Drawing.Point(72, 3);
+            this.ManagerUi_Agency.Name = "ManagerUi_Agency";
+            this.ManagerUi_Agency.Size = new System.Drawing.Size(135, 14);
+            this.ManagerUi_Agency.TabIndex = 1002;
+            this.ManagerUi_Agency.Text = "대리점:고고라이더스 본사";
+            // 
+            // ManagerUi_Savedmoney
+            // 
+            this.ManagerUi_Savedmoney.AutoSize = true;
+            this.ManagerUi_Savedmoney.BackColor = System.Drawing.Color.Transparent;
+            this.ManagerUi_Savedmoney.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ManagerUi_Savedmoney.ForeColor = System.Drawing.Color.White;
+            this.ManagerUi_Savedmoney.Location = new System.Drawing.Point(217, 3);
+            this.ManagerUi_Savedmoney.Name = "ManagerUi_Savedmoney";
+            this.ManagerUi_Savedmoney.Size = new System.Drawing.Size(115, 14);
+            this.ManagerUi_Savedmoney.TabIndex = 1002;
+            this.ManagerUi_Savedmoney.Text = "적립금:105,865,620";
+            // 
+            // ManagerUi_Account
+            // 
+            this.ManagerUi_Account.AutoSize = true;
+            this.ManagerUi_Account.BackColor = System.Drawing.Color.Transparent;
+            this.ManagerUi_Account.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ManagerUi_Account.ForeColor = System.Drawing.Color.White;
+            this.ManagerUi_Account.Location = new System.Drawing.Point(360, 3);
+            this.ManagerUi_Account.Name = "ManagerUi_Account";
+            this.ManagerUi_Account.Size = new System.Drawing.Size(66, 14);
+            this.ManagerUi_Account.TabIndex = 1002;
+            this.ManagerUi_Account.Text = "계정:고고라";
+            // 
+            // ManagerUi_P1
+            // 
+            this.ManagerUi_P1.BackColor = System.Drawing.Color.White;
+            this.ManagerUi_P1.Location = new System.Drawing.Point(7, 3);
+            this.ManagerUi_P1.Name = "ManagerUi_P1";
+            this.ManagerUi_P1.Size = new System.Drawing.Size(1, 15);
+            this.ManagerUi_P1.TabIndex = 1003;
+            // 
+            // ManagerUi_P2
+            // 
+            this.ManagerUi_P2.BackColor = System.Drawing.Color.White;
+            this.ManagerUi_P2.Location = new System.Drawing.Point(211, 3);
+            this.ManagerUi_P2.Name = "ManagerUi_P2";
+            this.ManagerUi_P2.Size = new System.Drawing.Size(1, 15);
+            this.ManagerUi_P2.TabIndex = 1004;
+            // 
+            // ManagerUi_P3
+            // 
+            this.ManagerUi_P3.BackColor = System.Drawing.Color.White;
+            this.ManagerUi_P3.Location = new System.Drawing.Point(356, 3);
+            this.ManagerUi_P3.Name = "ManagerUi_P3";
+            this.ManagerUi_P3.Size = new System.Drawing.Size(1, 15);
+            this.ManagerUi_P3.TabIndex = 1004;
             // 
             // panel3
             // 
@@ -962,97 +1016,41 @@
             this.ManagerUi_Inquire.TabIndex = 1005;
             this.ManagerUi_Inquire.Text = "문의:0";
             // 
-            // ManagerUi_P3
+            // ManagerUi
             // 
-            this.ManagerUi_P3.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P3.Location = new System.Drawing.Point(356, 3);
-            this.ManagerUi_P3.Name = "ManagerUi_P3";
-            this.ManagerUi_P3.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P3.TabIndex = 1004;
-            // 
-            // ManagerUi_P2
-            // 
-            this.ManagerUi_P2.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P2.Location = new System.Drawing.Point(211, 3);
-            this.ManagerUi_P2.Name = "ManagerUi_P2";
-            this.ManagerUi_P2.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P2.TabIndex = 1004;
-            // 
-            // ManagerUi_P1
-            // 
-            this.ManagerUi_P1.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P1.Location = new System.Drawing.Point(7, 3);
-            this.ManagerUi_P1.Name = "ManagerUi_P1";
-            this.ManagerUi_P1.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P1.TabIndex = 1003;
-            // 
-            // ManagerUi_Account
-            // 
-            this.ManagerUi_Account.AutoSize = true;
-            this.ManagerUi_Account.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Account.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Account.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Account.Location = new System.Drawing.Point(360, 3);
-            this.ManagerUi_Account.Name = "ManagerUi_Account";
-            this.ManagerUi_Account.Size = new System.Drawing.Size(66, 14);
-            this.ManagerUi_Account.TabIndex = 1002;
-            this.ManagerUi_Account.Text = "계정:고고라";
-            // 
-            // ManagerUi_Savedmoney
-            // 
-            this.ManagerUi_Savedmoney.AutoSize = true;
-            this.ManagerUi_Savedmoney.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Savedmoney.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Savedmoney.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Savedmoney.Location = new System.Drawing.Point(217, 3);
-            this.ManagerUi_Savedmoney.Name = "ManagerUi_Savedmoney";
-            this.ManagerUi_Savedmoney.Size = new System.Drawing.Size(115, 14);
-            this.ManagerUi_Savedmoney.TabIndex = 1002;
-            this.ManagerUi_Savedmoney.Text = "적립금:105,865,620";
-            // 
-            // ManagerUi_Agency
-            // 
-            this.ManagerUi_Agency.AutoSize = true;
-            this.ManagerUi_Agency.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Agency.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Agency.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Agency.Location = new System.Drawing.Point(72, 3);
-            this.ManagerUi_Agency.Name = "ManagerUi_Agency";
-            this.ManagerUi_Agency.Size = new System.Drawing.Size(135, 14);
-            this.ManagerUi_Agency.TabIndex = 1002;
-            this.ManagerUi_Agency.Text = "대리점:고고라이더스 본사";
-            // 
-            // ManagerUi_Connection
-            // 
-            this.ManagerUi_Connection.AutoSize = true;
-            this.ManagerUi_Connection.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Connection.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Connection.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Connection.Location = new System.Drawing.Point(3, 3);
-            this.ManagerUi_Connection.Name = "ManagerUi_Connection";
-            this.ManagerUi_Connection.Size = new System.Drawing.Size(55, 14);
-            this.ManagerUi_Connection.TabIndex = 1002;
-            this.ManagerUi_Connection.Text = "통신:연결";
-            // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.ManagerUi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel4.Location = new System.Drawing.Point(0, 665);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1201, 3);
-            this.panel4.TabIndex = 1001;
+            this.ManagerUi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.ManagerUi.Controls.Add(this.panel3);
+            this.ManagerUi.Controls.Add(this.ManagerUi_P3);
+            this.ManagerUi.Controls.Add(this.ManagerUi_P2);
+            this.ManagerUi.Controls.Add(this.ManagerUi_P1);
+            this.ManagerUi.Controls.Add(this.ManagerUi_Account);
+            this.ManagerUi.Controls.Add(this.ManagerUi_Savedmoney);
+            this.ManagerUi.Controls.Add(this.ManagerUi_Agency);
+            this.ManagerUi.Controls.Add(this.ManagerUi_Connection);
+            this.ManagerUi.Location = new System.Drawing.Point(0, 645);
+            this.ManagerUi.Name = "ManagerUi";
+            this.ManagerUi.Size = new System.Drawing.Size(1202, 23);
+            this.ManagerUi.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(890, 59);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 100);
+            this.panel2.TabIndex = 1002;
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1200, 668);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.ProgramPanel);
             this.Controls.Add(this.ManagerUi);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.FMessegeBtn);
             this.Controls.Add(this.NApplyBtn);
@@ -1073,10 +1071,10 @@
             this.panel1.ResumeLayout(false);
             this.ProgramPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ManagerUi.ResumeLayout(false);
-            this.ManagerUi.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.ManagerUi.ResumeLayout(false);
+            this.ManagerUi.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1109,21 +1107,19 @@
         private System.Windows.Forms.Button LogoutBtn;
         private System.Windows.Forms.Button StateSaveBtn;
         private System.Windows.Forms.Button RemoteConnectBtn;
-        private System.Windows.Forms.Button ChangeAccountBtn;
+        private System.Windows.Forms.Button ChangePwBtn;
         private System.Windows.Forms.Button OptionBtn;
         private System.Windows.Forms.Button ProgramNotiBtn;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Panel ManagerUi;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel ManagerUi_P3;
-        private System.Windows.Forms.Panel ManagerUi_P2;
-        private System.Windows.Forms.Panel ManagerUi_P1;
-        private System.Windows.Forms.Label ManagerUi_Account;
-        private System.Windows.Forms.Label ManagerUi_Savedmoney;
-        private System.Windows.Forms.Label ManagerUi_Agency;
         private System.Windows.Forms.Label ManagerUi_Connection;
+        private System.Windows.Forms.Label ManagerUi_Agency;
+        private System.Windows.Forms.Label ManagerUi_Savedmoney;
+        private System.Windows.Forms.Label ManagerUi_Account;
+        private System.Windows.Forms.Panel ManagerUi_P1;
+        private System.Windows.Forms.Panel ManagerUi_P2;
+        private System.Windows.Forms.Panel ManagerUi_P3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel ManagerUi_P4;
         private System.Windows.Forms.Panel ManagerUi_P5;
@@ -1147,5 +1143,7 @@
         private System.Windows.Forms.Label ManagerUi_Cancel;
         private System.Windows.Forms.Label ManagerUi_Accident;
         private System.Windows.Forms.Label ManagerUi_Inquire;
+        private System.Windows.Forms.Panel ManagerUi;
+        private System.Windows.Forms.Panel panel2;
     }
 }

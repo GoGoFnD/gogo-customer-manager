@@ -73,13 +73,13 @@ namespace GogoRCustomerManager
                 if (inputId == (string)userAccount["id"] && inputPw == (string)userAccount["pw"])
                 {
                     login_Status = 1;
-                    //data.Add(userAccount["co_Member_Num"].ToString());
+                    data.Add(userAccount["account_Num"].ToString());
                     //data.Add(userAccount["id"].ToString());
                     //data.Add(userAccount["AffiliatedAgency"].ToString());
                     //data.Add(userAccount["name"].ToString());
                     //data.Add(userAccount["powerLevel"].ToString());
 
-                    data.Add("");
+                    //data.Add("");
                     data.Add("");
                     data.Add("");
                     data.Add("");

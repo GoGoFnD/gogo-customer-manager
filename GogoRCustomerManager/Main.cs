@@ -42,7 +42,7 @@ namespace GogoRCustomerManager
         private RichTextBox programUpdateText = new RichTextBox();
 
         bool isProgramPopupOpen = false;
-        bool memberPageOpen = false;
+        bool bikePageOpen = false;
         bool notiPageOpen = false;
         bool RControl1 = false;
         public bool islogin = false;
@@ -51,7 +51,7 @@ namespace GogoRCustomerManager
 
         int addControll = 0;
         int notiPage_Num;
-        int memberPage_Num;
+        int bikePage_Num;
 
         private Point _imageLocation = new Point(15, 5);
         private Point _imgHitArea = new Point(13, 2);
@@ -72,10 +72,10 @@ namespace GogoRCustomerManager
         string localIP;
         readonly string version = "1.0.0";
 
-        MySqlConnection connection = new MySqlConnection//데이터 베이스 연결
-           (
-               "Server= localhost ;Port= 3307; Database= appsigncode; Uid= root; Pwd= gogovlfflq;"
-           );
+        //MySqlConnection connection = new MySqlConnection//데이터 베이스 연결
+        //   (
+        //       "Server= localhost ;Port= 3307; Database= appsigncode; Uid= root; Pwd= gogovlfflq;"
+        //   );
         MySqlConnection connection2 = new MySqlConnection//데이터 베이스 연결
            (
                "Server=cf.navers.co.kr ;Port= 3306; Database=goSafe; Uid=gosafe; Pwd=gogofnd0@; allow user variables=true;"
@@ -89,7 +89,7 @@ namespace GogoRCustomerManager
             //this.powerLevel = powerLevel;
             //mainTitle = "관리자용PC (" + version + ") [ " + team + ": " + name + " ]";
             //this.Text = mainTitle;
-            //this.MemberNum = memNum;
+            this.MemberNum = memNum;
             //AccountName = name;
             //Agency = team;
 
@@ -115,6 +115,7 @@ namespace GogoRCustomerManager
         {
             SetManagerUi();
             PageLoad();
+            Console.WriteLine("qwe");
         }
 
         private void AddFuntion()
@@ -216,7 +217,7 @@ namespace GogoRCustomerManager
                 programUpdateText.BackColor = Color.White;
                 programUpdateText.BorderStyle = BorderStyle.FixedSingle;
                 programUpdateText.Font = new Font("나눔고딕", 8.95F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
-                programUpdateText.Location = new Point(-5, 164);
+                programUpdateText.Location = new Point(-2, 164);
                 programUpdateText.Name = "programUpdateText";
                 programUpdateText.ReadOnly = true;
                 programUpdateText.Size = new Size(1197, 378);
@@ -226,11 +227,11 @@ namespace GogoRCustomerManager
                 data = new ArrayList();
                 for (int i = 2; i <= 3; i++)
                 {
-                    connection.Open();
+                    connection2.Open();
 
-                    string selectQuery = "select * from textdatabase where data_id = " + i + ";";
+                    string selectQuery = "select * from gogo_manager_alertdata where data_id = " + i + ";";
 
-                    MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
+                    MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection2);
                     MySqlDataReader userAccount = Selectcommand.ExecuteReader();
 
 
@@ -239,7 +240,7 @@ namespace GogoRCustomerManager
                     {
                         data.Add(userAccount["text"]);
                     }
-                    connection.Close();
+                    connection2.Close();
                 }
 
 
@@ -249,22 +250,25 @@ namespace GogoRCustomerManager
                 programNotiText.Text = data[0].ToString();
                 programUpdateText.Text = data[1].ToString();
                 notiPageOpen = true;
+                this.AutoScaleMode = AutoScaleMode.Dpi;
             }
 
-            if (!memberPageOpen && page_Name == "MemberPage")
+            if (!bikePageOpen && page_Name == "BikePage")
             {
                 addControll++;
 
                 tabPage = new TabPage(page_Name);
-                tabPage.Name = "MemberPageTab";
+                tabPage.Name = "BikePageTab";
                 tabPage.Padding = new Padding(20);
                 tabPage.Size = new Size(1147, 476);
                 tabPage.TabIndex = 0;
                 tabPage.Text = "";
-                tabPage.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
+                tabPage.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, (byte)(129));
                 tabPage.UseVisualStyleBackColor = true;
                 tabControl1.TabPages.Add(tabPage);
                 tabPage.BackColor = SystemColors.Control;
+
+                
 
                 DBData = new DataGridView();
                 DBData.AllowUserToAddRows = false;
@@ -310,7 +314,6 @@ namespace GogoRCustomerManager
                 // 
                 // MemSearchBtn
                 // 
-                MemSearchBtn.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
                 MemSearchBtn.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
                 MemSearchBtn.IconColor = Color.Black;
                 MemSearchBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -320,12 +323,11 @@ namespace GogoRCustomerManager
                 MemSearchBtn.Name = "MemSearchBtn";
                 MemSearchBtn.Size = new Size(99, 48);
                 MemSearchBtn.TabIndex = 37;
-                MemSearchBtn.Text = "     직원조회";
+                MemSearchBtn.Text = "     차량조회";
                 MemSearchBtn.UseVisualStyleBackColor = true;
                 // 
                 // ResetMem
                 // 
-                ResetMem.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
                 ResetMem.IconChar = FontAwesome.Sharp.IconChar.ClipboardUser;
                 ResetMem.IconColor = Color.Black;
                 ResetMem.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -336,7 +338,7 @@ namespace GogoRCustomerManager
                 ResetMem.Rotation = 180D;
                 ResetMem.Size = new Size(99, 48);
                 ResetMem.TabIndex = 38;
-                ResetMem.Text = "      직원검색 \r\n    초기화";
+                ResetMem.Text = "      차량검색 \r\n    초기화";
                 ResetMem.UseVisualStyleBackColor = true;
                 // 
                 // MemAddBtn
@@ -358,7 +360,6 @@ namespace GogoRCustomerManager
                 // 
                 // MemChangeBtn
                 // 
-                MemChangeBtn.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
                 MemChangeBtn.IconChar = FontAwesome.Sharp.IconChar.SheetPlastic;
                 MemChangeBtn.IconColor = Color.Black;
                 MemChangeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -375,7 +376,6 @@ namespace GogoRCustomerManager
                 // 
                 // DeleteMemBtn
                 // 
-                DeleteMemBtn.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
                 DeleteMemBtn.IconChar = FontAwesome.Sharp.IconChar.X;
                 DeleteMemBtn.IconColor = Color.Black;
                 DeleteMemBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -393,7 +393,6 @@ namespace GogoRCustomerManager
                 //label4
                 //
                 label4.BorderStyle = BorderStyle.FixedSingle;
-                label4.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
                 label4.Location = new Point(5, 4);
                 label4.Name = "label4";
                 label4.Size = new Size(69, 47);
@@ -412,7 +411,6 @@ namespace GogoRCustomerManager
                 // label5
                 // 
                 label5.BorderStyle = BorderStyle.FixedSingle;
-                label5.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
                 label5.Location = new Point(216, 4);
                 label5.Name = "label5";
                 label5.Size = new Size(69, 22);
@@ -442,7 +440,6 @@ namespace GogoRCustomerManager
                 // label6
                 // 
                 label6.BorderStyle = BorderStyle.FixedSingle;
-                label6.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
                 label6.Location = new Point(412, 4);
                 label6.Name = "label6";
                 label6.Size = new Size(69, 22);
@@ -453,7 +450,6 @@ namespace GogoRCustomerManager
                 // label7
                 // 
                 label7.BorderStyle = BorderStyle.FixedSingle;
-                label7.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
                 label7.Location = new Point(412, 29);
                 label7.Name = "label7";
                 label7.Size = new Size(69, 22);
@@ -472,16 +468,14 @@ namespace GogoRCustomerManager
                 // 
                 // SearchText
                 // 
-                SearchText.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
                 SearchText.Location = new Point(484, 29);
                 SearchText.Name = "SearchText";
                 SearchText.Size = new Size(232, 22);
                 SearchText.TabIndex = 36;
-                SearchText.ReadOnly = true;
+                //SearchText.ReadOnly = true;
                 // 
                 // ConSearch
                 // 
-                ConSearch.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
                 ConSearch.Location = new Point(590, 4);
                 ConSearch.Name = "ConSearch";
                 ConSearch.Size = new Size(126, 22);
@@ -511,18 +505,32 @@ namespace GogoRCustomerManager
                 
                 MemSearchBtn_Click(null, null);
 
-                memberPageOpen = true;
+                bikePageOpen = true;
                 DBData.DoubleBuffered(true);
                 DBData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 tabControl1.SelectedTab = tabPage;
 
-                memberPage_Num = tabControl1.SelectedIndex;
+                bikePage_Num = tabControl1.SelectedIndex;
 
                 if (addControll == 1)
                     AddFuntion();
                 SetDB();
+                //if (tabPage.Controls.Contains(DBData))
+                //{
+                //    int padding = 20;
+                //    int bottomPadding = 60; // Adjust according to your layout
 
+                //    // Adjust DBData size according to the tabPage size
+                //    DBData.Size = new Size(tabPage.Width - padding, tabPage.Height - bottomPadding);
+
+                //    // Adjust font size based on the new size
+                //    float baseFontSize = 9.75F; // Initial font size
+                //    float scaleFactor = (float)DBData.Width / (tabPage.Width - padding);
+                //    DBData.Font = new Font("나눔고딕", baseFontSize * scaleFactor, FontStyle.Regular, GraphicsUnit.Point);
+                //}
+                AutoScaleMode = AutoScaleMode.Dpi;
+                PerformAutoScale();
             }
 
            
@@ -552,8 +560,8 @@ namespace GogoRCustomerManager
             if (e.Index == this.tabControl1.SelectedIndex)
             {
                 fntTab = new Font(e.Font, FontStyle.Regular);
-                bshBank = new System.Drawing.Drawing2D.LinearGradientBrush(e.Bounds, panel2.BackColor,
-                                                                           panel2.BackColor,
+                bshBank = new System.Drawing.Drawing2D.LinearGradientBrush(e.Bounds, Color.Indigo,
+                                                                           Color.Indigo,
                                                                            System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal);
                 bshFore = Brushes.White;
 
@@ -568,8 +576,8 @@ namespace GogoRCustomerManager
                 point = new PointF(e.Bounds.X + 6, e.Bounds.Y + 2);
             }
 
-            if (tabControl1.TabPages[e.Index].Name == "MemberPageTab")
-                tabName = "직원 등록현황";
+            if (tabControl1.TabPages[e.Index].Name == "BikePageTab")
+                tabName = "차량";
             else if (tabControl1.TabPages[e.Index].Name == "NotiTab")
                 tabName = "공지";
             else
@@ -642,9 +650,9 @@ namespace GogoRCustomerManager
                 {
                     TabPage TabP = (TabPage)tc.TabPages[tc.SelectedIndex];
                     tc.TabPages.Remove(TabP);
-                    if (TabP.Name.Equals("MemberPageTab"))
+                    if (TabP.Name.Equals("BikePageTab"))
                     {
-                        memberPageOpen = false;
+                        bikePageOpen = false;
                     }
                     if (TabP.Name.Equals("NotiTab"))
                     {
@@ -657,10 +665,9 @@ namespace GogoRCustomerManager
         { // 첫 번째 열로 설정
             DBData.Columns["rBikeNumber"].DisplayIndex = 1; // 두 번째 열로 설정
             DBData.Columns["rPhoneNumer"].DisplayIndex = 2;
-            //DBData.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             DBData.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DBData.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DBData.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DBData.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
         private void PressEnter(object sender, KeyEventArgs e)//textBox 입력 중 enter로 로그인 함수 활성화
         {
@@ -766,19 +773,27 @@ namespace GogoRCustomerManager
         private void MemberBtn_Click(object sender, EventArgs e)
         {
             OffPopup();
-            if (memberPageOpen)
+            if (bikePageOpen)
             {
-                tabControl1.SelectedIndex = memberPage_Num;
+                tabControl1.SelectedIndex = bikePage_Num;
             }
             else
             {
-                CreateTabPage("MemberPage");
+                CreateTabPage("BikePage");
             }
         }
 
         private void NotiBtn_Click(object sender, EventArgs e)
         {
             OffPopup();
+            if (notiPageOpen)
+            {
+                tabControl1.SelectedIndex = notiPage_Num;
+            }
+            else
+            {
+                CreateTabPage("Noti");
+            }
         }
 
         private void ManageBtn_Click(object sender, EventArgs e)
@@ -803,8 +818,8 @@ namespace GogoRCustomerManager
         private void RControlBtn2_Click(object sender, EventArgs e)
         {
             OffPopup();
-            rControl = new RControl();
-            rControl.Show();
+            //rControl = new RControl();
+            //rControl.Show();
         }
 
         private void RControlBtn3_Click(object sender, EventArgs e)
@@ -836,8 +851,8 @@ namespace GogoRCustomerManager
         private void NApplyBtn_Click(object sender, EventArgs e)
         {
             OffPopup();
-            NotiRetouch showmainform = new NotiRetouch();
-            showmainform.Show();
+            //NotiRetouch showmainform = new NotiRetouch();
+            //showmainform.Show();
         }
 
         private void FMessegeBtn_Click(object sender, EventArgs e)
@@ -856,109 +871,109 @@ namespace GogoRCustomerManager
         {     
             int i = 0;
             string selectQuery = "select * from managingdatabase where AgencyName = '" + Agency + "';";
-            Console.WriteLine(selectQuery);
-            try
-            {
-                connection.Open();
-                MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
-                MySqlDataReader userAccount = Selectcommand.ExecuteReader();
-                data = new ArrayList();
-                while (userAccount.Read())
-                {
-                    data.Add(userAccount["AgencySavedmoney"]);
-                    data.Add(userAccount["EventCount_Hold"]);
-                    data.Add(userAccount["EventCount_Reservation"]);
-                    data.Add(userAccount["EventCount_Receipt"]);
-                    data.Add(userAccount["EventCount_Posible"]);
-                    data.Add(userAccount["EventCount_Doing"]);
-                    data.Add(userAccount["EventCount_Pickup"]);
-                    data.Add(userAccount["EventCount_Succece"]);
-                    data.Add(userAccount["EventCount_Cancel"]);
-                    data.Add(userAccount["EventCount_Accident"]);
-                    data.Add(userAccount["EventCount_Inquire"]);
-                    data.Add(userAccount["AgencyName"]);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                connection.Close();
-                i++;
-            }
-            finally
-            {
+            //Console.WriteLine(selectQuery);
+            //try
+            //{
+            //    connection.Open();
+            //    MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
+            //    MySqlDataReader userAccount = Selectcommand.ExecuteReader();
+            //    data = new ArrayList();
+            //    while (userAccount.Read())
+            //    {
+            //        data.Add(userAccount["AgencySavedmoney"]);
+            //        data.Add(userAccount["EventCount_Hold"]);
+            //        data.Add(userAccount["EventCount_Reservation"]);
+            //        data.Add(userAccount["EventCount_Receipt"]);
+            //        data.Add(userAccount["EventCount_Posible"]);
+            //        data.Add(userAccount["EventCount_Doing"]);
+            //        data.Add(userAccount["EventCount_Pickup"]);
+            //        data.Add(userAccount["EventCount_Succece"]);
+            //        data.Add(userAccount["EventCount_Cancel"]);
+            //        data.Add(userAccount["EventCount_Accident"]);
+            //        data.Add(userAccount["EventCount_Inquire"]);
+            //        data.Add(userAccount["AgencyName"]);
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //    connection.Close();
+            //    i++;
+            //}
+            //finally
+            //{
                 
-                connection.Close();
-            }
-            Console.WriteLine(data.Count);
-            if (i == 1 || data == null || data.Count == 0)
-            {
-                ManagerUi_Savedmoney.Text = "적립금: -";
-                ManagerUi_All.Text = "전체: -";
-                ManagerUi_Reservation.Text = "예약: -";
-                ManagerUi_Receipt.Text = "접수: -";
-                ManagerUi_Posible.Text = "가배차: -";
-                ManagerUi_Doing.Text = "배차: -";
-                ManagerUi_Pickup.Text = "픽업: -";
-                ManagerUi_Succece.Text = "완료: -";
-                ManagerUi_Cancel.Text = "취소: -";
-                ManagerUi_Accident.Text = "사고: -";
-                ManagerUi_Inquire.Text = "문의: -";
+            //    connection.Close();
+            //}
+            //Console.WriteLine(data.Count);
+            //if (i == 1 || data == null || data.Count == 0)
+            //{
+            //    ManagerUi_Savedmoney.Text = "적립금: -";
+            //    ManagerUi_All.Text = "전체: -";
+            //    ManagerUi_Reservation.Text = "예약: -";
+            //    ManagerUi_Receipt.Text = "접수: -";
+            //    ManagerUi_Posible.Text = "가배차: -";
+            //    ManagerUi_Doing.Text = "배차: -";
+            //    ManagerUi_Pickup.Text = "픽업: -";
+            //    ManagerUi_Succece.Text = "완료: -";
+            //    ManagerUi_Cancel.Text = "취소: -";
+            //    ManagerUi_Accident.Text = "사고: -";
+            //    ManagerUi_Inquire.Text = "문의: -";
 
-                ManagerUi_Agency.Text = "대리점:" + Agency;
-                ManagerUi_Account.Text = "계정:" + AccountName;
-            }
-            else
-            {
-                ManagerUi_Savedmoney.Text = "적립금:" + string.Format("{0:#,###}", data[0].ToString());
-                ManagerUi_All.Text = "전체:" + ((int)data[2] + (int)data[3] + (int)data[4] + (int)data[5] + (int)data[6] +
-                                                        (int)data[7] + (int)data[8] + (int)data[9] + (int)data[10]);
-                ManagerUi_Reservation.Text = "예약:" + data[2].ToString();
-                ManagerUi_Receipt.Text = "접수:" + data[3].ToString();
-                ManagerUi_Posible.Text = "가배차:" + data[4].ToString();
-                ManagerUi_Doing.Text = "배차:" + data[5].ToString();
-                ManagerUi_Pickup.Text = "픽업:" + data[6].ToString();
-                ManagerUi_Succece.Text = "완료:" + data[7].ToString();
-                ManagerUi_Cancel.Text = "취소:" + data[8].ToString();
-                ManagerUi_Accident.Text = "사고:" + data[9].ToString();
-                ManagerUi_Inquire.Text = "문의:" + data[10].ToString();
+            //    ManagerUi_Agency.Text = "대리점:" + Agency;
+            //    ManagerUi_Account.Text = "계정:" + AccountName;
+            //}
+            //else
+            //{
+            //    ManagerUi_Savedmoney.Text = "적립금:" + string.Format("{0:#,###}", data[0].ToString());
+            //    ManagerUi_All.Text = "전체:" + ((int)data[2] + (int)data[3] + (int)data[4] + (int)data[5] + (int)data[6] +
+            //                                            (int)data[7] + (int)data[8] + (int)data[9] + (int)data[10]);
+            //    ManagerUi_Reservation.Text = "예약:" + data[2].ToString();
+            //    ManagerUi_Receipt.Text = "접수:" + data[3].ToString();
+            //    ManagerUi_Posible.Text = "가배차:" + data[4].ToString();
+            //    ManagerUi_Doing.Text = "배차:" + data[5].ToString();
+            //    ManagerUi_Pickup.Text = "픽업:" + data[6].ToString();
+            //    ManagerUi_Succece.Text = "완료:" + data[7].ToString();
+            //    ManagerUi_Cancel.Text = "취소:" + data[8].ToString();
+            //    ManagerUi_Accident.Text = "사고:" + data[9].ToString();
+            //    ManagerUi_Inquire.Text = "문의:" + data[10].ToString();
 
-                ManagerUi_Agency.Text = "대리점:" + data[11].ToString();
-                ManagerUi_Account.Text = "계정:" + AccountName;
-            }
+            //    ManagerUi_Agency.Text = "대리점:" + data[11].ToString();
+            //    ManagerUi_Account.Text = "계정:" + AccountName;
+            //}
             
            
 
 
-            ManagerUi_P1.Location = new Point(ManagerUi_Connection.Location.X + ManagerUi_Connection.Width + 4, 3);
-            ManagerUi_Agency.Location = new Point(ManagerUi_P1.Location.X + 6, 3);
-            ManagerUi_P2.Location = new Point(ManagerUi_Agency.Location.X + ManagerUi_Agency.Width + 4, 3);
-            ManagerUi_Savedmoney.Location = new Point(ManagerUi_P2.Location.X + 6, 3);
-            ManagerUi_P3.Location = new Point(ManagerUi_Savedmoney.Location.X + ManagerUi_Savedmoney.Width + 4, 3);
-            ManagerUi_Account.Location = new Point(ManagerUi_P3.Location.X + 6, 3);
+            //ManagerUi_P1.Location = new Point(ManagerUi_Connection.Location.X + ManagerUi_Connection.Width + 4, 3);
+            //ManagerUi_Agency.Location = new Point(ManagerUi_P1.Location.X + 6, 3);
+            //ManagerUi_P2.Location = new Point(ManagerUi_Agency.Location.X + ManagerUi_Agency.Width + 4, 3);
+            //ManagerUi_Savedmoney.Location = new Point(ManagerUi_P2.Location.X + 6, 3);
+            //ManagerUi_P3.Location = new Point(ManagerUi_Savedmoney.Location.X + ManagerUi_Savedmoney.Width + 4, 3);
+            //ManagerUi_Account.Location = new Point(ManagerUi_P3.Location.X + 6, 3);
 
 
-            ManagerUi_Inquire.Location = new Point(ManagerUi_P14.Location.X - ManagerUi_Inquire.Width - 4, 3);
-            ManagerUi_P13.Location = new Point(ManagerUi_Inquire.Location.X - 6, 3);
-            ManagerUi_Accident.Location = new Point(ManagerUi_P13.Location.X - ManagerUi_Accident.Width - 4, 3);
-            ManagerUi_P12.Location = new Point(ManagerUi_Accident.Location.X - 6, 3);
-            ManagerUi_Cancel.Location = new Point(ManagerUi_P12.Location.X - ManagerUi_Cancel.Width - 4, 3);
-            ManagerUi_P11.Location = new Point(ManagerUi_Cancel.Location.X - 6, 3);
-            ManagerUi_Succece.Location = new Point(ManagerUi_P11.Location.X - ManagerUi_Succece.Width - 4, 3);
-            ManagerUi_P10.Location = new Point(ManagerUi_Succece.Location.X - 6, 3);
-            ManagerUi_Pickup.Location = new Point(ManagerUi_P10.Location.X - ManagerUi_Pickup.Width - 4, 3);
-            ManagerUi_P9.Location = new Point(ManagerUi_Pickup.Location.X - 6, 3);
-            ManagerUi_Doing.Location = new Point(ManagerUi_P9.Location.X - ManagerUi_Doing.Width - 4, 3);
-            ManagerUi_P8.Location = new Point(ManagerUi_Doing.Location.X - 6, 3);
-            ManagerUi_Posible.Location = new Point(ManagerUi_P8.Location.X - ManagerUi_Posible.Width - 4, 3);
-            ManagerUi_P7.Location = new Point(ManagerUi_Posible.Location.X - 6, 3);
-            ManagerUi_Receipt.Location = new Point(ManagerUi_P7.Location.X - ManagerUi_Receipt.Width - 4, 3);
-            ManagerUi_P6.Location = new Point(ManagerUi_Receipt.Location.X - 6, 3);
-            ManagerUi_Reservation.Location = new Point(ManagerUi_P6.Location.X - ManagerUi_Reservation.Width - 4, 3);
-            ManagerUi_P5.Location = new Point(ManagerUi_Reservation.Location.X - 6, 3);
-            ManagerUi_Hold.Location = new Point(ManagerUi_P5.Location.X - ManagerUi_Hold.Width - 4, 3);
-            ManagerUi_P4.Location = new Point(ManagerUi_Hold.Location.X - 6, 3);
-            ManagerUi_All.Location = new Point(ManagerUi_P4.Location.X - ManagerUi_All.Width - 4, 3);
+            //ManagerUi_Inquire.Location = new Point(ManagerUi_P14.Location.X - ManagerUi_Inquire.Width - 4, 3);
+            //ManagerUi_P13.Location = new Point(ManagerUi_Inquire.Location.X - 6, 3);
+            //ManagerUi_Accident.Location = new Point(ManagerUi_P13.Location.X - ManagerUi_Accident.Width - 4, 3);
+            //ManagerUi_P12.Location = new Point(ManagerUi_Accident.Location.X - 6, 3);
+            //ManagerUi_Cancel.Location = new Point(ManagerUi_P12.Location.X - ManagerUi_Cancel.Width - 4, 3);
+            //ManagerUi_P11.Location = new Point(ManagerUi_Cancel.Location.X - 6, 3);
+            //ManagerUi_Succece.Location = new Point(ManagerUi_P11.Location.X - ManagerUi_Succece.Width - 4, 3);
+            //ManagerUi_P10.Location = new Point(ManagerUi_Succece.Location.X - 6, 3);
+            //ManagerUi_Pickup.Location = new Point(ManagerUi_P10.Location.X - ManagerUi_Pickup.Width - 4, 3);
+            //ManagerUi_P9.Location = new Point(ManagerUi_Pickup.Location.X - 6, 3);
+            //ManagerUi_Doing.Location = new Point(ManagerUi_P9.Location.X - ManagerUi_Doing.Width - 4, 3);
+            //ManagerUi_P8.Location = new Point(ManagerUi_Doing.Location.X - 6, 3);
+            //ManagerUi_Posible.Location = new Point(ManagerUi_P8.Location.X - ManagerUi_Posible.Width - 4, 3);
+            //ManagerUi_P7.Location = new Point(ManagerUi_Posible.Location.X - 6, 3);
+            //ManagerUi_Receipt.Location = new Point(ManagerUi_P7.Location.X - ManagerUi_Receipt.Width - 4, 3);
+            //ManagerUi_P6.Location = new Point(ManagerUi_Receipt.Location.X - 6, 3);
+            //ManagerUi_Reservation.Location = new Point(ManagerUi_P6.Location.X - ManagerUi_Reservation.Width - 4, 3);
+            //ManagerUi_P5.Location = new Point(ManagerUi_Reservation.Location.X - 6, 3);
+            //ManagerUi_Hold.Location = new Point(ManagerUi_P5.Location.X - ManagerUi_Hold.Width - 4, 3);
+            //ManagerUi_P4.Location = new Point(ManagerUi_Hold.Location.X - 6, 3);
+            //ManagerUi_All.Location = new Point(ManagerUi_P4.Location.X - ManagerUi_All.Width - 4, 3);
         }
         private void LogoutBtn_Click(object sender, EventArgs e)
         {
@@ -968,14 +983,6 @@ namespace GogoRCustomerManager
         private void ProgramNotiBtn_Click(object sender, EventArgs e)
         {
             OffPopup();
-            if (notiPageOpen)
-            {
-                tabControl1.SelectedIndex = notiPage_Num;
-            }
-            else
-            {
-                CreateTabPage("Noti");
-            }
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -1024,19 +1031,19 @@ namespace GogoRCustomerManager
             string searchText = null;
             if (!string.IsNullOrEmpty(SearchText.Text))
             {
-                    searchText = "(rBikeNumber LIKE '%" + SearchText.Text +"%"+
-                                "' OR rPhoneNumer LIKE '%" + SearchText.Text + "%')";
+                    searchText = "(rBikeNumber LIKE N'" + SearchText.Text +""+
+                                "' OR rPhoneNumer LIKE N'" + SearchText.Text + "')";
             }
 
             // Construct final query
             string whereClause = "";
             if (conSearch != null)
             {
-                whereClause = "WHERE ";
+                whereClause = "WHERE";
             }
             if (searchText != null)
             {
-                whereClause = "WHERE ";
+                whereClause = "WHERE";
             }
             //if (conAgency != null) whereClause += conjunction + " " + conAgency;
             //if (conIsWork != null) whereClause += conjunction + " " + conIsWork;
@@ -1050,12 +1057,16 @@ namespace GogoRCustomerManager
             // Execute query and handle results
             try
             {
-                connection.Open();
+                connection2.Open();
                 MySqlCommand command = new MySqlCommand(selectQuery2, connection2);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
+                for(int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    Console.WriteLine(dataTable.Rows[i]["rBikeNumber"]);
+                }
                 dataTable.Columns.Add("순번", typeof(int));
 
                 //Assign row numbers
@@ -1080,240 +1091,10 @@ namespace GogoRCustomerManager
             }
             finally
             {
-                connection.Close();
+                connection2.Close();
                 OffPopup();
             }
         }
-
-        //private void MemSearchBtn_Click(object sender, EventArgs e)
-        //{
-        //    string consearch = "'" + ConSearch.Text + "'";
-        //    string conAgency = " rBikeNumber = '" + ConAgency.Text + "' ";
-        //    string con = null;
-        //    string conisWork = " isWork = " + Convert_isWork();
-        //    string searchText;
-        //    string WAnd = " AND";
-        //    string SAnd = " AND";
-        //    string CAnd = " AND";
-        //    string DAnd = " AND";
-        //    string Cwhwre = "WHERE";
-
-        //    if ((ConSearch.Text == null || ConSearch.Text.Length == 0) && Condition.Text.Length != 0)
-        //    {
-        //        MessageBox.Show("검색 조건을 기입해주세요!");
-        //        ConSearch.Focus();
-        //        return;
-        //    }
-
-        //    QueryAgency = ConAgency.Text;
-        //    QueryisWork = ConisWork.Text;
-        //    QueryCon = Condition.Text;
-        //    QueryConSearch = ConSearch.Text;
-        //    QuerySearch = SearchText.Text;
-
-        //    if (ConSearch.Text.Length == 0)
-        //    {
-        //        consearch = null;
-        //    }
-        //    if (ConSearch.Text.Length == 0 && (ConisWork.Text.Length == 0 || ConisWork.Text == "전체"))
-        //    {
-        //        WAnd = null;
-        //        if (ConAgency.Text.Length == 0 || ConAgency.Text == "전체")
-        //        {
-        //            SAnd = null;
-        //            if (SearchText.Text.Length == 0)
-        //            {
-        //                //Cwhwre = null;
-        //                DAnd = null;
-        //            }
-        //        }
-        //    }
-        //    if (ConisWork.Text.Length == 0 || ConisWork.Text == "전체")
-        //    {
-        //        conisWork = null;
-
-        //        WAnd = null;
-        //    }
-        //    if (ConAgency.Text.Length == 0 || ConAgency.Text == "전체")
-        //    {
-        //        conAgency = null;
-        //        WAnd = null;
-        //        if (ConisWork.Text.Length == 0 || ConisWork.Text == "전체")
-        //        {
-        //            CAnd = null;
-        //        }
-        //    }
-        //    if (Condition.Text == "사원번호")
-        //    {
-        //        con = CAnd + " co_Member_Num =" + consearch + "";
-        //    }
-        //    if (Condition.Text == "권한 등급")
-        //    {
-        //        consearch = Convert_PowerLevel();
-        //        con = CAnd + " powerLevel =" + consearch + "";
-        //    }
-        //    if (Condition.Text == "이름")
-        //    {
-        //        con = CAnd + " name =" + consearch + "";
-        //    }
-        //    if (Condition.Text == "아이디")
-        //    {
-        //        con = CAnd + " id =" + consearch + "";
-        //    }
-        //    if (Condition.Text == "비밀번호")
-        //    {
-        //        con = CAnd + " pw=" + consearch + "";
-        //    }
-        //    else if (Condition.Text == "주거래 은행")
-        //    {
-        //        con = CAnd + " Bank_name =" + consearch + "";
-        //    }
-        //    else if (Condition.Text == "예금주")
-        //    {
-        //        con = CAnd + " Bank_Account_Holder =" + consearch + "";
-        //    }
-        //    if (SearchText.Text.Length == 0)
-        //    {
-        //        SAnd = null;
-        //        searchText = null;
-        //    }
-        //    else
-        //    {
-        //        if (SearchText.Text == "관리자" || SearchText.Text == "팀장" || SearchText.Text == "사원")
-        //        {
-        //            if (SearchText.Text == "관리자")
-        //            {
-        //                searchText = " " + SAnd + " (powerLevel = 1 ";
-        //            }
-        //            else if (ConSearch.Text == "팀장")
-        //            {
-        //                searchText = " " + SAnd + " (powerLevel = 2 ";
-        //            }
-        //            else if (ConSearch.Text == "사원")
-        //            {
-        //                searchText = " " + SAnd + " (powerLevel = 3 ";
-        //            }
-        //        }
-        //        searchText = " " + SAnd +
-        //            " (name = '" + SearchText.Text +
-        //            "' or id = '" + SearchText.Text +
-        //            "' or id = '" + SearchText.Text +
-        //            "' or co_Member_Num = '" + SearchText.Text +
-        //            "' or pw = '" + SearchText.Text +
-        //            "' or SSN = '" + SearchText.Text +
-        //            "' or Bank_name = '" + SearchText.Text +
-        //            "' or Bank_Account_Num = '" + SearchText.Text +
-        //            "' or Bank_Account_Holder = '" + SearchText.Text +
-        //            "' or co_Join = '" + SearchText.Text +
-        //            "' or co_Leave = '" + SearchText.Text + "')";
-        //    }
-        //    if (ConAgency.Text == "" && ConisWork.Text == "" && Condition.Text == "" && ConSearch.Text == "" && SearchText.Text == "")
-        //    {
-        //        string selectQuery = "SELECT *, CASE " +
-        //            "WHEN isWork='Y' THEN '근무' " +
-        //            "WHEN isWork='B' THEN '근무 전' " +
-        //            "WHEN isWork='T' THEN '휴가' " +
-        //            "WHEN isWork='L' THEN '퇴사' " +
-        //            "END as isWorkConvert , " +
-        //            "CASE  " +
-        //            "WHEN powerLevel='1' THEN '관리자' " +
-        //            "WHEN powerLevel='2' THEN '팀장' " +
-        //            "WHEN powerLevel='3' THEN '사원' " +
-        //            "WHEN powerLevel='N' THEN '오류' " +
-        //            "END as rPhoneNumber " +
-        //            "FROM userinformation" +
-        //            " WHERE isDeleted = 0;";
-        //        Console.WriteLine(selectQuery);
-        //        connection.Open();
-        //        MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
-
-        //        try
-        //        {
-        //            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter();
-        //            mySqlDataAdapter.SelectCommand = Selectcommand;
-        //            DataTable dbDataset = new DataTable();
-        //            mySqlDataAdapter.Fill(dbDataset);
-        //            BindingSource bindingSource = new BindingSource();
-
-        //            bindingSource.DataSource = dbDataset;
-        //            DBData.DataSource = bindingSource;
-        //            mySqlDataAdapter.Update(dbDataset);
-        //            SetDB();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            connection.Close();
-        //            Console.WriteLine(ex);
-        //        }
-        //        finally
-        //        {
-        //            connection.Close();
-
-        //            DBData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        string selectQuery = "SELECT *, CASE " +
-        //                                "WHEN isWork='Y' THEN '근무' " +
-        //                                "WHEN isWork='B' THEN '근무 전' " +
-        //                                "WHEN isWork='T' THEN '휴가' " +
-        //                                "WHEN isWork='L' THEN '퇴사' " +
-        //                                "END as isWorkConvert , " +
-        //                                "CASE  " +
-        //                                "WHEN powerLevel='1' THEN '관리자' " +
-        //                                "WHEN powerLevel='2' THEN '팀장' " +
-        //                                "WHEN powerLevel='3' THEN '사원' " +
-        //                                "WHEN powerLevel='N' THEN '오류' " +
-        //                                "END as rPhoneNumber " +
-        //                                "FROM userinformation " +
-        //                                Cwhwre + conAgency +
-        //                                WAnd + conisWork +
-        //                                "" + con + "" +
-        //                                "" + searchText + "" +
-        //                                DAnd + " isDeleted = 0;";
-        //        Console.WriteLine(selectQuery);
-
-
-
-        //        connection.Open();
-        //        MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
-
-        //        try
-        //        {
-        //            MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter();
-        //            mySqlDataAdapter.SelectCommand = Selectcommand;
-        //            DataTable dbDataset = new DataTable();
-        //            mySqlDataAdapter.Fill(dbDataset);
-        //            BindingSource bindingSource = new BindingSource();
-
-        //            bindingSource.DataSource = dbDataset;
-        //            DBData.DataSource = bindingSource;
-        //            mySqlDataAdapter.Update(dbDataset);
-
-        //            DBData.CellFormatting += new DataGridViewCellFormattingEventHandler(this.DBData_CellFormatting);
-        //            SetDB();
-        //        }
-        //        catch
-        //        {
-        //            connection.Close();
-        //            MessageBox.Show("결과가 없습니다!");
-
-        //        }
-        //        finally
-        //        {
-        //            connection.Close();
-
-        //            DBData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-        //            SetDB();
-
-        //        }
-        //        OffPopup();
-        //    }
-        //}
-
         public void ResetMem_Click(object sender, EventArgs e)
         {
             ConAgency.Text = "전체";
@@ -1324,6 +1105,54 @@ namespace GogoRCustomerManager
             MemSearchBtn_Click(null, null);
             
             OffPopup();
+        }
+        private void PageLoad()
+        {
+            string main_biketab = "null";
+            string main_notitab = "null";
+
+            string selectQuery = null;
+            ipSearch();
+
+            try
+            {
+                connection2.Open();
+                selectQuery = "select * from gogo_manager_tabstate where account_Num = " + MemberNum +
+                                                        " and ip = '" + localIP +
+                                                        "' ORDER BY time DESC LIMIT 1;";
+                MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection2);
+                MySqlDataReader userAccount = Selectcommand.ExecuteReader();
+                ArrayList load = new ArrayList();
+                while (userAccount.Read())
+                {
+                    load.Add(userAccount["main_notitab"]);
+                    load.Add(userAccount["main_biketab"]);
+                }
+
+                main_notitab = load[0].ToString();
+                main_biketab = load[1].ToString();
+            }
+            catch (Exception a)
+            {
+                connection2.Close();
+                Console.WriteLine("qiwjeqow");
+                //CreateTabPage("Noti");
+                Console.WriteLine(a);
+                return;
+            }
+            finally
+            {
+                connection2.Close();
+            }
+            if (main_notitab == "True")
+            {
+                CreateTabPage("Noti");
+            }
+
+            if (main_biketab == "True")
+            {
+                CreateTabPage("BikePage");
+            }
         }
         private void CreateAccount_Click(object sender, EventArgs e)
         {
@@ -1342,44 +1171,44 @@ namespace GogoRCustomerManager
         }
         private void Delete_Column_Click(object sender, EventArgs e)
         {
-            ManagerCheck showmainform = new ManagerCheck(DeleteMemBtn.Name, this);
-            showmainform.ShowDialog();
-            DataGridViewRow dgvr = DBData.CurrentRow;
-            DataRow row = (dgvr.DataBoundItem as DataRowView).Row;
+            //ManagerCheck showmainform = new ManagerCheck(DeleteMemBtn.Name, this);
+            //showmainform.ShowDialog();
+            //DataGridViewRow dgvr = DBData.CurrentRow;
+            //DataRow row = (dgvr.DataBoundItem as DataRowView).Row;
 
 
-            input_Name = row["name"].ToString();
-            input_Num = row["co_Member_Num"].ToString();
-            if (islogin)
-            {
-                if (MessageBox.Show("정말 회원정보를 삭제하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes && input_Num != null)
-                {
+            //input_Name = row["name"].ToString();
+            //input_Num = row["co_Member_Num"].ToString();
+            //if (islogin)
+            //{
+            //    if (MessageBox.Show("정말 회원정보를 삭제하시겠습니까?", "주의", MessageBoxButtons.YesNo) == DialogResult.Yes && input_Num != null)
+            //    {
 
-                    try
-                    {
-                        connection.Open();
-                        string selectQuery = "UPDATE userinformation SET isDeleted = 1 where co_Member_Num = '" + input_Num + "';";
-                        MySqlCommand insertData = new MySqlCommand(selectQuery, connection);
-                        insertData.ExecuteNonQuery();
-                        MessageBox.Show(input_Name + "님의 회원정보가 삭제되었습니다");
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                        MessageBox.Show("실패");
-                        connection.Close();
+            //        try
+            //        {
+            //            connection.Open();
+            //            string selectQuery = "UPDATE userinformation SET isDeleted = 1 where co_Member_Num = '" + input_Num + "';";
+            //            MySqlCommand insertData = new MySqlCommand(selectQuery, connection);
+            //            insertData.ExecuteNonQuery();
+            //            MessageBox.Show(input_Name + "님의 회원정보가 삭제되었습니다");
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            Console.WriteLine(ex);
+            //            MessageBox.Show("실패");
+            //            connection.Close();
 
-                    }
-                    finally
-                    {
-                        connection.Close();
-                        islogin = false;
-                        ResetMem_Click(sender, e);
-                    }
-                }
-                input_Num = null;
-                input_Name = null;
-            }
+            //        }
+            //        finally
+            //        {
+            //            connection.Close();
+            //            islogin = false;
+            //            ResetMem_Click(sender, e);
+            //        }
+            //    }
+            //    input_Num = null;
+            //    input_Name = null;
+            //}
         }
         public void SetisLogin(bool b)
         {
@@ -1404,7 +1233,7 @@ namespace GogoRCustomerManager
             int mem;
             int noti;
 
-            if (memberPageOpen)
+            if (bikePageOpen)
                 mem = 1;
             else
                 mem = 0;
@@ -1413,207 +1242,39 @@ namespace GogoRCustomerManager
             else
                 noti = 0;
 
-            string _queryAgency;
-            string _queryisWork;
-            string _queryCon;
-            string _queryConSearch;
-            string _querySearch;
-
             ipSearch();
 
             DateTime date = DateTime.Now;
             date.ToString("yyyy-MM-dd H:mm:ss");
 
-            if (QueryAgency == null)
-                _queryAgency = "','" + "null";
-            else if (QueryAgency.Length == 0)
-                _queryAgency = "','" + "null";
-            else if (QueryAgency == "전체")
-                _queryAgency = "','" + "null";
-            else
-                _queryAgency = "','" + QueryAgency;
-
-            if (QueryisWork == null)
-                _queryisWork = "','" + "null";
-            else if (QueryisWork.Length == 0)
-                _queryisWork = "','" + "null";
-            else if (QueryisWork == "전체")
-                _queryisWork = "','" + "null";
-            else
-                _queryisWork = "','" + QueryisWork;
-
-            if (QueryCon == null)
-                _queryCon = "','" + "null";
-            else if (QueryCon.Length == 0)
-                _queryCon = "','" + "null";
-            else
-                _queryCon = "','" + QueryCon;
-
-
-
-            if (QueryConSearch == null)
-                _queryConSearch = "','" + "null";
-            else if (QueryConSearch.Length == 0)
-                _queryConSearch = "','" + "null";
-            else
-                _queryConSearch = "','" + QueryConSearch;
-
-            if (QuerySearch == null)
-                _querySearch = "','" + "null";
-            else if (QuerySearch.Length == 0)
-                _querySearch = "','" + "null";
-            else
-                _querySearch = "','" + QuerySearch;
-
             try
             {
-                connection.Open();
-                string selectQuery = "INSERT INTO usertabstate (co_Member_Num, insertedtime, ip, " +
-                                                               "maintab_member, maintab_Noti, " +
-                                                               "maintab_member_query_Agency, " +
-                                                               "maintab_member_query_isWork, " +
-                                                               "maintab_member_query_Condition," +
-                                                               "maintab_member_query_ConSearch, " +
-                                                               "maintab_member_query_SearchText)" +
+                connection2.Open();
+                string selectQuery = "INSERT INTO gogo_manager_tabstate (account_Num, time, ip, " +
+                                                               "main_biketab, main_notitab) " +
                     "VALUES ('" + MemberNum +
                             "','" + date.ToString("yyyy-MM-dd H:mm:ss") +
                             "','" + localIP +
                             "','" + mem +
-                            "','" + noti +
-                            _queryAgency +
-                            _queryisWork +
-                            _queryCon +
-                            _queryConSearch +
-                            _querySearch + "');";
-                MySqlCommand insertData = new MySqlCommand(selectQuery, connection);
+                            "','" + noti + "');";
+
+                Console.WriteLine(selectQuery);
+                MySqlCommand insertData = new MySqlCommand(selectQuery, connection2);
                 insertData.ExecuteNonQuery();
                 MessageBox.Show("현재 화면이 저장되었습니다.");
             }
             catch (Exception w)
             {
 
-                connection.Close();
+                connection2.Close();
                 Console.WriteLine(w);
             }
             finally
             {
-                connection.Close();
+                connection2.Close();
             }
         }
-        private void PageLoad()
-        {
-            CreateTabPage("Noti");
-            //string maintab_member = "null";
-            //string maintab_Noti = "null";
-            //string maintab_member_query_Agency = "null";
-            //string maintab_member_query_isWork = "null";
-            //string maintab_member_query_Condition = "null";
-            //string maintab_member_query_ConSearch = "null";
-            //string maintab_member_query_SearchText = "null";
-
-            //string selectQuery = null;
-
-            //ipSearch();
-
-            //try
-            //{
-            //    connection.Open();
-            //    selectQuery = "select * from usertabstate where co_Member_Num = " + MemberNum +
-            //                                            " and ip = '" + localIP +
-            //                                            "' ORDER BY insertedtime DESC LIMIT 1;";
-            //    Console.WriteLine(selectQuery);
-            //    MySqlCommand Selectcommand = new MySqlCommand(selectQuery, connection);
-            //    MySqlDataReader userAccount = Selectcommand.ExecuteReader();
-            //    ArrayList load = new ArrayList();
-
-            //    Console.WriteLine(userAccount["maintab_Noti"]);
-            //    while (userAccount.Read())
-            //    {
-            //        load.Add(userAccount["maintab_Noti"]);
-            //        load.Add(userAccount["maintab_member"]);
-            //        load.Add(userAccount["maintab_member_query_Agency"]);
-            //        load.Add(userAccount["maintab_member_query_isWork"]);
-            //        load.Add(userAccount["maintab_member_query_Condition"]);
-            //        load.Add(userAccount["maintab_member_query_ConSearch"]);
-            //        load.Add(userAccount["maintab_member_query_SearchText"]);
-            //    }
-
-            //    maintab_Noti = load[0].ToString();
-            //    maintab_member = load[1].ToString();
-            //    maintab_member_query_Agency = load[2].ToString();
-            //    maintab_member_query_isWork = load[3].ToString();
-            //    maintab_member_query_Condition = load[4].ToString();
-            //    maintab_member_query_ConSearch = load[5].ToString();
-            //    maintab_member_query_SearchText = load[6].ToString();
-            //}
-            //catch (Exception a)
-            //{
-            //    connection.Close();
-            //    CreateTabPage("Noti");
-            //    Console.WriteLine(a);
-            //    return;
-            //}
-            //finally
-            //{
-            //    connection.Close();
-            //}
-            //if (maintab_Noti == "True")
-            //{
-            //    CreateTabPage("Noti");
-            //}
-
-            //if (maintab_member == "True")
-            //{
-            //    CreateTabPage("MemberPage");
-
-            //    if (maintab_member_query_Agency.Length == 0)
-            //    {
-            //        ConAgency.Text = "전체";
-            //    }
-            //    else if (maintab_member_query_Agency == "null")
-            //        ConAgency.Text = "전체";
-            //    else
-            //        ConAgency.Text = maintab_member_query_Agency;
-
-            //    if (maintab_member_query_isWork.Length == 0)
-            //    {
-            //        ConisWork.Text = "전체";
-            //    }
-            //    else if (maintab_member_query_isWork == "null")
-            //        ConisWork.Text = "전체";
-            //    else
-            //        ConisWork.Text = maintab_member_query_isWork;
-
-            //    if (maintab_member_query_Condition.Length == 0)
-            //    {
-            //        Condition.Text = "";
-            //    }
-            //    else if (maintab_member_query_Condition == "null")
-            //        Condition.Text = "";
-            //    else
-            //        Condition.Text = maintab_member_query_Condition;
-
-            //    if (maintab_member_query_ConSearch.Length == 0)
-            //    {
-            //        ConSearch.Text = "";
-            //    }
-            //    else if (maintab_member_query_ConSearch == "null")
-            //        ConSearch.Text = "";
-            //    else
-            //        ConSearch.Text = maintab_member_query_ConSearch;
-
-            //    if (maintab_member_query_SearchText.Length == 0)
-            //    {
-            //        SearchText.Text = "";
-            //    }
-            //    else if (maintab_member_query_SearchText == "null")
-            //        SearchText.Text = "";
-            //    else
-            //        SearchText.Text = maintab_member_query_SearchText;
-            //    MemSearchBtn_Click(null, null);
-                
-            //}
-        }
+        
 
         private void webView2_Click(object sender, EventArgs e)
         {

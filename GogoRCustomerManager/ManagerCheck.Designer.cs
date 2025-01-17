@@ -105,8 +105,7 @@
             // 
             // ManagerCheck
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(181, 159);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.label2);

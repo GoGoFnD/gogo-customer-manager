@@ -34,7 +34,6 @@
             this.id = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -107,19 +106,6 @@
             this.LoginButton.Click += new System.EventHandler(this.Login_button);
             this.LoginButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.None_Beep_Sound);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(628, 366);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(65, 14);
-            this.linkLabel1.TabIndex = 5;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "계정 만들기";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -131,11 +117,10 @@
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(756, 494);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pw);
@@ -163,7 +148,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button LoginButton;
         private System.Windows.Forms.TextBox pw;
-        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

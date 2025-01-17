@@ -37,6 +37,8 @@ namespace GogoRCustomerManager
             DatePickerSet();
             GMapSetting();
             timeunitSetting();
+
+            AutoScaleMode = AutoScaleMode.Dpi;
         }
         private void timeunitSetting()
         {

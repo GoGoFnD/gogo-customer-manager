@@ -48,6 +48,7 @@ namespace GogoRCustomerManager
             //var marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red_dot);
             //markerOverlay.Markers.Add(marker);
             //App.Overlays.Add(markerOverlay);
+            //App.Overlays.Add(markerOverlay);
             UpdateVisibleMarkers();
         }
         public void AddSelectedMarker(double lat, double lng)

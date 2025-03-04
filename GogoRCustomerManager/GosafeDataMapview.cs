@@ -343,6 +343,7 @@ namespace GogoRCustomerManager
         }
         private void SensorDataSelected()
         {
+
             string lat = SensorDataGrid.SelectedRows[0].Cells[3].Value.ToString();
             string lng = SensorDataGrid.SelectedRows[0].Cells[4].Value.ToString();
             gMapControl.Position = new PointLatLng(Double.Parse(lat), Double.Parse(lng));

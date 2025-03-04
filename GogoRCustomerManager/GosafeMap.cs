@@ -53,11 +53,13 @@ namespace GogoRCustomerManager
         public void AddSelectedMarker(double lat, double lng)
         {
             selectedMarkOverlay.Markers.Clear();
+            App.Overlays.Clear();
             var point = new PointLatLng(lat, lng);
             AllMarkers.Add(point); // 마커 위치를 리스트에 추가
             var marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.blue_dot);
             selectedMarkOverlay.Markers.Add(marker);
             App.Overlays.Add(selectedMarkOverlay);
+
         }
         public void RemoveMarkers()
         {

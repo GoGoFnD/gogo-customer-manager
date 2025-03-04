@@ -178,7 +178,7 @@
             this.SensorDataGridTitle.AutoSize = true;
             this.SensorDataGridTitle.BackColor = System.Drawing.Color.Transparent;
             this.SensorDataGridTitle.Font = new System.Drawing.Font("맑은 고딕", 7F);
-            this.SensorDataGridTitle.Location = new System.Drawing.Point(1, 102);
+            this.SensorDataGridTitle.Location = new System.Drawing.Point(3, 99);
             this.SensorDataGridTitle.Name = "SensorDataGridTitle";
             this.SensorDataGridTitle.Size = new System.Drawing.Size(45, 12);
             this.SensorDataGridTitle.TabIndex = 7;

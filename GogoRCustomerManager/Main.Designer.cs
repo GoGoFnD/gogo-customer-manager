@@ -45,14 +45,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ConSearch = new System.Windows.Forms.TextBox();
             this.SearchText = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.Condition = new System.Windows.Forms.ComboBox();
-            this.ConisWork = new System.Windows.Forms.ComboBox();
-            this.ConAgency = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.FMessegeBtn = new FontAwesome.Sharp.IconButton();
             this.NApplyBtn = new FontAwesome.Sharp.IconButton();
@@ -63,45 +58,13 @@
             this.RControlBtn3 = new FontAwesome.Sharp.IconButton();
             this.RControlBtn2 = new FontAwesome.Sharp.IconButton();
             this.RControlBtn1 = new FontAwesome.Sharp.IconButton();
-            this.DeleteMemBtn = new FontAwesome.Sharp.IconButton();
             this.MemSearchBtn = new FontAwesome.Sharp.IconButton();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.ManagerUi_Connection = new System.Windows.Forms.Label();
-            this.ManagerUi_Agency = new System.Windows.Forms.Label();
-            this.ManagerUi_Savedmoney = new System.Windows.Forms.Label();
-            this.ManagerUi_Account = new System.Windows.Forms.Label();
-            this.ManagerUi_P1 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P2 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P3 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P4 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P5 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P6 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P7 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P8 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P9 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P10 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P11 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P12 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P13 = new System.Windows.Forms.Panel();
-            this.ManagerUi_P14 = new System.Windows.Forms.Panel();
-            this.ManagerUi_All = new System.Windows.Forms.Label();
-            this.ManagerUi_Hold = new System.Windows.Forms.Label();
-            this.ManagerUi_Reservation = new System.Windows.Forms.Label();
-            this.ManagerUi_Receipt = new System.Windows.Forms.Label();
-            this.ManagerUi_Posible = new System.Windows.Forms.Label();
-            this.ManagerUi_Doing = new System.Windows.Forms.Label();
-            this.ManagerUi_Pickup = new System.Windows.Forms.Label();
-            this.ManagerUi_Succece = new System.Windows.Forms.Label();
-            this.ManagerUi_Cancel = new System.Windows.Forms.Label();
-            this.ManagerUi_Accident = new System.Windows.Forms.Label();
-            this.ManagerUi_Inquire = new System.Windows.Forms.Label();
             this.ManagerUi = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.ProgramPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel3.SuspendLayout();
             this.ManagerUi.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -414,33 +377,12 @@
             this.SearchText.Size = new System.Drawing.Size(100, 21);
             this.SearchText.TabIndex = 0;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.Location = new System.Drawing.Point(0, 0);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(104, 24);
-            this.checkBox1.TabIndex = 0;
-            // 
             // Condition
             // 
             this.Condition.Location = new System.Drawing.Point(0, 0);
             this.Condition.Name = "Condition";
             this.Condition.Size = new System.Drawing.Size(121, 20);
             this.Condition.TabIndex = 0;
-            // 
-            // ConisWork
-            // 
-            this.ConisWork.Location = new System.Drawing.Point(0, 0);
-            this.ConisWork.Name = "ConisWork";
-            this.ConisWork.Size = new System.Drawing.Size(121, 20);
-            this.ConisWork.TabIndex = 0;
-            // 
-            // ConAgency
-            // 
-            this.ConAgency.Location = new System.Drawing.Point(0, 0);
-            this.ConAgency.Name = "ConAgency";
-            this.ConAgency.Size = new System.Drawing.Size(121, 20);
-            this.ConAgency.TabIndex = 0;
             // 
             // label7
             // 
@@ -455,20 +397,6 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 23);
             this.label6.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 23);
-            this.label5.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 23);
-            this.label4.TabIndex = 0;
             // 
             // dataGridView1
             // 
@@ -641,16 +569,6 @@
             this.RControlBtn1.UseVisualStyleBackColor = false;
             this.RControlBtn1.Click += new System.EventHandler(this.RControlBtn1_Click);
             // 
-            // DeleteMemBtn
-            // 
-            this.DeleteMemBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.DeleteMemBtn.IconColor = System.Drawing.Color.Black;
-            this.DeleteMemBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.DeleteMemBtn.Location = new System.Drawing.Point(0, 0);
-            this.DeleteMemBtn.Name = "DeleteMemBtn";
-            this.DeleteMemBtn.Size = new System.Drawing.Size(75, 23);
-            this.DeleteMemBtn.TabIndex = 0;
-            // 
             // MemSearchBtn
             // 
             this.MemSearchBtn.IconChar = FontAwesome.Sharp.IconChar.None;
@@ -671,350 +589,14 @@
             this.panel4.Size = new System.Drawing.Size(1201, 3);
             this.panel4.TabIndex = 1001;
             // 
-            // ManagerUi_Connection
-            // 
-            this.ManagerUi_Connection.AutoSize = true;
-            this.ManagerUi_Connection.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Connection.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Connection.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Connection.Location = new System.Drawing.Point(3, 3);
-            this.ManagerUi_Connection.Name = "ManagerUi_Connection";
-            this.ManagerUi_Connection.Size = new System.Drawing.Size(55, 14);
-            this.ManagerUi_Connection.TabIndex = 1002;
-            this.ManagerUi_Connection.Text = "통신:연결";
-            // 
-            // ManagerUi_Agency
-            // 
-            this.ManagerUi_Agency.AutoSize = true;
-            this.ManagerUi_Agency.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Agency.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Agency.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Agency.Location = new System.Drawing.Point(72, 3);
-            this.ManagerUi_Agency.Name = "ManagerUi_Agency";
-            this.ManagerUi_Agency.Size = new System.Drawing.Size(135, 14);
-            this.ManagerUi_Agency.TabIndex = 1002;
-            this.ManagerUi_Agency.Text = "대리점:고고라이더스 본사";
-            // 
-            // ManagerUi_Savedmoney
-            // 
-            this.ManagerUi_Savedmoney.AutoSize = true;
-            this.ManagerUi_Savedmoney.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Savedmoney.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Savedmoney.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Savedmoney.Location = new System.Drawing.Point(217, 3);
-            this.ManagerUi_Savedmoney.Name = "ManagerUi_Savedmoney";
-            this.ManagerUi_Savedmoney.Size = new System.Drawing.Size(115, 14);
-            this.ManagerUi_Savedmoney.TabIndex = 1002;
-            this.ManagerUi_Savedmoney.Text = "적립금:105,865,620";
-            // 
-            // ManagerUi_Account
-            // 
-            this.ManagerUi_Account.AutoSize = true;
-            this.ManagerUi_Account.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Account.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Account.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Account.Location = new System.Drawing.Point(360, 3);
-            this.ManagerUi_Account.Name = "ManagerUi_Account";
-            this.ManagerUi_Account.Size = new System.Drawing.Size(66, 14);
-            this.ManagerUi_Account.TabIndex = 1002;
-            this.ManagerUi_Account.Text = "계정:고고라";
-            // 
-            // ManagerUi_P1
-            // 
-            this.ManagerUi_P1.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P1.Location = new System.Drawing.Point(7, 3);
-            this.ManagerUi_P1.Name = "ManagerUi_P1";
-            this.ManagerUi_P1.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P1.TabIndex = 1003;
-            // 
-            // ManagerUi_P2
-            // 
-            this.ManagerUi_P2.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P2.Location = new System.Drawing.Point(211, 3);
-            this.ManagerUi_P2.Name = "ManagerUi_P2";
-            this.ManagerUi_P2.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P2.TabIndex = 1004;
-            // 
-            // ManagerUi_P3
-            // 
-            this.ManagerUi_P3.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P3.Location = new System.Drawing.Point(356, 3);
-            this.ManagerUi_P3.Name = "ManagerUi_P3";
-            this.ManagerUi_P3.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P3.TabIndex = 1004;
-            // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.panel3.Controls.Add(this.ManagerUi_P4);
-            this.panel3.Controls.Add(this.ManagerUi_P5);
-            this.panel3.Controls.Add(this.ManagerUi_P6);
-            this.panel3.Controls.Add(this.ManagerUi_P7);
-            this.panel3.Controls.Add(this.ManagerUi_P8);
-            this.panel3.Controls.Add(this.ManagerUi_P9);
-            this.panel3.Controls.Add(this.ManagerUi_P10);
-            this.panel3.Controls.Add(this.ManagerUi_P11);
-            this.panel3.Controls.Add(this.ManagerUi_P12);
-            this.panel3.Controls.Add(this.ManagerUi_P13);
-            this.panel3.Controls.Add(this.ManagerUi_P14);
-            this.panel3.Controls.Add(this.ManagerUi_All);
-            this.panel3.Controls.Add(this.ManagerUi_Hold);
-            this.panel3.Controls.Add(this.ManagerUi_Reservation);
-            this.panel3.Controls.Add(this.ManagerUi_Receipt);
-            this.panel3.Controls.Add(this.ManagerUi_Posible);
-            this.panel3.Controls.Add(this.ManagerUi_Doing);
-            this.panel3.Controls.Add(this.ManagerUi_Pickup);
-            this.panel3.Controls.Add(this.ManagerUi_Succece);
-            this.panel3.Controls.Add(this.ManagerUi_Cancel);
-            this.panel3.Controls.Add(this.ManagerUi_Accident);
-            this.panel3.Controls.Add(this.ManagerUi_Inquire);
             this.panel3.Location = new System.Drawing.Point(623, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(576, 23);
             this.panel3.TabIndex = 1005;
-            // 
-            // ManagerUi_P4
-            // 
-            this.ManagerUi_P4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_P4.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P4.Location = new System.Drawing.Point(83, 4);
-            this.ManagerUi_P4.Name = "ManagerUi_P4";
-            this.ManagerUi_P4.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P4.TabIndex = 1026;
-            // 
-            // ManagerUi_P5
-            // 
-            this.ManagerUi_P5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_P5.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P5.Location = new System.Drawing.Point(129, 4);
-            this.ManagerUi_P5.Name = "ManagerUi_P5";
-            this.ManagerUi_P5.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P5.TabIndex = 1024;
-            // 
-            // ManagerUi_P6
-            // 
-            this.ManagerUi_P6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_P6.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P6.Location = new System.Drawing.Point(175, 4);
-            this.ManagerUi_P6.Name = "ManagerUi_P6";
-            this.ManagerUi_P6.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P6.TabIndex = 1023;
-            // 
-            // ManagerUi_P7
-            // 
-            this.ManagerUi_P7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_P7.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P7.Location = new System.Drawing.Point(221, 4);
-            this.ManagerUi_P7.Name = "ManagerUi_P7";
-            this.ManagerUi_P7.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P7.TabIndex = 1022;
-            // 
-            // ManagerUi_P8
-            // 
-            this.ManagerUi_P8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_P8.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P8.Location = new System.Drawing.Point(267, 4);
-            this.ManagerUi_P8.Name = "ManagerUi_P8";
-            this.ManagerUi_P8.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P8.TabIndex = 1021;
-            // 
-            // ManagerUi_P9
-            // 
-            this.ManagerUi_P9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_P9.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P9.Location = new System.Drawing.Point(313, 4);
-            this.ManagerUi_P9.Name = "ManagerUi_P9";
-            this.ManagerUi_P9.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P9.TabIndex = 1020;
-            // 
-            // ManagerUi_P10
-            // 
-            this.ManagerUi_P10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_P10.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P10.Location = new System.Drawing.Point(359, 4);
-            this.ManagerUi_P10.Name = "ManagerUi_P10";
-            this.ManagerUi_P10.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P10.TabIndex = 1019;
-            // 
-            // ManagerUi_P11
-            // 
-            this.ManagerUi_P11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_P11.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P11.Location = new System.Drawing.Point(405, 4);
-            this.ManagerUi_P11.Name = "ManagerUi_P11";
-            this.ManagerUi_P11.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P11.TabIndex = 1018;
-            // 
-            // ManagerUi_P12
-            // 
-            this.ManagerUi_P12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_P12.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P12.Location = new System.Drawing.Point(451, 4);
-            this.ManagerUi_P12.Name = "ManagerUi_P12";
-            this.ManagerUi_P12.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P12.TabIndex = 1017;
-            // 
-            // ManagerUi_P13
-            // 
-            this.ManagerUi_P13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_P13.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P13.Location = new System.Drawing.Point(525, 4);
-            this.ManagerUi_P13.Name = "ManagerUi_P13";
-            this.ManagerUi_P13.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P13.TabIndex = 1025;
-            // 
-            // ManagerUi_P14
-            // 
-            this.ManagerUi_P14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_P14.BackColor = System.Drawing.Color.White;
-            this.ManagerUi_P14.Location = new System.Drawing.Point(575, 3);
-            this.ManagerUi_P14.Name = "ManagerUi_P14";
-            this.ManagerUi_P14.Size = new System.Drawing.Size(1, 15);
-            this.ManagerUi_P14.TabIndex = 1016;
-            // 
-            // ManagerUi_All
-            // 
-            this.ManagerUi_All.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_All.AutoSize = true;
-            this.ManagerUi_All.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_All.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_All.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_All.Location = new System.Drawing.Point(39, 4);
-            this.ManagerUi_All.Name = "ManagerUi_All";
-            this.ManagerUi_All.Size = new System.Drawing.Size(40, 14);
-            this.ManagerUi_All.TabIndex = 1014;
-            this.ManagerUi_All.Text = "전체:0";
-            // 
-            // ManagerUi_Hold
-            // 
-            this.ManagerUi_Hold.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_Hold.AutoSize = true;
-            this.ManagerUi_Hold.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Hold.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Hold.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Hold.Location = new System.Drawing.Point(85, 4);
-            this.ManagerUi_Hold.Name = "ManagerUi_Hold";
-            this.ManagerUi_Hold.Size = new System.Drawing.Size(40, 14);
-            this.ManagerUi_Hold.TabIndex = 1013;
-            this.ManagerUi_Hold.Text = "보류:0";
-            // 
-            // ManagerUi_Reservation
-            // 
-            this.ManagerUi_Reservation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_Reservation.AutoSize = true;
-            this.ManagerUi_Reservation.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Reservation.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Reservation.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Reservation.Location = new System.Drawing.Point(131, 4);
-            this.ManagerUi_Reservation.Name = "ManagerUi_Reservation";
-            this.ManagerUi_Reservation.Size = new System.Drawing.Size(40, 14);
-            this.ManagerUi_Reservation.TabIndex = 1012;
-            this.ManagerUi_Reservation.Text = "예약:0";
-            // 
-            // ManagerUi_Receipt
-            // 
-            this.ManagerUi_Receipt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_Receipt.AutoSize = true;
-            this.ManagerUi_Receipt.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Receipt.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Receipt.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Receipt.Location = new System.Drawing.Point(177, 4);
-            this.ManagerUi_Receipt.Name = "ManagerUi_Receipt";
-            this.ManagerUi_Receipt.Size = new System.Drawing.Size(40, 14);
-            this.ManagerUi_Receipt.TabIndex = 1011;
-            this.ManagerUi_Receipt.Text = "접수:0";
-            // 
-            // ManagerUi_Posible
-            // 
-            this.ManagerUi_Posible.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_Posible.AutoSize = true;
-            this.ManagerUi_Posible.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Posible.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Posible.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Posible.Location = new System.Drawing.Point(223, 4);
-            this.ManagerUi_Posible.Name = "ManagerUi_Posible";
-            this.ManagerUi_Posible.Size = new System.Drawing.Size(51, 14);
-            this.ManagerUi_Posible.TabIndex = 1010;
-            this.ManagerUi_Posible.Text = "가배차:0";
-            // 
-            // ManagerUi_Doing
-            // 
-            this.ManagerUi_Doing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_Doing.AutoSize = true;
-            this.ManagerUi_Doing.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Doing.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Doing.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Doing.Location = new System.Drawing.Point(269, 4);
-            this.ManagerUi_Doing.Name = "ManagerUi_Doing";
-            this.ManagerUi_Doing.Size = new System.Drawing.Size(40, 14);
-            this.ManagerUi_Doing.TabIndex = 1009;
-            this.ManagerUi_Doing.Text = "배차:0";
-            // 
-            // ManagerUi_Pickup
-            // 
-            this.ManagerUi_Pickup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_Pickup.AutoSize = true;
-            this.ManagerUi_Pickup.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Pickup.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Pickup.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Pickup.Location = new System.Drawing.Point(315, 4);
-            this.ManagerUi_Pickup.Name = "ManagerUi_Pickup";
-            this.ManagerUi_Pickup.Size = new System.Drawing.Size(40, 14);
-            this.ManagerUi_Pickup.TabIndex = 1008;
-            this.ManagerUi_Pickup.Text = "픽업:0";
-            // 
-            // ManagerUi_Succece
-            // 
-            this.ManagerUi_Succece.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_Succece.AutoSize = true;
-            this.ManagerUi_Succece.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Succece.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Succece.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Succece.Location = new System.Drawing.Point(361, 4);
-            this.ManagerUi_Succece.Name = "ManagerUi_Succece";
-            this.ManagerUi_Succece.Size = new System.Drawing.Size(40, 14);
-            this.ManagerUi_Succece.TabIndex = 1007;
-            this.ManagerUi_Succece.Text = "완료:0";
-            // 
-            // ManagerUi_Cancel
-            // 
-            this.ManagerUi_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_Cancel.AutoSize = true;
-            this.ManagerUi_Cancel.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Cancel.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Cancel.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Cancel.Location = new System.Drawing.Point(407, 4);
-            this.ManagerUi_Cancel.Name = "ManagerUi_Cancel";
-            this.ManagerUi_Cancel.Size = new System.Drawing.Size(40, 14);
-            this.ManagerUi_Cancel.TabIndex = 1006;
-            this.ManagerUi_Cancel.Text = "취소:0";
-            // 
-            // ManagerUi_Accident
-            // 
-            this.ManagerUi_Accident.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_Accident.AutoSize = true;
-            this.ManagerUi_Accident.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Accident.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Accident.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Accident.Location = new System.Drawing.Point(481, 4);
-            this.ManagerUi_Accident.Name = "ManagerUi_Accident";
-            this.ManagerUi_Accident.Size = new System.Drawing.Size(40, 14);
-            this.ManagerUi_Accident.TabIndex = 1015;
-            this.ManagerUi_Accident.Text = "사고:0";
-            // 
-            // ManagerUi_Inquire
-            // 
-            this.ManagerUi_Inquire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ManagerUi_Inquire.AutoSize = true;
-            this.ManagerUi_Inquire.BackColor = System.Drawing.Color.Transparent;
-            this.ManagerUi_Inquire.Font = new System.Drawing.Font("나눔고딕", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ManagerUi_Inquire.ForeColor = System.Drawing.Color.White;
-            this.ManagerUi_Inquire.Location = new System.Drawing.Point(531, 4);
-            this.ManagerUi_Inquire.Name = "ManagerUi_Inquire";
-            this.ManagerUi_Inquire.Size = new System.Drawing.Size(40, 14);
-            this.ManagerUi_Inquire.TabIndex = 1005;
-            this.ManagerUi_Inquire.Text = "문의:0";
             // 
             // ManagerUi
             // 
@@ -1022,24 +604,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ManagerUi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ManagerUi.Controls.Add(this.panel3);
-            this.ManagerUi.Controls.Add(this.ManagerUi_P3);
-            this.ManagerUi.Controls.Add(this.ManagerUi_P2);
-            this.ManagerUi.Controls.Add(this.ManagerUi_P1);
-            this.ManagerUi.Controls.Add(this.ManagerUi_Account);
-            this.ManagerUi.Controls.Add(this.ManagerUi_Savedmoney);
-            this.ManagerUi.Controls.Add(this.ManagerUi_Agency);
-            this.ManagerUi.Controls.Add(this.ManagerUi_Connection);
             this.ManagerUi.Location = new System.Drawing.Point(0, 645);
             this.ManagerUi.Name = "ManagerUi";
             this.ManagerUi.Size = new System.Drawing.Size(1202, 23);
             this.ManagerUi.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(890, 59);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
-            this.panel2.TabIndex = 1002;
             // 
             // Main
             // 
@@ -1047,7 +615,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1200, 668);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.ProgramPanel);
             this.Controls.Add(this.ManagerUi);
@@ -1071,10 +638,7 @@
             this.panel1.ResumeLayout(false);
             this.ProgramPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ManagerUi.ResumeLayout(false);
-            this.ManagerUi.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1113,37 +677,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label ManagerUi_Connection;
-        private System.Windows.Forms.Label ManagerUi_Agency;
-        private System.Windows.Forms.Label ManagerUi_Savedmoney;
-        private System.Windows.Forms.Label ManagerUi_Account;
-        private System.Windows.Forms.Panel ManagerUi_P1;
-        private System.Windows.Forms.Panel ManagerUi_P2;
-        private System.Windows.Forms.Panel ManagerUi_P3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel ManagerUi_P4;
-        private System.Windows.Forms.Panel ManagerUi_P5;
-        private System.Windows.Forms.Panel ManagerUi_P6;
-        private System.Windows.Forms.Panel ManagerUi_P7;
-        private System.Windows.Forms.Panel ManagerUi_P8;
-        private System.Windows.Forms.Panel ManagerUi_P9;
-        private System.Windows.Forms.Panel ManagerUi_P10;
-        private System.Windows.Forms.Panel ManagerUi_P11;
-        private System.Windows.Forms.Panel ManagerUi_P12;
-        private System.Windows.Forms.Panel ManagerUi_P13;
-        private System.Windows.Forms.Panel ManagerUi_P14;
-        private System.Windows.Forms.Label ManagerUi_All;
-        private System.Windows.Forms.Label ManagerUi_Hold;
-        private System.Windows.Forms.Label ManagerUi_Reservation;
-        private System.Windows.Forms.Label ManagerUi_Receipt;
-        private System.Windows.Forms.Label ManagerUi_Posible;
-        private System.Windows.Forms.Label ManagerUi_Doing;
-        private System.Windows.Forms.Label ManagerUi_Pickup;
-        private System.Windows.Forms.Label ManagerUi_Succece;
-        private System.Windows.Forms.Label ManagerUi_Cancel;
-        private System.Windows.Forms.Label ManagerUi_Accident;
-        private System.Windows.Forms.Label ManagerUi_Inquire;
         private System.Windows.Forms.Panel ManagerUi;
-        private System.Windows.Forms.Panel panel2;
     }
 }

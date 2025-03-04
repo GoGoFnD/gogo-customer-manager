@@ -55,6 +55,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BetterTabControl, Version=1.0.19295.1523, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BetterTabControl.1.0.19295.1523\lib\net472\BetterTabControl.dll</HintPath>
+    </Reference>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
@@ -122,6 +125,7 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -201,6 +205,12 @@
     <Compile Include="cSenIDTab.Designer.cs">
       <DependentUpon>cSenIDTab.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="GosafeDataMapview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cSenIDTab.resx">
       <DependentUpon>cSenIDTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GosafeDataMapview.resx">
       <DependentUpon>GosafeDataMapview.cs</DependentUpon>

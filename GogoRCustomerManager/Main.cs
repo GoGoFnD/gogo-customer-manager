@@ -18,11 +18,6 @@ namespace GogoRCustomerManager
         private DataGridViewTextBoxColumn rPhoneNumber = new DataGridViewTextBoxColumn();
         private DataGridViewTextBoxColumn rBikeNumber = new DataGridViewTextBoxColumn();
 
-        private Label label4 = new Label();
-        private ComboBox ConAgency = new ComboBox();
-        private Label label5 = new Label();
-        private ComboBox ConisWork = new ComboBox();
-        private CheckBox checkBox1 = new CheckBox();
         private Label label6 = new Label();
         private Label label7 = new Label();
         private ComboBox Condition = new ComboBox();
@@ -30,9 +25,6 @@ namespace GogoRCustomerManager
         private TextBox ConSearch = new TextBox();
         private FontAwesome.Sharp.IconButton MemSearchBtn = new FontAwesome.Sharp.IconButton();
         private FontAwesome.Sharp.IconButton ResetMem = new FontAwesome.Sharp.IconButton();
-        //private FontAwesome.Sharp.IconButton MemAddBtn = new FontAwesome.Sharp.IconButton();
-        private FontAwesome.Sharp.IconButton MemChangeBtn = new FontAwesome.Sharp.IconButton();
-        private FontAwesome.Sharp.IconButton DeleteMemBtn = new FontAwesome.Sharp.IconButton();
 
 
         private Login login = new Login();
@@ -115,7 +107,6 @@ namespace GogoRCustomerManager
         {
             SetManagerUi();
             PageLoad();
-            Console.WriteLine("qwe");
         }
 
         private void AddFuntion()
@@ -126,58 +117,19 @@ namespace GogoRCustomerManager
             tabPage.Resize += new EventHandler(this.tabPage1_Resize);
             MemSearchBtn.Click += new EventHandler(this.MemSearchBtn_Click);
             ResetMem.Click += new EventHandler(this.ResetMem_Click);
-            MemChangeBtn.Click += new EventHandler(ChangeAccount_Click);
             //programUpdateText.Click += new EventHandler(NotiPage_Click);
             //programNotiText.Click += new EventHandler(NotiPage_Click);
-            DeleteMemBtn.Click += new EventHandler(Delete_Column_Click);
             SearchText.KeyDown += new KeyEventHandler(this.PressEnter);
             initComboBox();
         }
 
-        private void powerLevelOpinion()
-        {
-            if (powerLevel == "3")
-            {
-                DeleteMemBtn.Enabled = false;
-            }
-        }
-        private string Convert_isWork()
-        {
-            if (ConisWork.Text == "근무중")
-                return "'Y'";
-            else if (ConisWork.Text == "근무 전")
-                return "'B'";
-            else if (ConisWork.Text == "퇴사")
-                return "'L'";
-            else if (ConisWork.Text == "휴가")
-                return "'T'";
-            else
-                return "'N'";
-        }
-        private string Convert_isWork(string sql)
-        {
-            if (sql == "근무중")
-                return "'Y'";
-            else if (sql == "근무 전")
-                return "'B'";
-            else if (sql == "퇴사")
-                return "'L'";
-            else if (sql == "휴가")
-                return "'T'";
-            else
-                return "'N'";
-        }
         private void initComboBox()
         {
             string[] agency = { "전체", "고고라이더스 본사", "고고라이더스 분점", "고고라이더스 체인점" };
             string[] iswork = { "전체", "근무중", "근무 전", "퇴사", "휴가" };
             string[] con = { "차량번호", "센서번호" };
 
-            ConAgency.Items.AddRange(agency);
-            ConisWork.Items.AddRange(iswork);
             Condition.Items.AddRange(con);
-            ConAgency.Text = "전체";
-            ConisWork.Text = "전체";
         }
 
         private void CreateTabPage(string page_Name)
@@ -206,7 +158,7 @@ namespace GogoRCustomerManager
                 programNotiText.BorderStyle = BorderStyle.FixedSingle;
                 programNotiText.Location = new Point(-2, -1);
                 programNotiText.Name = "programNotiText";
-                programNotiText.Size = new Size(1194, 167);
+                programNotiText.Size = new Size(tabPage.Width, tabPage.Height/2);
                 programNotiText.TabIndex = 0;
                 programNotiText.ReadOnly = true;
                 programNotiText.BackColor = Color.White;
@@ -217,10 +169,10 @@ namespace GogoRCustomerManager
                 programUpdateText.BackColor = Color.White;
                 programUpdateText.BorderStyle = BorderStyle.FixedSingle;
                 programUpdateText.Font = new Font("나눔고딕", 8.95F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
-                programUpdateText.Location = new Point(-2, 164);
+                programUpdateText.Location = new Point(-2, tabPage.Height / 2);
                 programUpdateText.Name = "programUpdateText";
                 programUpdateText.ReadOnly = true;
-                programUpdateText.Size = new Size(1197, 378);
+                programUpdateText.Size = new Size(tabPage.Width, tabPage.Height/2);
                 programUpdateText.TabIndex = 0;
                 tabPage.Controls.Add(programUpdateText);
 
@@ -263,7 +215,7 @@ namespace GogoRCustomerManager
                 tabPage.Size = new Size(1147, 476);
                 tabPage.TabIndex = 0;
                 tabPage.Text = "";
-                tabPage.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, (byte)(129));
+                tabPage.Font = new Font("나눔고딕", 8F, FontStyle.Regular, GraphicsUnit.Point, (byte)(129));
                 tabPage.UseVisualStyleBackColor = true;
                 tabControl1.TabPages.Add(tabPage);
                 tabPage.BackColor = SystemColors.Control;
@@ -280,7 +232,7 @@ namespace GogoRCustomerManager
                 DBData.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
                 DBData.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, (byte)(129));
                 DBData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
+                DBData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
                 DBData.Columns.AddRange(new DataGridViewColumn[] {
                 rBikeNumber,
                 rPhoneNumber,});
@@ -319,7 +271,7 @@ namespace GogoRCustomerManager
                 MemSearchBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
                 MemSearchBtn.IconSize = 24;
                 MemSearchBtn.ImageAlign = ContentAlignment.MiddleLeft;
-                MemSearchBtn.Location = new Point(721, 3);
+                MemSearchBtn.Location = new Point(311, 3);
                 MemSearchBtn.Name = "MemSearchBtn";
                 MemSearchBtn.Size = new Size(99, 48);
                 MemSearchBtn.TabIndex = 37;
@@ -333,114 +285,18 @@ namespace GogoRCustomerManager
                 ResetMem.IconFont = FontAwesome.Sharp.IconFont.Auto;
                 ResetMem.IconSize = 24;
                 ResetMem.ImageAlign = ContentAlignment.MiddleLeft;
-                ResetMem.Location = new Point(824, 3);
+                ResetMem.Location = new Point(414, 3);
                 ResetMem.Name = "ResetMem";
                 ResetMem.Rotation = 180D;
                 ResetMem.Size = new Size(99, 48);
                 ResetMem.TabIndex = 38;
-                ResetMem.Text = "      차량검색 \r\n    초기화";
+                ResetMem.Text = "      초기화";
                 ResetMem.UseVisualStyleBackColor = true;
-                // 
-                // MemAddBtn
-                // 
-                /*MemAddBtn.Font = new Font("나눔고딕", 9.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(129)));
-                MemAddBtn.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
-                MemAddBtn.IconColor = Color.Black;
-                MemAddBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-                MemAddBtn.IconSize = 24;
-                MemAddBtn.ImageAlign = ContentAlignment.MiddleLeft;
-                MemAddBtn.Location = new Point(927, 3);
-                MemAddBtn.Name = "MemAddBtn";
-                MemAddBtn.Rotation = 180D;
-                MemAddBtn.Size = new Size(99, 48);
-                MemAddBtn.TabIndex = 5;
-                MemAddBtn.Text = "      신규직원 \r\n    등록";
-                MemAddBtn.UseVisualStyleBackColor = true;
-                MemAddBtn.Click += new EventHandler(CreateAccount_Click);*/
-                // 
-                // MemChangeBtn
-                // 
-                MemChangeBtn.IconChar = FontAwesome.Sharp.IconChar.SheetPlastic;
-                MemChangeBtn.IconColor = Color.Black;
-                MemChangeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-                MemChangeBtn.IconSize = 24;
-                MemChangeBtn.ImageAlign = ContentAlignment.MiddleLeft;
-                MemChangeBtn.Location = new Point(927, 3);
-                MemChangeBtn.Name = "MemChangeBtn";
-                MemChangeBtn.Rotation = 180D;
-                MemChangeBtn.Size = new Size(99, 48);
-                MemChangeBtn.TabIndex = 39;
-                MemChangeBtn.Text = "     직원정보 \r\n    수정";
-                MemChangeBtn.UseVisualStyleBackColor = true;
-                MemChangeBtn.Enabled = false;
-                // 
-                // DeleteMemBtn
-                // 
-                DeleteMemBtn.IconChar = FontAwesome.Sharp.IconChar.X;
-                DeleteMemBtn.IconColor = Color.Black;
-                DeleteMemBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-                DeleteMemBtn.IconSize = 21;
-                DeleteMemBtn.ImageAlign = ContentAlignment.MiddleLeft;
-                DeleteMemBtn.Location = new Point(1030, 3);
-                DeleteMemBtn.Name = "DeleteMemBtn";
-                DeleteMemBtn.Rotation = 180D;
-                DeleteMemBtn.Size = new Size(99, 48);
-                DeleteMemBtn.TabIndex = 40;
-                DeleteMemBtn.Text = "     직원삭제";
-                DeleteMemBtn.UseVisualStyleBackColor = true;
-                DeleteMemBtn.Enabled = false;
-                //
-                //label4
-                //
-                label4.BorderStyle = BorderStyle.FixedSingle;
-                label4.Location = new Point(5, 4);
-                label4.Name = "label4";
-                label4.Size = new Size(69, 47);
-                label4.Text = "대리점선택";
-                label4.TextAlign = ContentAlignment.MiddleCenter;
-                // 
-                // ConAgency
-                // 
-                ConAgency.FormattingEnabled = true;
-                ConAgency.Location = new Point(77, 4);
-                ConAgency.Name = "ConAgency";
-                ConAgency.Size = new Size(135, 22);
-                ConAgency.TabIndex = 31;
-                ConAgency.Enabled = false;
-                // 
-                // label5
-                // 
-                label5.BorderStyle = BorderStyle.FixedSingle;
-                label5.Location = new Point(216, 4);
-                label5.Name = "label5";
-                label5.Size = new Size(69, 22);
-                label5.Text = "근무상태";
-                label5.TextAlign = ContentAlignment.MiddleCenter;
-                // 
-                // ConisWork
-                // 
-                ConisWork.FormattingEnabled = true;
-                ConisWork.Location = new Point(288, 4);
-                ConisWork.Name = "ConisWork";
-                ConisWork.Size = new Size(121, 22);
-                ConisWork.TabIndex = 33;
-                ConisWork.Enabled = false;
-                // 
-                // checkBox1
-                // 
-                checkBox1.AutoSize = true;
-                checkBox1.Location = new Point(77, 32);
-                checkBox1.Name = "checkBox1";
-                checkBox1.Size = new Size(109, 18);
-                checkBox1.TabIndex = 32;
-                checkBox1.Text = "하위 대리점 포함";
-                checkBox1.UseVisualStyleBackColor = true;
-                checkBox1.Enabled = false;
                 // 
                 // label6
                 // 
                 label6.BorderStyle = BorderStyle.FixedSingle;
-                label6.Location = new Point(412, 4);
+                label6.Location = new Point(2, 4);
                 label6.Name = "label6";
                 label6.Size = new Size(69, 22);
                 label6.TabIndex = 1;
@@ -450,7 +306,7 @@ namespace GogoRCustomerManager
                 // label7
                 // 
                 label7.BorderStyle = BorderStyle.FixedSingle;
-                label7.Location = new Point(412, 29);
+                label7.Location = new Point(2, 29);
                 label7.Name = "label7";
                 label7.Size = new Size(69, 22);
                 label7.TabIndex = 1;
@@ -460,7 +316,7 @@ namespace GogoRCustomerManager
                 // Condition
                 // 
                 Condition.FormattingEnabled = true;
-                Condition.Location = new Point(484, 4);
+                Condition.Location = new Point(74, 4);
                 Condition.Name = "Condition";
                 Condition.Size = new Size(103, 22);
                 Condition.TabIndex = 34;
@@ -468,7 +324,7 @@ namespace GogoRCustomerManager
                 // 
                 // SearchText
                 // 
-                SearchText.Location = new Point(484, 29);
+                SearchText.Location = new Point(74, 29);
                 SearchText.Name = "SearchText";
                 SearchText.Size = new Size(232, 22);
                 SearchText.TabIndex = 36;
@@ -476,28 +332,21 @@ namespace GogoRCustomerManager
                 // 
                 // ConSearch
                 // 
-                ConSearch.Location = new Point(590, 4);
+                ConSearch.Location = new Point(180, 4);
                 ConSearch.Name = "ConSearch";
                 ConSearch.Size = new Size(126, 22);
                 ConSearch.TabIndex = 35;
                 ConSearch.ReadOnly = true;
 
 
-                tabPage.Controls.Add(DeleteMemBtn);
                 tabPage.Controls.Add(ResetMem);
-                tabPage.Controls.Add(MemChangeBtn);
                 //tabPage.Controls.Add(MemAddBtn);
                 tabPage.Controls.Add(MemSearchBtn);
                 tabPage.Controls.Add(ConSearch);
                 tabPage.Controls.Add(SearchText);
-                tabPage.Controls.Add(checkBox1);
                 tabPage.Controls.Add(Condition);
-                tabPage.Controls.Add(ConisWork);
-                tabPage.Controls.Add(ConAgency);
                 tabPage.Controls.Add(label7);
                 tabPage.Controls.Add(label6);
-                tabPage.Controls.Add(label5);
-                tabPage.Controls.Add(label4);
 
                 tabPage.Controls.Add(DBData);
 
@@ -533,7 +382,8 @@ namespace GogoRCustomerManager
                 PerformAutoScale();
             }
 
-           
+            Console.WriteLine(ProgramBtn.Font.Size);
+            Console.WriteLine(ResetMem.Font.Size);
         }
         private void DBData_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -1031,8 +881,8 @@ namespace GogoRCustomerManager
             string searchText = null;
             if (!string.IsNullOrEmpty(SearchText.Text))
             {
-                    searchText = "(rBikeNumber LIKE N'" + SearchText.Text +""+
-                                "' OR rPhoneNumer LIKE N'" + SearchText.Text + "')";
+                    searchText = "(rBikeNumber LIKE '" + SearchText.Text +""+
+                                "' OR rPhoneNumer LIKE '" + SearchText.Text + "')";
             }
 
             // Construct final query
@@ -1097,8 +947,6 @@ namespace GogoRCustomerManager
         }
         public void ResetMem_Click(object sender, EventArgs e)
         {
-            ConAgency.Text = "전체";
-            ConisWork.Text = "전체";
             ConSearch.Text = null;
             Condition.Text = null;
             SearchText.Text = null;
@@ -1166,8 +1014,8 @@ namespace GogoRCustomerManager
 
             input_Num = row["co_Member_Num"].ToString();
 
-            ManagerCheck showCreateAccountForm = new ManagerCheck(MemChangeBtn.Name, this);
-            showCreateAccountForm.ShowDialog();
+            //ManagerCheck showCreateAccountForm = new ManagerCheck(MemChangeBtn.Name, this);
+            //showCreateAccountForm.ShowDialog();
         }
         private void Delete_Column_Click(object sender, EventArgs e)
         {

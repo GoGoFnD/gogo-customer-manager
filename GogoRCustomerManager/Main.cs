@@ -70,7 +70,7 @@ namespace GogoRCustomerManager
         //   );
         MySqlConnection connection2 = new MySqlConnection//데이터 베이스 연결
            (
-               "Server=cf.navers.co.kr ;Port= 3306; Database=goSafe; Uid=gosafe; Pwd=gogofnd0@; allow user variables=true;"
+               "Server=cf.navers.co.kr ;Port= 3306; Database=goSafe; Uid=gosafe; Pwd=gogofnd0@; allow user variables=true;charset=utf8mb4;"
            );
 
 
@@ -320,7 +320,7 @@ namespace GogoRCustomerManager
                 Condition.Name = "Condition";
                 Condition.Size = new Size(103, 22);
                 Condition.TabIndex = 34;
-                Condition.Enabled = false;
+                //Condition.Enabled = false;
                 // 
                 // SearchText
                 // 
@@ -336,7 +336,7 @@ namespace GogoRCustomerManager
                 ConSearch.Name = "ConSearch";
                 ConSearch.Size = new Size(126, 22);
                 ConSearch.TabIndex = 35;
-                ConSearch.ReadOnly = true;
+                //ConSearch.ReadOnly = true;
 
 
                 tabPage.Controls.Add(ResetMem);
@@ -850,11 +850,11 @@ namespace GogoRCustomerManager
         private void MemSearchBtn_Click(object sender, EventArgs e)
         {
             // Prepare variables for the query construction
-            string conSearch = string.IsNullOrEmpty(ConSearch.Text) ? null : "'" + ConSearch.Text + "'";
+            string conSearch = string.IsNullOrEmpty(ConSearch.Text) ? null : "'%" + ConSearch.Text + "%'";
             //string conAgency = string.IsNullOrEmpty(ConAgency.Text) || ConAgency.Text == "전체" ? null : "rBikeNumber = '" + ConAgency.Text + "'";
             //string conIsWork = string.IsNullOrEmpty(ConisWork.Text) || ConisWork.Text == "전체" ? null : "isWork = " + Convert_isWork();
             string searchCondition = null;
-            //string conjunction = " AND";
+            string conjunction = " AND";
 
             // Validate user input
             if (string.IsNullOrEmpty(ConSearch.Text) && !string.IsNullOrEmpty(Condition.Text))
@@ -870,10 +870,10 @@ namespace GogoRCustomerManager
                 switch (Condition.Text)
                 {
                     case "차량번호":
-                        searchCondition = "rBikeNumer = %" + conSearch+"%";
+                        searchCondition = "rBikeNumber LIKE " + conSearch+"";
                         break;
                     case "센서번호":
-                        searchCondition = "rPhoneNumber = %" + conSearch+"%";
+                        searchCondition = "rPhoneNumer LIKE " + conSearch+"";
                         break;
                 }
             }
@@ -881,8 +881,8 @@ namespace GogoRCustomerManager
             string searchText = null;
             if (!string.IsNullOrEmpty(SearchText.Text))
             {
-                    searchText = "(rBikeNumber LIKE '" + SearchText.Text +""+
-                                "' OR rPhoneNumer LIKE '" + SearchText.Text + "')";
+                    searchText = "(rBikeNumber LIKE '%" + SearchText.Text +"%"+
+                                "' OR rPhoneNumer LIKE '%" + SearchText.Text + "%')";
             }
 
             // Construct final query
@@ -897,11 +897,11 @@ namespace GogoRCustomerManager
             }
             //if (conAgency != null) whereClause += conjunction + " " + conAgency;
             //if (conIsWork != null) whereClause += conjunction + " " + conIsWork;
-            //if (searchCondition != null) whereClause += conjunction + " " + searchCondition;
+            if (searchCondition != null) whereClause += " " + searchCondition;
             if (searchText != null) whereClause +=  " " + searchText+"";
 
             string selectQuery = "SELECT *, CASE WHEN isWork='Y' THEN '근무' WHEN isWork='B' THEN '근무 전' WHEN isWork='T' THEN '휴가' WHEN isWork='L' THEN '퇴사' END as isWorkConvert, CASE WHEN powerLevel='1' THEN '관리자' WHEN powerLevel='2' THEN '팀장' WHEN powerLevel='3' THEN '사원' WHEN powerLevel='N' THEN '오류' END as rPhoneNumber FROM userinformation " + whereClause + ";";
-            string selectQuery2 = "SELECT rPhoneNumer, rBikeNumber FROM tb_lte_rider_info_250110 "+ whereClause;
+            string selectQuery2 = "SELECT rPhoneNumer, rBikeNumber FROM tb_lte_rider_info "+ whereClause+";";
             Console.WriteLine(selectQuery2);
 
             // Execute query and handle results

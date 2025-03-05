@@ -139,5 +139,10 @@ namespace GogoRCustomerManager
 
             isUpdate = false;
         }
+
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

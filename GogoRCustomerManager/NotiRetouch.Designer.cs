@@ -48,6 +48,7 @@
             this.TextBox.Size = new System.Drawing.Size(1046, 501);
             this.TextBox.TabIndex = 0;
             this.TextBox.Text = resources.GetString("TextBox.Text");
+            this.TextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // ProgramNotiBtn
             // 
@@ -126,8 +127,7 @@
             // 
             // NotiRetouch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1070, 587);
             this.Controls.Add(this.label1);

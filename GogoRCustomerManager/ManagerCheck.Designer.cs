@@ -38,11 +38,13 @@
             // 
             // id
             // 
-            this.id.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.id.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.id.BackColor = System.Drawing.Color.LightGray;
             this.id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.id.Font = new System.Drawing.Font("나눔고딕", 9F);
-            this.id.Location = new System.Drawing.Point(55, 46);
+            this.id.Location = new System.Drawing.Point(44, 48);
             this.id.MaxLength = 20;
             this.id.Name = "id";
             this.id.Size = new System.Drawing.Size(104, 21);
@@ -51,11 +53,13 @@
             // 
             // pw
             // 
-            this.pw.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pw.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pw.BackColor = System.Drawing.Color.LightGray;
             this.pw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pw.Font = new System.Drawing.Font("나눔고딕", 9F);
-            this.pw.Location = new System.Drawing.Point(55, 81);
+            this.pw.Location = new System.Drawing.Point(44, 83);
             this.pw.MaxLength = 20;
             this.pw.Name = "pw";
             this.pw.PasswordChar = '*';
@@ -65,9 +69,12 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(25, 50);
+            this.label1.Location = new System.Drawing.Point(19, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(19, 14);
             this.label1.TabIndex = 2;
@@ -75,9 +82,12 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(21, 85);
+            this.label2.Location = new System.Drawing.Point(12, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 14);
             this.label2.TabIndex = 2;
@@ -85,8 +95,11 @@
             // 
             // LoginButton
             // 
+            this.LoginButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LoginButton.Font = new System.Drawing.Font("나눔고딕", 9F);
-            this.LoginButton.Location = new System.Drawing.Point(54, 118);
+            this.LoginButton.Location = new System.Drawing.Point(51, 114);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 2;
@@ -95,24 +108,30 @@
             // 
             // Title
             // 
+            this.Title.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Title.Font = new System.Drawing.Font("나눔고딕", 13F, System.Drawing.FontStyle.Bold);
-            this.Title.Location = new System.Drawing.Point(45, 14);
+            this.Title.Location = new System.Drawing.Point(42, 15);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(95, 21);
             this.Title.TabIndex = 2;
             this.Title.Text = "관리자인증";
             this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Title.Click += new System.EventHandler(this.Title_Click);
             // 
             // ManagerCheck
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(181, 159);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(181, 157);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pw);
             this.Controls.Add(this.id);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ManagerCheck";

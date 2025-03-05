@@ -264,6 +264,51 @@ namespace GogoRCustomerManager
                 rPhoneNumber.MinimumWidth = 100;
                 rPhoneNumber.Width = 200;
                 // 
+                // label6
+                // 
+                label6.BorderStyle = BorderStyle.FixedSingle;
+                label6.Location = new Point(2, 4);
+                label6.Name = "label6";
+                //label6.Size = new Size(69, 22);
+                label6.TabIndex = 1;
+                label6.Text = "조건검색";
+                label6.TextAlign = ContentAlignment.MiddleCenter;
+                // 
+                // label7
+                // 
+                label7.BorderStyle = BorderStyle.FixedSingle;
+                label7.Location = new Point(2, 29);
+                label7.Name = "label7";
+                //label7.Size = new Size(69, 22);
+                label7.TabIndex = 1;
+                label7.Text = "전체검색";
+                label7.TextAlign = ContentAlignment.MiddleCenter;
+                // 
+                // Condition
+                // 
+                Condition.FormattingEnabled = true;
+                Condition.Location = new Point(label6.Size.Width + 10, 4);
+                Condition.Name = "Condition";
+                Condition.Size = new Size(102, 22);
+                Condition.TabIndex = 34;
+                //Condition.Enabled = false;
+                // 
+                // SearchText
+                // 
+                SearchText.Location = new Point(label6.Size.Width + 10, 29);
+                SearchText.Name = "SearchText";
+                SearchText.Size = new Size(232, 22);
+                SearchText.TabIndex = 36;
+                //SearchText.ReadOnly = true;
+                // 
+                // ConSearch
+                // 
+                ConSearch.Location = new Point(label6.Size.Width + Condition.Size.Width + 15, 4);
+                ConSearch.Name = "ConSearch";
+                ConSearch.Size = new Size(125, 22);
+                ConSearch.TabIndex = 35;
+                //ConSearch.ReadOnly = true;
+                // 
                 // MemSearchBtn
                 // 
                 MemSearchBtn.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
@@ -271,9 +316,10 @@ namespace GogoRCustomerManager
                 MemSearchBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
                 MemSearchBtn.IconSize = 24;
                 MemSearchBtn.ImageAlign = ContentAlignment.MiddleLeft;
-                MemSearchBtn.Location = new Point(311, 3);
+                MemSearchBtn.Location = new Point(label6.Size.Width + SearchText.Size.Width + 15, 3);
                 MemSearchBtn.Name = "MemSearchBtn";
-                MemSearchBtn.Size = new Size(99, 48);
+                MemSearchBtn.Size = new Size(120, 48);
+                //MemSearchBtn.Height = 48;
                 MemSearchBtn.TabIndex = 37;
                 MemSearchBtn.Text = "     차량조회";
                 MemSearchBtn.UseVisualStyleBackColor = true;
@@ -285,58 +331,14 @@ namespace GogoRCustomerManager
                 ResetMem.IconFont = FontAwesome.Sharp.IconFont.Auto;
                 ResetMem.IconSize = 24;
                 ResetMem.ImageAlign = ContentAlignment.MiddleLeft;
-                ResetMem.Location = new Point(414, 3);
+                ResetMem.Location = new Point(label6.Size.Width + SearchText.Size.Width + MemSearchBtn.Size.Width + 20, 3);
                 ResetMem.Name = "ResetMem";
                 ResetMem.Rotation = 180D;
-                ResetMem.Size = new Size(99, 48);
+                ResetMem.Size = new Size(120, 48);
+                //ResetMem.Height = 48;
                 ResetMem.TabIndex = 38;
                 ResetMem.Text = "      초기화";
                 ResetMem.UseVisualStyleBackColor = true;
-                // 
-                // label6
-                // 
-                label6.BorderStyle = BorderStyle.FixedSingle;
-                label6.Location = new Point(2, 4);
-                label6.Name = "label6";
-                label6.Size = new Size(69, 22);
-                label6.TabIndex = 1;
-                label6.Text = "조건검색";
-                label6.TextAlign = ContentAlignment.MiddleCenter;
-                // 
-                // label7
-                // 
-                label7.BorderStyle = BorderStyle.FixedSingle;
-                label7.Location = new Point(2, 29);
-                label7.Name = "label7";
-                label7.Size = new Size(69, 22);
-                label7.TabIndex = 1;
-                label7.Text = "전체검색";
-                label7.TextAlign = ContentAlignment.MiddleCenter;
-                // 
-                // Condition
-                // 
-                Condition.FormattingEnabled = true;
-                Condition.Location = new Point(74, 4);
-                Condition.Name = "Condition";
-                Condition.Size = new Size(103, 22);
-                Condition.TabIndex = 34;
-                //Condition.Enabled = false;
-                // 
-                // SearchText
-                // 
-                SearchText.Location = new Point(74, 29);
-                SearchText.Name = "SearchText";
-                SearchText.Size = new Size(232, 22);
-                SearchText.TabIndex = 36;
-                //SearchText.ReadOnly = true;
-                // 
-                // ConSearch
-                // 
-                ConSearch.Location = new Point(180, 4);
-                ConSearch.Name = "ConSearch";
-                ConSearch.Size = new Size(126, 22);
-                ConSearch.TabIndex = 35;
-                //ConSearch.ReadOnly = true;
 
 
                 tabPage.Controls.Add(ResetMem);
@@ -581,7 +583,7 @@ namespace GogoRCustomerManager
                 {
                     isProgramPopupOpen = true;
 
-                    int ProgramBtnSize_Y = 53;
+                    int ProgramBtnSize_Y = ProgramBtn.Height;
                     ProgramPanel.Location = new Point(ProgramBtn.Location.X, ProgramBtn.Location.Y + ProgramBtnSize_Y);
                     ProgramPanel.BringToFront();
                     isVisible++;
@@ -701,8 +703,8 @@ namespace GogoRCustomerManager
         private void NApplyBtn_Click(object sender, EventArgs e)
         {
             OffPopup();
-            //NotiRetouch showmainform = new NotiRetouch();
-            //showmainform.Show();
+            NotiRetouch showmainform = new NotiRetouch();
+            showmainform.Show();
         }
 
         private void FMessegeBtn_Click(object sender, EventArgs e)

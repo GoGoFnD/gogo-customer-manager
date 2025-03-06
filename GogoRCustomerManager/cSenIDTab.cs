@@ -27,6 +27,7 @@ namespace GogoRCustomerManager
             InitializeComponent();
             this.cSenIDTextBox = cSenIDTextBox;
             cSenIDData.DataSource = dataTable;
+
         }
 
 

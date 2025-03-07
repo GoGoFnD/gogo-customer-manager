@@ -612,8 +612,7 @@ namespace GogoRCustomerManager
         {
             OffPopup();
 
-            sensorLocationManeger = new SensorLocationManeger();
-            sensorLocationManeger.Show();
+            
         }
 
         private void AgencyBtn_Click(object sender, EventArgs e)
@@ -674,8 +673,8 @@ namespace GogoRCustomerManager
         private void RControlBtn2_Click(object sender, EventArgs e)
         {
             OffPopup();
-            //rControl = new RControl();
-            //rControl.Show();
+            sensorLocationManeger = new SensorLocationManeger();
+            sensorLocationManeger.Show();
         }
 
         private void RControlBtn3_Click(object sender, EventArgs e)
@@ -707,8 +706,8 @@ namespace GogoRCustomerManager
         private void NApplyBtn_Click(object sender, EventArgs e)
         {
             OffPopup();
-            NotiRetouch showmainform = new NotiRetouch();
-            showmainform.Show();
+            //NotiRetouch showmainform = new NotiRetouch();
+            //showmainform.Show();
         }
 
         private void FMessegeBtn_Click(object sender, EventArgs e)

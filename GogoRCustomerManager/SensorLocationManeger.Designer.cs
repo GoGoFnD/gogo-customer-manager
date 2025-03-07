@@ -31,16 +31,17 @@
             this.SearchText = new System.Windows.Forms.Label();
             this.BikeNumTextbox = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SensorDataGrid = new System.Windows.Forms.DataGridView();
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.SelectButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SensorNumTextBox = new System.Windows.Forms.TextBox();
+            this.SearchDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SensorDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchText
@@ -73,7 +74,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel1.Controls.Add(this.SensorDataGrid);
             // 
             // splitContainer1.Panel2
             // 
@@ -83,17 +84,21 @@
             this.splitContainer1.SplitterDistance = 411;
             this.splitContainer1.TabIndex = 5;
             // 
-            // dataGridView1
+            // SensorDataGrid
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.SensorDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(405, 602);
-            this.dataGridView1.TabIndex = 0;
+            this.SensorDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.SensorDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SensorDataGrid.Location = new System.Drawing.Point(3, 3);
+            this.SensorDataGrid.Name = "SensorDataGrid";
+            this.SensorDataGrid.RowTemplate.Height = 23;
+            this.SensorDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.SensorDataGrid.Size = new System.Drawing.Size(405, 602);
+            this.SensorDataGrid.TabIndex = 0;
+            this.SensorDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SensorDataGrid_CellClick);
+            this.SensorDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SensorDataGrid_CellContentClick);
             // 
             // gMapControl1
             // 
@@ -154,11 +159,21 @@
             this.SensorNumTextBox.TabIndex = 3;
             this.SensorNumTextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
+            // SearchDate
+            // 
+            this.SearchDate.AutoSize = true;
+            this.SearchDate.ForeColor = System.Drawing.Color.Red;
+            this.SearchDate.Location = new System.Drawing.Point(419, 41);
+            this.SearchDate.Name = "SearchDate";
+            this.SearchDate.Size = new System.Drawing.Size(0, 12);
+            this.SearchDate.TabIndex = 14;
+            // 
             // SensorLocationManeger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1266, 670);
+            this.Controls.Add(this.SearchDate);
             this.Controls.Add(this.SelectButton);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.SensorNumTextBox);
@@ -173,7 +188,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SensorDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,10 +198,11 @@
         private System.Windows.Forms.Label SearchText;
         private System.Windows.Forms.TextBox BikeNumTextbox;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView SensorDataGrid;
         private GMap.NET.WindowsForms.GMapControl gMapControl1;
         private System.Windows.Forms.Button SelectButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox SensorNumTextBox;
+        private System.Windows.Forms.Label SearchDate;
     }
 }

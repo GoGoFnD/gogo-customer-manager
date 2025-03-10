@@ -75,6 +75,7 @@
             this.PW_Reset_Button = new FontAwesome.Sharp.IconButton();
             this.PW_Visible = new System.Windows.Forms.CheckBox();
             this.Co_Leave = new System.Windows.Forms.TextBox();
+            this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             this.SuspendLayout();
             // 
             // label2
@@ -622,6 +623,13 @@
             this.Co_Leave.Size = new System.Drawing.Size(192, 21);
             this.Co_Leave.TabIndex = 14;
             // 
+            // mySqlCommand1
+            // 
+            this.mySqlCommand1.CacheAge = 0;
+            this.mySqlCommand1.Connection = null;
+            this.mySqlCommand1.EnableCaching = false;
+            this.mySqlCommand1.Transaction = null;
+            // 
             // CreateAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -734,5 +742,6 @@
         private FontAwesome.Sharp.IconButton PW_Reset_Button;
         private System.Windows.Forms.CheckBox PW_Visible;
         private System.Windows.Forms.TextBox Co_Leave;
+        private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
     }
 }

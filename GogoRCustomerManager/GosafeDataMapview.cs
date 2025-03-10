@@ -29,7 +29,7 @@ namespace GogoRCustomerManager
         bool SensorDataNotEmpty = false;
         MySqlConnection connection = new MySqlConnection//데이터 베이스 연결
            (
-               "Server=cf.navers.co.kr ;Port= 3306; Database=goSafe; Uid=gosafe; Pwd=gogofnd0@; allow user variables=true;"
+               "Server=cf.navers.co.kr ;Port= 3306; Database=goSafe; Uid=gosafe; Pwd=gogofnd0@; allow user variables=true;charset=utf8mb4;"
            );
         public GosafeDataMapview()
         {

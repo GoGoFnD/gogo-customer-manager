@@ -118,7 +118,6 @@
             this.Title.TabIndex = 2;
             this.Title.Text = "관리자인증";
             this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Title.Click += new System.EventHandler(this.Title_Click);
             // 
             // ManagerCheck
             // 

@@ -14,6 +14,7 @@ namespace GogoRCustomerManager
         private TabPage tabPage = null;
         RControl rControl;
         GosafeDataMapview gosafeDataMapview;
+        SensorLocationManeger sensorLocationManeger;
         private DataGridView DBData = new DataGridView();
         private DataGridViewTextBoxColumn rPhoneNumber = new DataGridViewTextBoxColumn();
         private DataGridViewTextBoxColumn rBikeNumber = new DataGridViewTextBoxColumn();
@@ -610,6 +611,8 @@ namespace GogoRCustomerManager
         private void RiderBtn_Click(object sender, EventArgs e)
         {
             OffPopup();
+
+            
         }
 
         private void AgencyBtn_Click(object sender, EventArgs e)
@@ -670,8 +673,8 @@ namespace GogoRCustomerManager
         private void RControlBtn2_Click(object sender, EventArgs e)
         {
             OffPopup();
-            //rControl = new RControl();
-            //rControl.Show();
+            sensorLocationManeger = new SensorLocationManeger();
+            sensorLocationManeger.Show();
         }
 
         private void RControlBtn3_Click(object sender, EventArgs e)
@@ -703,8 +706,8 @@ namespace GogoRCustomerManager
         private void NApplyBtn_Click(object sender, EventArgs e)
         {
             OffPopup();
-            NotiRetouch showmainform = new NotiRetouch();
-            showmainform.Show();
+            //NotiRetouch showmainform = new NotiRetouch();
+            //showmainform.Show();
         }
 
         private void FMessegeBtn_Click(object sender, EventArgs e)

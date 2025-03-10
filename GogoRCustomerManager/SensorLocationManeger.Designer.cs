@@ -163,7 +163,7 @@
             // 
             this.SearchDate.AutoSize = true;
             this.SearchDate.ForeColor = System.Drawing.Color.Red;
-            this.SearchDate.Location = new System.Drawing.Point(419, 41);
+            this.SearchDate.Location = new System.Drawing.Point(317, 41);
             this.SearchDate.Name = "SearchDate";
             this.SearchDate.Size = new System.Drawing.Size(0, 12);
             this.SearchDate.TabIndex = 14;
